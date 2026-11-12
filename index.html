@@ -18,6 +18,59 @@ body{background:radial-gradient(circle at 8% 5%,#ffe2ee 0,transparent 28%),radia
 .card{border:1px solid #f1d4e2;border-radius:24px;box-shadow:0 10px 28px #9c477015}.question{color:#594153}.option{border:1px solid #efd3e1;border-radius:16px;box-shadow:0 3px 10px #9c47700b;transition:background .15s,border .15s}.option.selected{border:2px solid #e978aa;background:#fff0f7}.notice{background:#fff0f7;color:#ad4e7d;border:1px solid #f5d3e3;border-radius:15px}.big{color:#e978aa}.back{color:#c65d91}.footer{color:#b69aaa}
 @media(max-width:420px){.wrap{padding:15px 13px 38px}.hero{padding:29px 16px 23px}.member-name{font-size:14px}.tile{padding:14px 12px}.member-heart{right:11px;top:13px}}
 
+
+/* ARCADE GAME UI refresh */
+:root{--pink:#ff4fa3;--dark:#f7f2ff;--soft:#321d4c}
+*{box-sizing:border-box}
+body{color:#fff;background:radial-gradient(ellipse at 50% -10%,#6332a0 0,#21133c 42%,#100d24 100%);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(#a78bfa22 1px,transparent 1px),linear-gradient(90deg,#a78bfa22 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.wrap{position:relative;max-width:820px;padding:17px 15px 42px}
+.top{padding:9px 4px;color:#fff;font-size:14px;letter-spacing:1.2px;text-shadow:0 0 12px #ff4fa3}
+.pill{color:#7cf7ff;background:#172443;border:1px solid #4ee9ff;border-radius:8px;box-shadow:0 0 14px #24dfff44;letter-spacing:1.5px}
+.hero,.card{position:relative;overflow:hidden;color:#fff;background:linear-gradient(145deg,#281943ed,#17132fee);border:1px solid #a66aff88;border-radius:20px;box-shadow:0 0 0 2px #4c2a7444,0 12px 35px #05020f99,inset 0 0 28px #a44aff12}
+.hero{margin:22px 0 30px;padding:34px 20px 27px;text-align:center}
+.hero:before{content:"";position:absolute;inset:8px;border:1px solid #ff5bb855;border-radius:14px;pointer-events:none}
+.hero:after{content:"✦  ✧  ✦";position:absolute;top:14px;right:17px;color:#76f5ff;font-size:14px;text-shadow:0 0 12px #76f5ff}
+.hero-sparkle{color:#79f7ff;letter-spacing:8px;text-shadow:0 0 14px #79f7ff;margin-bottom:14px}
+.eyebrow{color:#79f7ff;font-size:10px;letter-spacing:3px;text-shadow:0 0 12px #79f7ff}
+.hero h1{font-size:clamp(38px,10vw,60px);letter-spacing:2px;color:#fff;text-shadow:0 0 8px #ff4fa3,0 0 24px #ff4fa3;margin:14px 0}
+.hero h1 span{color:#79f7ff;text-shadow:0 0 10px #2ceaff,0 0 25px #2ceaff}
+.hero p,.muted{color:#d0c2e8;font-size:13px;line-height:1.8}
+.hero-foot{color:#ff8bc6;font-size:9px;letter-spacing:2px;margin-top:20px}
+.primary{position:relative;z-index:1;max-width:360px;width:100%;margin:14px auto 0;padding:15px 20px;color:#1c1230;background:linear-gradient(100deg,#ff65b1,#ffcf6b);border:1px solid #ffe6a6;border-radius:12px;font-weight:1000;letter-spacing:1px;box-shadow:0 5px 0 #a63d83,0 0 22px #ff4fa366;transition:transform .12s,filter .12s}
+.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #a63d83,0 0 18px #ff4fa366;filter:brightness(1.1)}
+.section{margin:29px 0}
+.section-heading{display:flex;align-items:center;gap:11px;margin:0 2px 14px}
+.section-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:11px;background:#242047;border:1px solid #8e70ff;color:#79f7ff;font-size:20px;box-shadow:0 0 15px #8261ff44}
+.section-title{color:#fff;font-size:16px;letter-spacing:.6px}
+.section-sub{color:#b6a5d4;font-size:11px;margin-top:3px}
+.grid{gap:12px}
+.tile{position:relative;overflow:hidden;min-height:105px;padding:15px 13px;color:#fff;background:linear-gradient(145deg,#30204d,#1c1938);border:1px solid #8063c5;border-radius:14px;box-shadow:0 5px 0 #120d27,0 0 15px #8d5cff20;transition:transform .12s,box-shadow .12s}
+.tile:active{transform:translateY(3px);box-shadow:0 2px 0 #120d27}
+.tile:after{content:"";position:absolute;inset:5px;border:1px solid #ffffff12;border-radius:9px;pointer-events:none}
+.member-tile.red{background:linear-gradient(140deg,#572342,#28162f);border-color:#ff658f;color:#ff829e}
+.member-tile.yellow{background:linear-gradient(140deg,#59451e,#2b2030);border-color:#ffd66b;color:#ffdb79}
+.member-tile.pink{background:linear-gradient(140deg,#5b2451,#2d173b);border-color:#ff77c8;color:#ff8bd1}
+.member-tile.purple{background:linear-gradient(140deg,#39275f,#1c1a3d);border-color:#ad8bff;color:#c1a5ff}
+.member-tag{font-size:9px;letter-spacing:2px}.member-name{font-size:15px;color:#fff}.member-heart{font-size:23px;text-shadow:0 0 12px currentColor}.member-tile small{color:#d1c3e5;font-size:9px}
+.level-tile{min-height:100px;background:linear-gradient(145deg,#30204d,#1b1937)}
+.level-0{border-color:#ffcf6b}.level-1{border-color:#ff75bd}.level-2{border-color:#a98aff}.level-3{border-color:#ff688d;box-shadow:0 5px 0 #120d27,0 0 18px #ff527944}
+.level-icon{font-size:18px}.level-name{color:#fff;font-size:17px}.level-tile small{color:#bbaad6}
+.card{padding:21px 17px 19px;margin-top:12px}
+.back{color:#79f7ff;font-size:13px;text-shadow:0 0 10px #79f7ff}
+.question{color:#fff;font-size:clamp(19px,5vw,23px);line-height:1.65;margin:20px 0;text-shadow:0 0 12px #a66aff44}
+.option{position:relative;display:block;width:100%;min-height:54px;margin:10px 0;padding:14px 15px;text-align:left;color:#f8f3ff;background:linear-gradient(100deg,#30244d,#211b3d);border:1px solid #7159a6;border-radius:12px;box-shadow:0 4px 0 #120d27;transition:transform .12s,border-color .12s,background .12s}
+.option:active{transform:translateY(2px);box-shadow:0 2px 0 #120d27}
+.option.selected{color:#fff;background:linear-gradient(100deg,#70275c,#342052);border:2px solid #ff70bd;box-shadow:0 0 18px #ff55b755}
+.option:disabled{opacity:1}
+.notice{color:#fff;background:linear-gradient(100deg,#382454,#242047);border:1px solid #8f71d5;border-radius:12px;box-shadow:0 0 14px #916bff33;padding:13px;font-weight:900}
+.big{color:#ffcf6b;font-size:clamp(48px,13vw,66px);text-shadow:0 0 14px #ff9e45,0 0 28px #ff4fa3}
+.footer{color:#9f91ba;font-size:11px}
+.home-note{color:#c7a5ef;text-shadow:0 0 12px #a66aff;letter-spacing:1px}
+@keyframes arcadeGlow{0%,100%{filter:drop-shadow(0 0 3px #ff4fa3)}50%{filter:drop-shadow(0 0 10px #79f7ff)}}
+.hero h1{animation:arcadeGlow 3s ease-in-out infinite}
+@media(max-width:420px){.wrap{padding:13px 12px 34px}.hero{padding:30px 15px 24px}.card{padding:18px 13px}.tile{min-height:98px}.member-name{font-size:14px}}
+
 </style></head><body><main class="wrap"><header class="top"><div>🎤 MOMOIRO QUIZ</div><span class="pill">SOLO QUIZ</span></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main><script>
 const questions=[
   {
