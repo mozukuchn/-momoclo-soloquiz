@@ -234,6 +234,16 @@ body:has(.question) .option:active {
 .answer-title { font-size:22px;font-weight:1000;letter-spacing:.04em; }
 .answer-detail { margin-top:3px;font-size:14px;font-weight:900; }
 
+
+/* 解答の解説 */
+.answer-explanation{
+  margin:14px 0 18px;padding:16px 17px;
+  border:1px solid #b9e8f4;border-radius:17px;
+  color:#315f76;background:linear-gradient(120deg,#f0fbff,#fff);
+  box-shadow:0 5px 15px rgba(67,151,184,.08);
+  line-height:1.8;font-size:14px;
+}
+.answer-explanation strong{display:block;margin-bottom:5px;color:#238db5;font-size:13px;letter-spacing:.06em}
 </style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div>🎤 MOMOIRO QUIZ</div><span class="pill">SOLO QUIZ</span></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main><script>
 const questions=[
   {
@@ -5076,7 +5086,38 @@ function soundResult(){playTones([[523,0,.16],[659,.14,.16],[784,.28,.16],[1047,
 function home(){const members=[{name:'百田夏菜子',icon:'❤️',color:'red',tag:'RED'},{name:'玉井詩織',icon:'💛',color:'yellow',tag:'YELLOW'},{name:'佐々木彩夏',icon:'💗',color:'pink',tag:'PINK'},{name:'高城れに',icon:'💜',color:'purple',tag:'PURPLE'}];const levels=[{name:'初級',icon:'⭐',note:'まずはここから'},{name:'中級',icon:'⭐⭐',note:'少しずつレベルアップ'},{name:'上級',icon:'⭐⭐⭐',note:'知識を試そう'},{name:'Z級',icon:'👑',note:'ファン上級者向け'}];app.innerHTML=`<section class="hero"><div class="hero-sparkle">✦　♡　✦</div><div class="eyebrow">MOMOIRO UNOFFICIAL FAN QUIZ</div><h1>ももクロ<span>QUIZ</span></h1><p>あなたの“好き”をクイズでチェック♡<br>ランダム10問にチャレンジしよう！</p><button class="primary" onclick="start()">クイズに挑戦</button><div class="hero-foot">LET'S ENJOY MOMOCLO TIME ✧</div></section><section class="section"><div class="section-heading"><span class="section-icon">♡</span><div><div class="section-title">メンバー別クイズ</div><div class="section-sub">推しメンの問題にチャレンジ！</div></div></div><div class="grid member-grid">${members.map(m=>`<button class="tile member-tile ${m.color}" onclick="start('member','${m.name}')"><span class="member-tag">${m.tag}</span><span class="member-name">${m.name}</span><span class="member-heart">${m.icon}</span><small>PROFILE & QUIZ　↗</small></button>`).join('')}</div></section><section class="section"><div class="section-heading"><span class="section-icon">✧</span><div><div class="section-title">難易度を選んで挑戦</div><div class="section-sub">今の気分に合わせて選んでね</div></div></div><div class="grid level-grid">${levels.map((l,i)=>`<button class="tile level-tile level-${i}" onclick="start('level','${l.name}')"><span class="level-icon">${l.icon}</span><span class="level-name">${l.name}</span><small>${l.note}</small></button>`).join('')}</div></section><div class="home-note">♡　全問正解を目指してがんばろう！　♡</div>`}
 function start(type=null,val=null){currentType=type||null;currentVal=type?val:null;const pool=questions.filter(q=>!currentType||q[currentType]===currentVal);if(!pool.length){app.innerHTML=`<section class="card"><a href="#" onclick="home();return false">← ホーム</a><p>この条件の問題はまだありません。</p></section>`;return}const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};if(!currentType){const stages=[['初級',3],['中級',3],['上級',2],['Z級',2]];list=stages.flatMap(([level,count])=>shuffle(pool.filter(q=>q.level===level)).slice(0,count));if(list.length<10){const used=new Set(list);list.push(...shuffle(pool.filter(q=>!used.has(q))).slice(0,10-list.length))}}else{list=shuffle(pool).slice(0,10)}if(currentType==='member'){const levelOrder={'初級':0,'中級':1,'上級':2,'Z級':3};list.sort((a,b)=>(levelOrder[a.level]??99)-(levelOrder[b.level]??99))}idx=0;score=0;choice=null;showQuestion()}
 function showQuestion(){const q=list[idx];const categoryLabel=currentType==='member'?currentVal:q.level;app.innerHTML=`<a class="back" href="#" onclick="home();return false">← ホーム</a><section class="card"><p class="muted">第 ${idx+1} 問 / 全 ${list.length} 問 ・ ${categoryLabel}</p><div class="question">${q.prompt}</div>${q.options.map((o,n)=>`<button class="option" ${choice!==null?'disabled':''} onclick="answer(${n})">${'ABCD'[n]}. ${o}</button>`).join('')}<div id="feedback"></div></section>`}
-function answer(n){if(choice!==null)return;choice=n;const q=list[idx];const isCorrect=n===q.correct;if(isCorrect){score+=1;soundCorrect()}else{soundWrong()}showQuestion();const opts=document.querySelectorAll('.option');opts[q.correct].classList.add('correct-answer');opts[n].classList.add('selected');if(!isCorrect)opts[n].classList.add('wrong-answer');const feedback=document.getElementById('feedback');feedback.innerHTML=`<div class="answer-result ${isCorrect?'is-correct':'is-wrong'}"><div class="answer-icon">${isCorrect?'✓':'×'}</div><div class="answer-title">${isCorrect?'正解！':'不正解'}</div><div class="answer-detail">${isCorrect?'+1 pt':`正解は「${q.options[q.correct]}」`}</div></div><button class="primary" onclick="next()">${idx+1===list.length?'結果を見る':'次の問題へ'}</button>`}
+function makeExplanation(q){
+  const answerText=q.options[q.correct];
+  const prompt=q.prompt;
+  let lead='問題文で尋ねられている内容に当てはまるのは「'+answerText+'」です。';
+  if(/メンバーカラー/.test(prompt)){
+    lead='ももいろクローバーZでは、メンバーごとに担当カラーが決まっています。この問題の正解は「'+answerText+'」です。';
+  }else if(/誕生日/.test(prompt)){
+    lead='メンバーのプロフィールに関する問題です。正解の「'+answerText+'」が、該当メンバーの誕生日です。';
+  }else if(/出身地/.test(prompt)){
+    lead='出身地を問う問題です。正解は「'+answerText+'」で、ほかの選択肢の地域とは区別して覚えましょう。';
+  }else if(/血液型/.test(prompt)){
+    lead='プロフィールに記載されている血液型を問う問題です。該当する答えは「'+answerText+'」です。';
+  }else if(/発売日|発売年|発売された|発売された日は/.test(prompt)){
+    lead='作品のリリース時期を確認する問題です。正解の「'+answerText+'」が、この作品に対応する発売日・発売年です。';
+  }else if(/会場|開催地/.test(prompt)){
+    lead='公演・イベントが行われた場所を問う問題です。正解は「'+answerText+'」です。会場名や開催地と公演名をセットで覚えると整理しやすくなります。';
+  }else if(/何年|年は/.test(prompt)){
+    lead='年を問う問題です。正解の「'+answerText+'」が、問題文に示された出来事に該当する年です。';
+  }else if(/曲|シングル|アルバム/.test(prompt)){
+    lead='楽曲・作品に関する問題です。正解は「'+answerText+'」です。作品名と発売時期、収録作品などを関連づけると覚えやすくなります。';
+  }else if(/ニックネーム/.test(prompt)){
+    lead='公式プロフィールに記載された呼び名を問う問題です。正解は「'+answerText+'」です。';
+  }else if(/趣味|特技|好きな言葉|好きな食べ物|長所/.test(prompt)){
+    lead='メンバーの公式プロフィールに関する問題です。該当する項目は「'+answerText+'」です。';
+  }else if(/何人|動員|何公演|何回/.test(prompt)){
+    lead='ライブ・イベントの規模や公演数を問う問題です。正解は「'+answerText+'」です。数字とイベント名を一緒に確認しましょう。';
+  }else if(/副題|タイトル|グループ名|名称/.test(prompt)){
+    lead='名称を正確に確認する問題です。問題文の出来事・作品に対応する正解は「'+answerText+'」です。';
+  }
+  return lead;
+}
+function answer(n){if(choice!==null)return;choice=n;const q=list[idx];const isCorrect=n===q.correct;if(isCorrect){score+=1;soundCorrect()}else{soundWrong()}showQuestion();const opts=document.querySelectorAll('.option');opts[q.correct].classList.add('correct-answer');opts[n].classList.add('selected');if(!isCorrect)opts[n].classList.add('wrong-answer');const feedback=document.getElementById('feedback');feedback.innerHTML=`<div class="answer-result ${isCorrect?'is-correct':'is-wrong'}"><div class="answer-icon">${isCorrect?'✓':'×'}</div><div class="answer-title">${isCorrect?'正解！':'不正解'}</div><div class="answer-detail">${isCorrect?'+1 pt':`正解は「${q.options[q.correct]}」`}</div></div><div class="answer-explanation"><strong>💡 解説</strong>${makeExplanation(q)}</div><button class="primary" onclick="next()">${idx+1===list.length?'結果を見る':'次の問題へ'}</button>`}
 function next(){if(idx+1===list.length){soundResult();app.innerHTML=`<section class="hero"><div class="eyebrow">YOUR RESULT</div><h1>RESULT</h1><div class="big">${score} pt</div><p>${list.length}問中の結果</p><button class="primary" onclick="home()">ホームへ戻る</button><button class="primary" onclick="start(currentType,currentVal)">もう一度挑戦</button></section>`}else{idx++;choice=null;showQuestion()}}
 
 // ボタン操作音（外部音声ファイル不要）
