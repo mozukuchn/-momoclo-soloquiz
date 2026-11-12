@@ -3915,5 +3915,35 @@ function start(type=currentType,val=currentVal){currentType=type||null;currentVa
 function showQuestion(){const q=list[idx];const categoryLabel=currentType==='member'?currentVal:q.level;app.innerHTML=`<a class="back" href="#" onclick="home();return false">← ホーム</a><section class="card"><p class="muted">第 ${idx+1} 問 / 全 ${list.length} 問 ・ ${categoryLabel}</p><div class="question">${q.prompt}</div>${q.options.map((o,n)=>`<button class="option" ${choice!==null?'disabled':''} onclick="answer(${n})">${'ABCD'[n]}. ${o}</button>`).join('')}<div id="feedback"></div></section>`}
 function answer(n){if(choice!==null)return;choice=n;const q=list[idx];if(n===q.correct)score+=1;showQuestion();document.querySelectorAll('.option')[n].classList.add('selected');document.getElementById('feedback').innerHTML=`<p class="notice">${n===q.correct?'正解！ +1 pt':'残念！ 正解は '+q.options[q.correct]}</p><button class="primary" onclick="next()">${idx+1===list.length?'結果を見る':'次の問題へ'}</button>`}
 function next(){if(idx+1===list.length){app.innerHTML=`<section class="hero"><div class="eyebrow">YOUR RESULT</div><h1>RESULT</h1><div class="big">${score} pt</div><p>${list.length}問中の結果</p><button class="primary" onclick="home()">ホームへ戻る</button><button class="primary" onclick="start(currentType,currentVal)">もう一度挑戦</button></section>`}else{idx++;choice=null;showQuestion()}}
+
+// ボタン操作音（外部音声ファイル不要）
+let buttonAudioContext = null;
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('button');
+  if (!button || button.disabled) return;
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) return;
+    buttonAudioContext ||= new AudioContextClass();
+    if (buttonAudioContext.state === 'suspended') buttonAudioContext.resume();
+
+    const ctx = buttonAudioContext;
+    const oscillator = ctx.createOscillator();
+    const gain = ctx.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(660, ctx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.07);
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.012);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.11);
+    oscillator.connect(gain);
+    gain.connect(ctx.destination);
+    oscillator.start();
+    oscillator.stop(ctx.currentTime + 0.12);
+  } catch (error) {
+    // 効果音が使えない環境でもクイズ本体は動作します
+  }
+});
+
 home();
 </script></body></html>
