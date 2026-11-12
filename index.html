@@ -234,7 +234,11 @@ body:has(.question) .option:active {
 .answer-title { font-size:22px;font-weight:1000;letter-spacing:.04em; }
 .answer-detail { margin-top:3px;font-size:14px;font-weight:900; }
 
-</style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div>🎤 MOMOIRO QUIZ</div><button class="pill" type="button" onclick="showHistory()">MENU</button></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main><script>
+
+.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;margin:0 -4px 14px;border:1px solid rgba(67,178,214,.24);border-radius:16px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.brand{white-space:nowrap}.top-nav{display:flex;align-items:center;gap:6px}.nav-item{padding:9px 13px;border:1px solid rgba(67,178,214,.32);border-radius:999px;background:rgba(255,255,255,.82);color:#258bb7;font-size:12px;font-weight:900;letter-spacing:.04em;white-space:nowrap;box-shadow:0 3px 9px rgba(58,163,202,.08)}.nav-item:active{transform:translateY(1px)}
+@media(max-width:480px){.top{align-items:center;gap:6px;padding:9px 8px}.brand{font-size:11px;letter-spacing:.8px}.top-nav{gap:4px}.nav-item{padding:8px 10px;font-size:11px}}
+</style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div class="brand">🎤 MOMOIRO QUIZ</div><nav class="top-nav" aria-label="メインメニュー"><button class="nav-item" type="button" onclick="home()">ホーム</button><button class="nav-item" type="button" onclick="showHistory()">解答履歴</button></nav></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main><script>
 const questions=[
   {
     "id": 1,
