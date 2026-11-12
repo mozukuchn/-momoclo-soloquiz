@@ -143,6 +143,35 @@ body:after{
   .card{animation:none!important}
 }
 
+
+/* 出題中は背景・カード・装飾をすべて静止 */
+body:has(.question):before,
+body:has(.question):after,
+body:has(.question) .virtual-particles i,
+body:has(.question) .hero,
+body:has(.question) .hero:after,
+body:has(.question) .tile,
+body:has(.question) .card {
+  animation: none !important;
+}
+body:has(.question) .hero,
+body:has(.question) .tile,
+body:has(.question) .card,
+body:has(.question) .question,
+body:has(.question) .option,
+body:has(.question) .option.selected,
+body:has(.question) .footer {
+  transform: none !important;
+  translate: none !important;
+}
+body:has(.question) .virtual-particles {
+  visibility: hidden;
+}
+body:has(.question) .option,
+body:has(.question) .option:active {
+  transition: none !important;
+}
+
 </style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div>🎤 MOMOIRO QUIZ</div><span class="pill">SOLO QUIZ</span></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main><script>
 const questions=[
   {
