@@ -3,3607 +3,3737 @@
 :root{--pink:#e94b91;--dark:#312333;--soft:#fff0f7}*{box-sizing:border-box}body{margin:0;background:linear-gradient(150deg,#fff7fb,#ffe5f1);color:var(--dark);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif}.wrap{max-width:760px;margin:auto;padding:22px 16px 50px}.top{display:flex;justify-content:space-between;align-items:center;font-weight:800}.pill{background:#ffe0ef;color:#b82f70;border-radius:99px;padding:7px 12px;font-size:12px}.hero,.card{background:#fff;border:1px solid #f6d5e4;border-radius:22px;padding:24px;box-shadow:0 8px 28px #9c47701a}.hero{text-align:center;margin:28px 0}.eyebrow{color:var(--pink);font-size:12px;font-weight:900;letter-spacing:2px}.hero h1{font-size:clamp(34px,9vw,54px);margin:10px 0}.hero p,.muted{color:#846d7a;line-height:1.7}.section{margin:26px 0}.section-title{font-weight:900;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{background:#fff;border:1px solid #f3cadd;border-radius:16px;padding:16px;text-align:left;color:var(--dark);font-weight:800;min-height:78px}.tile small{display:block;color:#987d8c;font-weight:500;margin-top:6px}button{font:inherit;cursor:pointer}.primary{background:var(--pink);color:white;border:0;border-radius:14px;padding:14px 22px;font-weight:900;width:100%;margin-top:14px}.option{display:block;width:100%;text-align:left;background:#fff;border:1px solid #edc7da;border-radius:13px;padding:14px;margin:9px 0;color:var(--dark)}.option:disabled{opacity:1}.option.selected{border:2px solid var(--pink);background:var(--soft)}.question{font-size:21px;font-weight:900;line-height:1.6;margin:18px 0}.notice{background:var(--soft);border-radius:12px;padding:12px;font-weight:800}.big{font-size:42px;font-weight:900;color:var(--pink)}a{color:var(--pink);font-weight:800;text-decoration:none}.footer{text-align:center;font-size:12px;color:#9b8792;margin-top:35px}.back{display:inline-block;margin-bottom:14px}
 </style></head><body><main class="wrap"><header class="top"><div>🎤 MOMOIRO QUIZ</div><span class="pill">SOLO QUIZ</span></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main><script>
 const questions=[
-{
-  "id": 1,
-  "prompt": "「ももいろクローバーZ」のグループ名に含まれるアルファベットは？",
-  "options": [
-    "A",
-    "X",
-    "Z",
-    "M"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": null
-},
-{
-  "id": 2,
-  "prompt": "メンバーカラーが黄色のメンバーは？",
-  "options": [
-    "百田夏菜子",
-    "玉井詩織",
-    "佐々木彩夏",
-    "高城れに"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "玉井詩織"
-},
-{
-  "id": 3,
-  "prompt": "メンバーカラーが紫のメンバーは？",
-  "options": [
-    "百田夏菜子",
-    "玉井詩織",
-    "佐々木彩夏",
-    "高城れに"
-  ],
-  "correct": 3,
-  "level": "初級",
-  "member": "高城れに"
-},
-{
-  "id": 4,
-  "prompt": "メンバーカラーが赤のメンバーは？",
-  "options": [
-    "百田夏菜子",
-    "玉井詩織",
-    "佐々木彩夏",
-    "高城れに"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 5,
-  "prompt": "メンバーカラーがピンクのメンバーは？",
-  "options": [
-    "百田夏菜子",
-    "玉井詩織",
-    "佐々木彩夏",
-    "高城れに"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 6,
-  "prompt": "百田夏菜子の誕生日は？",
-  "options": [
-    "1994年7月12日",
-    "1995年6月4日",
-    "1996年6月11日",
-    "1993年6月21日"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 7,
-  "prompt": "百田夏菜子の出身地は？",
-  "options": [
-    "神奈川県",
-    "静岡県",
-    "東京都",
-    "埼玉県"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 8,
-  "prompt": "百田夏菜子の血液型は？",
-  "options": [
-    "A型",
-    "B型",
-    "AB型",
-    "O型"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 9,
-  "prompt": "百田夏菜子の公式プロフィールにある特技の組み合わせは？",
-  "options": [
-    "新体操・ダンス・バスケ",
-    "料理・水泳・ピアノ",
-    "書道・歌・英会話",
-    "テニス・スキー・裁縫"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 10,
-  "prompt": "百田夏菜子の公式プロフィールにあるニックネームの一つは？",
-  "options": [
-    "しおりん",
-    "あーりん",
-    "れに",
-    "でこちゃん"
-  ],
-  "correct": 3,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 11,
-  "prompt": "百田夏菜子の公式プロフィールに記載された好きな言葉は？",
-  "options": [
-    "ありがとう",
-    "感謝",
-    "思いやり",
-    "一発逆転"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 12,
-  "prompt": "玉井詩織の誕生日は？",
-  "options": [
-    "1994年7月12日",
-    "1995年6月4日",
-    "1996年6月11日",
-    "1993年6月21日"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "玉井詩織"
-},
-{
-  "id": 13,
-  "prompt": "玉井詩織の出身地は？",
-  "options": [
-    "静岡県",
-    "東京都",
-    "神奈川県",
-    "千葉県"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": "玉井詩織"
-},
-{
-  "id": 14,
-  "prompt": "玉井詩織の血液型は？",
-  "options": [
-    "A型",
-    "B型",
-    "AB型",
-    "O型"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 15,
-  "prompt": "玉井詩織の公式プロフィールにあるニックネームは？",
-  "options": [
-    "かなこぉ↑↑",
-    "しおりん",
-    "あーりん",
-    "れに"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "玉井詩織"
-},
-{
-  "id": 16,
-  "prompt": "玉井詩織の公式プロフィールにある趣味は？",
-  "options": [
-    "旅行・食べること",
-    "読書・映画鑑賞",
-    "異次元について考える",
-    "家でDVD鑑賞"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 17,
-  "prompt": "玉井詩織の公式プロフィールに記載された好きな言葉は？",
-  "options": [
-    "感謝",
-    "思いやり",
-    "ありがとう",
-    "一発逆転"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 18,
-  "prompt": "佐々木彩夏の誕生日は？",
-  "options": [
-    "1994年7月12日",
-    "1995年6月4日",
-    "1996年6月11日",
-    "1993年6月21日"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 19,
-  "prompt": "佐々木彩夏の出身地は？",
-  "options": [
-    "静岡県",
-    "神奈川県",
-    "東京都",
-    "埼玉県"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 20,
-  "prompt": "佐々木彩夏の血液型は？",
-  "options": [
-    "A型",
-    "B型",
-    "AB型",
-    "O型"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 21,
-  "prompt": "佐々木彩夏の公式プロフィールにあるニックネームは？",
-  "options": [
-    "しおりん",
-    "れに",
-    "あーりん",
-    "でこちゃん"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 22,
-  "prompt": "佐々木彩夏の公式プロフィールにある趣味に含まれるものは？",
-  "options": [
-    "釣り",
-    "読書",
-    "登山",
-    "天体観測"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 23,
-  "prompt": "佐々木彩夏の公式プロフィールに記載された好きな言葉は？",
-  "options": [
-    "感謝",
-    "ありがとう",
-    "一発逆転",
-    "思いやり"
-  ],
-  "correct": 3,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 24,
-  "prompt": "高城れにの誕生日は？",
-  "options": [
-    "1994年7月12日",
-    "1995年6月4日",
-    "1996年6月11日",
-    "1993年6月21日"
-  ],
-  "correct": 3,
-  "level": "初級",
-  "member": "高城れに"
-},
-{
-  "id": 25,
-  "prompt": "高城れにの出身地は？",
-  "options": [
-    "神奈川県",
-    "静岡県",
-    "東京都",
-    "千葉県"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "高城れに"
-},
-{
-  "id": 26,
-  "prompt": "高城れにの血液型は？",
-  "options": [
-    "A型",
-    "B型",
-    "AB型",
-    "O型"
-  ],
-  "correct": 3,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 27,
-  "prompt": "高城れにの公式プロフィールにある特技は？",
-  "options": [
-    "新体操",
-    "幽体離脱",
-    "ピアノ",
-    "料理"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 28,
-  "prompt": "高城れにの公式プロフィールにある好きな食べ物は？",
-  "options": [
-    "シュークリーム",
-    "いちご",
-    "さつま芋",
-    "焼肉"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": "高城れに"
-},
-{
-  "id": 29,
-  "prompt": "高城れにの公式プロフィールに記載された好きな言葉は？",
-  "options": [
-    "感謝",
-    "ありがとう",
-    "思いやり",
-    "一発逆転"
-  ],
-  "correct": 3,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 30,
-  "prompt": "ももいろクローバーが結成された年は？",
-  "options": [
-    "2006年",
-    "2007年",
-    "2008年",
-    "2009年"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": null
-},
-{
-  "id": 31,
-  "prompt": "結成時のグループ名は？",
-  "options": [
-    "ももいろクローバー",
-    "ももいろクローバーZ",
-    "ももいろスターズ",
-    "週末クローバー"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": null
-},
-{
-  "id": 32,
-  "prompt": "インディーズデビュー曲は？",
-  "options": [
-    "未来へススメ！",
-    "ももいろパンチ",
-    "行くぜっ！怪盗少女",
-    "ピンキージョーンズ"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 33,
-  "prompt": "「ももいろパンチ」の発売日は？",
-  "options": [
-    "2008年5月17日",
-    "2009年8月5日",
-    "2010年5月5日",
-    "2011年3月9日"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 34,
-  "prompt": "メジャーデビュー曲は？",
-  "options": [
-    "ももいろパンチ",
-    "ピンキージョーンズ",
-    "行くぜっ！怪盗少女",
-    "ミライボウル"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": null
-},
-{
-  "id": 35,
-  "prompt": "「行くぜっ！怪盗少女」のメジャーデビュー日は？",
-  "options": [
-    "2009年8月5日",
-    "2010年5月5日",
-    "2011年4月10日",
-    "2012年5月17日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 36,
-  "prompt": "2011年4月にグループを脱退したメンバーは？",
-  "options": [
-    "有安杏果",
-    "早見あかり",
-    "伊倉愛美",
-    "高井つき奈"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 37,
-  "prompt": "早見あかりの脱退後、グループ名はどうなった？",
-  "options": [
-    "ももいろクローバーZに改名",
-    "ももいろスターに改名",
-    "名称を変更しなかった",
-    "週末ヒロインに改名"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 38,
-  "prompt": "NHK紅白歌合戦に初出場した年は？",
-  "options": [
-    "2010年",
-    "2011年",
-    "2012年",
-    "2013年"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 39,
-  "prompt": "初の東京・国立競技場での単独ライブを行ったのは？",
-  "options": [
-    "2012年3月",
-    "2013年5月",
-    "2014年3月",
-    "2015年8月"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 40,
-  "prompt": "結成10周年を記念した初の東京ドーム公演が行われた年は？",
-  "options": [
-    "2016年",
-    "2017年",
-    "2018年",
-    "2019年"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 41,
-  "prompt": "有安杏果がグループを卒業したのは何年？",
-  "options": [
-    "2016年",
-    "2017年",
-    "2018年",
-    "2019年"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 42,
-  "prompt": "結成記念日は何月何日？",
-  "options": [
-    "3月9日",
-    "5月5日",
-    "5月17日",
-    "8月5日"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 43,
-  "prompt": "「未来へススメ！」の発売年は？",
-  "options": [
-    "2008年",
-    "2009年",
-    "2010年",
-    "2011年"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 44,
-  "prompt": "「ピンキージョーンズ」の発売日は？",
-  "options": [
-    "2010年5月5日",
-    "2010年11月10日",
-    "2011年3月9日",
-    "2011年7月6日"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 45,
-  "prompt": "「ミライボウル／Chai Maxx」の発売日は？",
-  "options": [
-    "2010年11月10日",
-    "2011年3月9日",
-    "2011年7月6日",
-    "2012年3月7日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 46,
-  "prompt": "「Z伝説 ～終わりなき革命～」と同日に発売されたシングルは？",
-  "options": [
-    "D’の純情",
-    "ピンキージョーンズ",
-    "猛烈宇宙交響曲・第七楽章「無限の愛」",
-    "サラバ、愛しき悲しみたちよ"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 47,
-  "prompt": "1stフルアルバム「バトル アンド ロマンス」の発売日は？",
-  "options": [
-    "2010年5月5日",
-    "2011年7月27日",
-    "2012年4月21日",
-    "2013年4月10日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 48,
-  "prompt": "「バトル アンド ロマンス」に収録されている曲は？",
-  "options": [
-    "青春賦",
-    "桃色空",
-    "ワニとシャンプー",
-    "MOON PRIDE"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 49,
-  "prompt": "2016年2月17日に同時発売された3rd・4thアルバムの組み合わせは？",
-  "options": [
-    "AMARANTHUS／白金の夜明け",
-    "バトル アンド ロマンス／祝典",
-    "桃も十、番茶も出花／MOMOIRO CLOVER Z",
-    "白金の夜明け／祝典"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 50,
-  "prompt": "「AMARANTHUS」は何枚目のフルアルバム？",
-  "options": [
-    "1st",
-    "2nd",
-    "3rd",
-    "4th"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 51,
-  "prompt": "「白金の夜明け」は何枚目のフルアルバム？",
-  "options": [
-    "2nd",
-    "3rd",
-    "4th",
-    "5th"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": null
-},
-{
-  "id": 52,
-  "prompt": "「白金の夜明け」の読み方は？",
-  "options": [
-    "しろがねのよあけ",
-    "はっきんのよあけ",
-    "はくきんのよあけ",
-    "しろきんのよあけ"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 53,
-  "prompt": "2019年5月17日に発売された5thアルバムは？",
-  "options": [
-    "祝典",
-    "MOMOIRO CLOVER Z",
-    "AMARANTHUS",
-    "バトル アンド ロマンス"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 54,
-  "prompt": "2022年5月17日に発売された6thアルバムは？",
-  "options": [
-    "祝典",
-    "白金の夜明け",
-    "桃も十、番茶も出花",
-    "MOMOIRO CLOVER Z"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 55,
-  "prompt": "「白金の夜明け」に収録されている曲は？",
-  "options": [
-    "走れ！",
-    "モノクロデッサン",
-    "MOON PRIDE",
-    "ももいろパンチ"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": null
-},
-{
-  "id": 56,
-  "prompt": "「未来へススメ！」の発売日は？",
-  "options": [
-    "2009年8月5日",
-    "2009年11月11日",
-    "2010年5月5日",
-    "2010年11月10日"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 57,
-  "prompt": "2010年8月23日に行われた、キングレコードへの移籍に関する記者会見の会場は？",
-  "options": [
-    "東京・目白セントカタリナ教会",
-    "東京・中野サンプラザ",
-    "東京・日本青年館",
-    "東京・Zepp東京"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 58,
-  "prompt": "2010年12月24日に会場限定シングルとして販売された作品は？",
-  "options": [
-    "白い風",
-    "ももクリ",
-    "あかりんへ贈る歌",
-    "僕等のセンチュリー"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 59,
-  "prompt": "公式ヒストリーで「ももいろクローバーZ 誕生」と記録されている日は？",
-  "options": [
-    "2011年3月9日",
-    "2011年4月10日",
-    "2011年6月11日",
-    "2011年7月6日"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 60,
-  "prompt": "2011年6月11日に受注限定販売シングルとして発表された曲は？",
-  "options": [
-    "あかりんへ贈る歌",
-    "白い風",
-    "労働讃歌",
-    "D’の純情"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 61,
-  "prompt": "2011年7月6日に同日発売されたシングルの組み合わせは？",
-  "options": [
-    "Z伝説～終わりなき革命～／D’の純情",
-    "労働讃歌／白い風",
-    "ミライボウル／Chai Maxx",
-    "猛烈宇宙交響曲・第七楽章「無限の愛」／Ｚ女戦争"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 62,
-  "prompt": "「労働讃歌」が発売された日は？",
-  "options": [
-    "2011年7月6日",
-    "2011年8月20日",
-    "2011年11月23日",
-    "2011年12月25日"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 63,
-  "prompt": "2011年10月30日に開催された「ももクロ女祭り2011」の会場は？",
-  "options": [
-    "東京・Shibuya O-EAST",
-    "東京・品川ステラボール",
-    "東京・日本武道館",
-    "埼玉・さいたまスーパーアリーナ"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 64,
-  "prompt": "2011年11月6日に開催された「ももクロ男祭り2011」の会場は？",
-  "options": [
-    "東京・Shibuya O-EAST",
-    "東京・品川ステラボール",
-    "東京・中野サンプラザ",
-    "神奈川・横浜アリーナ"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 65,
-  "prompt": "2011年12月25日にさいたまスーパーアリーナ大会の会場限定シングルとして販売された曲は？",
-  "options": [
-    "白い風",
-    "ももクリ",
-    "一粒の笑顔で...",
-    "泣いちゃいそう冬"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 66,
-  "prompt": "「猛烈宇宙交響曲・第七楽章『無限の愛』」の発売日は？",
-  "options": [
-    "2011年11月23日",
-    "2012年3月7日",
-    "2012年6月27日",
-    "2012年11月21日"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 67,
-  "prompt": "2012年4月21日に「春の一大事2012」会場限定販売アルバムとして発売された作品は？",
-  "options": [
-    "ももクロ★オールスターズ2012",
-    "入口のない出口",
-    "5TH DIMENSION",
-    "バトル アンド ロマンス"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 68,
-  "prompt": "公式ヒストリーで「Ｚ女戦争」の発売日として記録されているのは？",
-  "options": [
-    "2012年3月7日",
-    "2012年4月21日",
-    "2012年6月27日",
-    "2012年8月5日"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 69,
-  "prompt": "2012年8月5日に始動した、ももいろクローバーZの公式ファンクラブ名は？",
-  "options": [
-    "ANGEL EYES",
-    "MOMOIRO CLUB",
-    "CLOVER'S ROOM",
-    "Z FAMILY"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 70,
-  "prompt": "2012年11月17日に東京・Zepp東京で開催された「ももいろ夜ばなし第一夜」の副題は？",
-  "options": [
-    "玄冬",
-    "白秋",
-    "春宵",
-    "紅蓮"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 71,
-  "prompt": "2012年10月5日に開催された「ももクロ女祭り2012」の会場は？",
-  "options": [
-    "東京・日本武道館",
-    "東京・国立代々木競技場",
-    "東京・Zepp東京",
-    "大阪・大阪城ホール"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 72,
-  "prompt": "2013年4月10日に発売された、ももいろクローバーZの2ndアルバムは？",
-  "options": [
-    "5TH DIMENSION",
-    "入口のない出口",
-    "AMARANTHUS",
-    "白金の夜明け"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 73,
-  "prompt": "2013年6月5日に発売された「ももいろクローバー 1st FULL ALBUM」のタイトルは？",
-  "options": [
-    "バトル アンド ロマンス",
-    "5TH DIMENSION",
-    "入口のない出口",
-    "桃も十、番茶も出花"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 74,
-  "prompt": "公式ヒストリーで10thシングルとして記録されている「GOUNN」の発売日は？",
-  "options": [
-    "2013年9月25日",
-    "2013年11月6日",
-    "2013年11月27日",
-    "2014年1月29日"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 75,
-  "prompt": "2014年7月30日に発売された12thシングルは？",
-  "options": [
-    "泣いてもいいんだよ",
-    "MOON PRIDE",
-    "GOUNN",
-    "サラバ、愛しき悲しみたちよ"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 76,
-  "prompt": "百田夏菜子の公式プロフィールに記載されている趣味は？",
-  "options": [
-    "家でのんびりDVD鑑賞",
-    "旅行・食べること",
-    "読書・映画鑑賞",
-    "体を動かすこと・ダンス"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 77,
-  "prompt": "百田夏菜子が公式プロフィールで長所として挙げている組み合わせは？",
-  "options": [
-    "好奇心旺盛・優柔不断",
-    "明るい・負けず嫌い",
-    "ポジティブ・マイペース",
-    "面倒見がよい・さっぱりしている"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 78,
-  "prompt": "百田夏菜子が公式プロフィールで好きな食べ物として挙げているものは？",
-  "options": [
-    "いちご",
-    "シュークリーム",
-    "スウィーツ",
-    "さつま芋"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 79,
-  "prompt": "百田夏菜子が自分の性格を一言で表した言葉は？",
-  "options": [
-    "オトボケ！",
-    "負けず嫌い",
-    "マイペース",
-    "甘えん坊"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 80,
-  "prompt": "百田夏菜子にとって、ももクロはどのような場所？",
-  "options": [
-    "第二の家族",
-    "私を成長させてくれる場所",
-    "一番の宝物",
-    "夢いっぱいのもの"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 81,
-  "prompt": "玉井詩織の公式プロフィールに記載されている特技は？",
-  "options": [
-    "新体操・ダンス・バスケ",
-    "どこでも寝れる・身体を動かすこと",
-    "ダンス・幽体離脱",
-    "料理・お菓子作り"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 82,
-  "prompt": "玉井詩織が公式プロフィールで長所として挙げているのは？",
-  "options": [
-    "明るく負けず嫌い",
-    "好奇心旺盛",
-    "ポジティブ",
-    "朝すぐ起きてご機嫌が良い"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 83,
-  "prompt": "玉井詩織が公式プロフィールで短所として挙げているのは？",
-  "options": [
-    "優柔不断",
-    "めんどくさがり",
-    "ぬけているところ",
-    "人の話を聞いていない"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 84,
-  "prompt": "玉井詩織が公式プロフィールで自分の性格を一言で表した言葉は？",
-  "options": [
-    "マイペース",
-    "オトボケ！",
-    "負けず嫌い",
-    "甘えん坊"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 85,
-  "prompt": "玉井詩織にとって、ももクロはどのような存在？",
-  "options": [
-    "私を成長させてくれる場所",
-    "第二の家族",
-    "一番の宝物",
-    "ダイヤモンドのような夢"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 86,
-  "prompt": "佐々木彩夏の公式プロフィールに記載されている特技は？",
-  "options": [
-    "どこでも寝れること",
-    "新体操・ダンス・バスケ",
-    "ダンス・髪を手早くお団子にできること",
-    "幽体離脱"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 87,
-  "prompt": "佐々木彩夏が公式プロフィールで長所として挙げているのは？",
-  "options": [
-    "好奇心旺盛",
-    "朝すぐ起きられて機嫌が良い",
-    "明るく負けず嫌い",
-    "ポジティブ"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 88,
-  "prompt": "佐々木彩夏が公式プロフィールで好きな食べ物として挙げている組み合わせは？",
-  "options": [
-    "スウィーツ・いちご",
-    "さつま芋・焼肉",
-    "シュークリーム・サラダ・オムライス",
-    "雲丹・牡蠣・白子"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 89,
-  "prompt": "佐々木彩夏が自分の性格を説明する言葉に含まれている特徴は？",
-  "options": [
-    "負けず嫌いで好奇心旺盛",
-    "面倒見がよく、小さなことにクヨクヨしない",
-    "マイペースで人の話を聞かない",
-    "ポジティブでオトボケ"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 90,
-  "prompt": "佐々木彩夏にとって、ももクロはどのようなもの？",
-  "options": [
-    "第二の家族",
-    "私を成長させてくれる場所",
-    "ダイヤモンドみたいに光り輝く夢いっぱいのもの",
-    "一番の宝物"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 91,
-  "prompt": "高城れにの公式プロフィールに記載されている趣味は？",
-  "options": [
-    "旅行・食べること",
-    "読書・映画鑑賞",
-    "体を動かすこと・ダンス・異次元について考える",
-    "家でのんびりDVD鑑賞"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 92,
-  "prompt": "高城れにが公式プロフィールで長所として挙げているのは？",
-  "options": [
-    "好奇心旺盛",
-    "ポジティブ",
-    "明るく負けず嫌い",
-    "面倒見がよい"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 93,
-  "prompt": "高城れにが公式プロフィールで短所として挙げているのは？",
-  "options": [
-    "優柔不断",
-    "めんどくさがり",
-    "ぬけているところ",
-    "人の話を聞いていない"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 94,
-  "prompt": "高城れにが自分の性格を一言で表した言葉は？",
-  "options": [
-    "マイペース",
-    "負けず嫌い",
-    "オトボケ！",
-    "甘えん坊"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 95,
-  "prompt": "高城れににとって、ももクロはどのような存在？",
-  "options": [
-    "第二の家族",
-    "私の一番の宝物",
-    "私を成長させてくれる場所",
-    "夢いっぱいのもの"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 96,
-  "prompt": "百田夏菜子の1stソロアルバムのタイトルは？",
-  "options": [
-    "ビタミンB",
-    "colorS",
-    "れにちゃんWORLD",
-    "30 STREET!!!"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 97,
-  "prompt": "『ビタミンB』の発売日は？",
-  "options": [
-    "2024年6月4日",
-    "2025年2月12日",
-    "2025年10月15日",
-    "2026年6月11日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 98,
-  "prompt": "『ビタミンB』のCDに収録された曲数は？",
-  "options": [
-    "9曲",
-    "11曲",
-    "13曲",
-    "16曲"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 99,
-  "prompt": "『ビタミンB』の1曲目は？",
-  "options": [
-    "ビタミンB",
-    "惚れたが勝ちのI LOVE YOU",
-    "ukiukihuman!",
-    "未知数"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 100,
-  "prompt": "『ビタミンB』のタイトル曲の作詞を担当したのは？",
-  "options": [
-    "百田夏菜子",
-    "只野菜摘",
-    "綾小路 翔",
-    "岡田実音"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 101,
-  "prompt": "『ビタミンB』で百田夏菜子自身が作詞した曲は？",
-  "options": [
-    "未知数",
-    "惚れたが勝ちのI LOVE YOU",
-    "熱帯夜 Fantasy",
-    "赤い風船"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 102,
-  "prompt": "『ビタミンB』収録曲「わかってるのに」の作詞に参加した人物は？",
-  "options": [
-    "ナオト・インティライミ",
-    "西寺郷太",
-    "前山田健一",
-    "亀田誠治"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 103,
-  "prompt": "『ビタミンB』収録曲「惚れたが勝ちのI LOVE YOU」の作詞・作曲を担当したのは？",
-  "options": [
-    "岡田実音",
-    "綾小路 翔",
-    "只野菜摘",
-    "Kanata Okajima"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 104,
-  "prompt": "『ビタミンB』収録曲「熱帯夜 Fantasy」の作詞者は？",
-  "options": [
-    "百田夏菜子",
-    "只野菜摘",
-    "Kanata Okajima",
-    "岡田実音"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 105,
-  "prompt": "『ビタミンB』収録曲で、クリスマスを題名に含む曲は？",
-  "options": [
-    "今日の君へ",
-    "クリスマスしよ♡",
-    "赤い風船",
-    "ひかり"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 106,
-  "prompt": "『ビタミンB』収録曲「それぞれのミライ」の作詞者は？",
-  "options": [
-    "百田夏菜子",
-    "岡田実音",
-    "綾小路 翔",
-    "ナオト・インティライミ"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 107,
-  "prompt": "『ビタミンB』の初回限定盤に付属する映像メディアは？",
-  "options": [
-    "DVD",
-    "Blu-ray",
-    "USBメモリ",
-    "ライブCD"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 108,
-  "prompt": "『ビタミンB』初回限定盤のBlu-rayに収録されたライブは？",
-  "options": [
-    "Talk With Me Xmas Night",
-    "百田夏菜子 30th BIRTHDAY LIVE",
-    "AYAKA NATION 2022",
-    "いろいろ"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 109,
-  "prompt": "百田夏菜子の配信EP『30th』がリリースされたのは？",
-  "options": [
-    "2023年7月12日",
-    "2024年7月12日",
-    "2025年2月12日",
-    "2026年7月12日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 110,
-  "prompt": "配信EP『30th』の発売に関連して開催されたライブは？",
-  "options": [
-    "百田夏菜子 30th BIRTHDAY LIVE",
-    "OTOGIMASHOW",
-    "AYAKA NATION 2025",
-    "ソロコンサート「いろいろ」"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 111,
-  "prompt": "配信EP『30th』に収録された曲はどれ？",
-  "options": [
-    "Doubt",
-    "Shape",
-    "Lady Cat",
-    "おとぎましょう"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 112,
-  "prompt": "配信EP『30th』に収録された「ukiukihuman!」の作詞者は？",
-  "options": [
-    "百田夏菜子",
-    "岡田実音",
-    "Kanata Okajima",
-    "綾小路 翔"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 113,
-  "prompt": "配信EP『30th』に収録された「熱帯夜 Fantasy」の作曲者は？",
-  "options": [
-    "岡田実音",
-    "百田夏菜子",
-    "綾小路 翔",
-    "只野菜摘"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 114,
-  "prompt": "配信EP『30th』に収録された「それぞれのミライ」の編曲者は？",
-  "options": [
-    "高島智明",
-    "日比野裕史",
-    "村山☆潤",
-    "木内 健"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 115,
-  "prompt": "『ビタミンB』初回限定盤に付属するM∞CARDの内容は？",
-  "options": [
-    "アルバムドキュメンタリー",
-    "写真集",
-    "ラジオ音源",
-    "カラオケ音源"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子"
-},
-{
-  "id": 116,
-  "prompt": "玉井詩織の1stソロアルバムのタイトルは？",
-  "options": [
-    "ビタミンB",
-    "colorS",
-    "れにちゃんWORLD",
-    "30th"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "玉井詩織"
-},
-{
-  "id": 117,
-  "prompt": "『colorS』の発売日は？",
-  "options": [
-    "2023年1月20日",
-    "2024年6月4日",
-    "2025年2月12日",
-    "2026年10月21日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 118,
-  "prompt": "『colorS』につながった12か月連続ソロ曲企画の名称は？",
-  "options": [
-    "AYAKA NATION",
-    "SHIORI TAMAI 12 Colors",
-    "OTOGIMASHOU",
-    "MOMOIRO PROJECT"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 119,
-  "prompt": "2023年のドラマ「ネバー・ギブアップ！～竹島水族館ものがたり～」で玉井詩織が演じた役は？",
-  "options": [
-    "大島静香",
-    "新田撫",
-    "橋爪裕子",
-    "掛井れのん"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 120,
-  "prompt": "『colorS』の本編ディスクの1曲目は？",
-  "options": [
-    "Another World",
-    "暁",
-    "日常",
-    "Eyes on me"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 121,
-  "prompt": "『colorS』本編の2曲目は？",
-  "options": [
-    "暁",
-    "Another World",
-    "Spicy Girl",
-    "泣くな向日葵"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 122,
-  "prompt": "『colorS』本編の3曲目は？",
-  "options": [
-    "日常",
-    "Eyes on me",
-    "HAPPY-END",
-    "マリンブルー"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 123,
-  "prompt": "『colorS』本編に収録されている「Spicy Girl」は何曲目？",
-  "options": [
-    "3曲目",
-    "5曲目",
-    "7曲目",
-    "9曲目"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 124,
-  "prompt": "『colorS』本編の8曲目は？",
-  "options": [
-    "HAPPY-END",
-    "マリンブルー",
-    "Sepia",
-    "宝石"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 125,
-  "prompt": "『colorS』本編の9曲目は？",
-  "options": [
-    "宝石",
-    "ベルベットの森",
-    "Sepia",
-    "We Stand Alone"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 126,
-  "prompt": "『colorS』本編の10曲目は？",
-  "options": [
-    "Sepia",
-    "宝石",
-    "Shape",
-    "泣くな向日葵"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 127,
-  "prompt": "『colorS』本編の最後に収録された新曲は？",
-  "options": [
-    "Shape",
-    "暁",
-    "日常",
-    "Another World"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 128,
-  "prompt": "『colorS』にボーナストラックとして収録された曲はどれ？",
-  "options": [
-    "風の谷のナウシカ",
-    "Doubt",
-    "Lady Cat",
-    "おとぎましょう"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 129,
-  "prompt": "『colorS』のボーナストラック「…愛ですか？」の表記は？",
-  "options": [
-    "…愛ですか？-NEW SHIORI ver.-",
-    "…愛ですか？-NEW MOMO ver.-",
-    "…愛ですか？-2024 ver.-",
-    "…愛ですか？-Live ver.-"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 130,
-  "prompt": "『colorS』初回限定盤のCDは何枚組？",
-  "options": [
-    "1枚",
-    "2枚",
-    "3枚",
-    "4枚"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 131,
-  "prompt": "『colorS』初回限定盤に付属する映像メディアは？",
-  "options": [
-    "DVD",
-    "Blu-ray",
-    "VHS",
-    "付属しない"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 132,
-  "prompt": "『colorS』初回限定盤のDISC2・DISC3に収録されたのは？",
-  "options": [
-    "「いろいろ」ライブCD",
-    "ミュージックビデオ集",
-    "ラジオ番組",
-    "メイキング映像"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 133,
-  "prompt": "『colorS』通常盤の形態は？",
-  "options": [
-    "CD Only",
-    "CD＋Blu-ray",
-    "CD3枚＋Blu-ray",
-    "配信のみ"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "玉井詩織"
-},
-{
-  "id": 134,
-  "prompt": "2026年10月に玉井詩織がフィーチャリング参加したNight Tempoの曲は？",
-  "options": [
-    "恋すれどGood-Byeはいつも背中合わせ",
-    "ベルベットの森",
-    "まわるきもち",
-    "Spicy Girl"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 135,
-  "prompt": "「恋すれどGood-Byeはいつも背中合わせ feat. 玉井詩織」の配信日は？",
-  "options": [
-    "2025年10月21日",
-    "2026年6月4日",
-    "2026年10月21日",
-    "2026年11月1日"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "玉井詩織"
-},
-{
-  "id": 136,
-  "prompt": "佐々木彩夏のソロコンサートシリーズの名称は？",
-  "options": [
-    "AYAKA NATION",
-    "SHIORI COLORS",
-    "OTOGIMASHOW",
-    "Talk With Me"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 137,
-  "prompt": "『AYAKA NATION 2022 in TOKYO GARDEN THEATER』の開催日は？",
-  "options": [
-    "2021年7月18日",
-    "2022年7月18日",
-    "2023年5月21日",
-    "2024年7月15日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 138,
-  "prompt": "『AYAKA NATION 2022』の会場は？",
-  "options": [
-    "横浜アリーナ",
-    "両国国技館",
-    "TOKYO GARDEN THEATER",
-    "神奈川県民ホール"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 139,
-  "prompt": "「Lady Cat」はどの公演のテーマソングとして制作された？",
-  "options": [
-    "AYAKA NATION 2017",
-    "AYAKA NATION 2021",
-    "AYAKA NATION 2022",
-    "AYAKA NATION 2025"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 140,
-  "prompt": "「Lady Cat」の配信シングルのリリース日は？",
-  "options": [
-    "2020年7月12日",
-    "2021年6月11日",
-    "2022年7月19日",
-    "2023年5月21日"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 141,
-  "prompt": "「Lady Cat」の作詞に参加した人物は？",
-  "options": [
-    "栗原暁",
-    "前山田健一",
-    "辻村有記",
-    "けんたあろは"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 142,
-  "prompt": "「Where We Go」が制作された目的は？",
-  "options": [
-    "AYAKA NATION 2025に向けて",
-    "AYAKA NATION 2017に向けて",
-    "1stソロアルバム発売記念",
-    "ももクロ結成15周年記念"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 143,
-  "prompt": "「Where We Go」のテーマとして公式に紹介されたのは？",
-  "options": [
-    "宇宙旅行",
-    "人生の旅路",
-    "夏の海",
-    "魔法の世界"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 144,
-  "prompt": "「Where We Go」の作詞を担当したのは？",
-  "options": [
-    "前山田健一",
-    "辻村有記",
-    "栗原暁",
-    "只野菜摘"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 145,
-  "prompt": "「Where We Go」の作曲に参加した組み合わせは？",
-  "options": [
-    "辻村有記・伊藤 賢",
-    "栗原暁・今井了介",
-    "前山田健一・西寺郷太",
-    "岡田実音・高島智明"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 146,
-  "prompt": "「30 STREET!!!」は何を記念して制作された楽曲？",
-  "options": [
-    "佐々木彩夏の30歳",
-    "ももクロ結成20周年",
-    "AYAKA NATION 10回目",
-    "ソロデビュー10周年"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 147,
-  "prompt": "「30 STREET!!!」の作詞・作曲を担当したのは？",
-  "options": [
-    "辻村有記",
-    "前山田健一",
-    "綾小路 翔",
-    "西寺郷太"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 148,
-  "prompt": "佐々木彩夏のソロシングル「My Cherry Pie／My Hamburger Boy」の発売日は？",
-  "options": [
-    "2016年8月23日",
-    "2017年8月23日",
-    "2018年8月23日",
-    "2019年8月23日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 149,
-  "prompt": "「My Cherry Pie／My Hamburger Boy」の制作に全曲関わった作家は？",
-  "options": [
-    "前山田健一",
-    "只野菜摘",
-    "岡田実音",
-    "亀田誠治"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 150,
-  "prompt": "2017年のソロシングルに収録されたカバー曲は？",
-  "options": [
-    "キューティーハニー",
-    "残酷な天使のテーゼ",
-    "CAT’S EYE",
-    "White Love"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 151,
-  "prompt": "無観客配信ライブ「A-CHANNEL」が開催された日は？",
-  "options": [
-    "2019年7月12日",
-    "2020年7月12日",
-    "2021年7月12日",
-    "2022年7月12日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 152,
-  "prompt": "「A-CHANNEL」の映像作品のタイトル表記は？",
-  "options": [
-    "A-CHANNEL",
-    "A-RIN KINGDOM",
-    "AYAKA NATION",
-    "30 STREET!!!"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 153,
-  "prompt": "『AYAKA NATION 2021』の会場は？",
-  "options": [
-    "両国国技館",
-    "横浜アリーナ",
-    "TOKYO GARDEN THEATER",
-    "日本武道館"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 154,
-  "prompt": "『AYAKA NATION 2021 in Yokohama Arena』の映像特典として収録されたメイキングの副題は？",
-  "options": [
-    "キング・オブ・アイドル あーりんと仲間達の記録",
-    "アーヤカ姫は怪盗あーりん",
-    "まるごとあーりん",
-    "あーりんの休日"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 155,
-  "prompt": "『AYAKA NATION 2022』のアンコール曲に含まれていたのは？",
-  "options": [
-    "あーりんはあーりん♡",
-    "Dancing れにちゃん",
-    "Shape",
-    "ビタミンB"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏"
-},
-{
-  "id": 156,
-  "prompt": "高城れにの1stソロアルバムのタイトルは？",
-  "options": [
-    "OTOGIMASHOU",
-    "れにちゃんWORLD",
-    "colorS",
-    "ビタミンB"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "高城れに"
-},
-{
-  "id": 157,
-  "prompt": "『れにちゃんWORLD』の発売日は？",
-  "options": [
-    "2019年8月18日",
-    "2020年8月18日",
-    "2021年8月18日",
-    "2022年8月18日"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 158,
-  "prompt": "高城れにの2ndソロアルバムのタイトルは？",
-  "options": [
-    "れにちゃんWORLD",
-    "OTOGIMASHOU",
-    "まるごとれにちゃん",
-    "おとぎましょう"
-  ],
-  "correct": 1,
-  "level": "初級",
-  "member": "高城れに"
-},
-{
-  "id": 159,
-  "prompt": "『OTOGIMASHOU』の発売日は？",
-  "options": [
-    "2024年10月15日",
-    "2025年10月15日",
-    "2025年9月19日",
-    "2026年10月15日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 160,
-  "prompt": "『OTOGIMASHOU』のアルバムコンセプトは？",
-  "options": [
-    "宇宙旅行",
-    "御伽噺",
-    "海の冒険",
-    "学園生活"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 161,
-  "prompt": "『OTOGIMASHOU』のリード曲は？",
-  "options": [
-    "SKY HIGH",
-    "おとぎましょう",
-    "Tail wind",
-    "じれったいな"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 162,
-  "prompt": "「おとぎましょう」の先行配信日は？",
-  "options": [
-    "2025年9月19日",
-    "2025年10月15日",
-    "2025年11月2日",
-    "2026年9月19日"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 163,
-  "prompt": "「おとぎましょう」の作詞・作曲・編曲を担当したのは？",
-  "options": [
-    "西寺郷太",
-    "けんたあろは",
-    "馬渕直純",
-    "草野華余子"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 164,
-  "prompt": "『OTOGIMASHOU』のボーナストラックは？",
-  "options": [
-    "なんでなんでハテナん？",
-    "ユーアノッアロン",
-    "一緒に",
-    "春夏秋冬"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 165,
-  "prompt": "「なんでなんでハテナん？」がオープニング曲になっている番組は？",
-  "options": [
-    "高城れにの週末ももクロ☆パンチ!!",
-    "はてな？を解明 名探偵れに姫",
-    "おはスタ",
-    "音龍門"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 166,
-  "prompt": "「レニー来航！！」で高城れにと共演するアーティストは？",
-  "options": [
-    "サイプレス上野とロベルト吉野",
-    "Night Tempo",
-    "BEGIN",
-    "little by little"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 167,
-  "prompt": "「message」の作詞を担当したのは？",
-  "options": [
-    "只野菜摘",
-    "高城れに",
-    "山崎あおい",
-    "けんたあろは"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 168,
-  "prompt": "「じゃないほう」の作詞を担当したのは？",
-  "options": [
-    "橋口洋平",
-    "前山田健一",
-    "草野華余子",
-    "綾小路 翔"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 169,
-  "prompt": "「シオン」の作詞を担当したのは？",
-  "options": [
-    "只野菜摘",
-    "山崎あおい",
-    "eNu",
-    "AKIRA"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 170,
-  "prompt": "「Lovely Monster」の作詞を担当したのは？",
-  "options": [
-    "ASOBOiSM",
-    "けんたあろは",
-    "高城れに",
-    "只野菜摘"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 171,
-  "prompt": "「Lovely Monster」の作曲・編曲を担当したのは？",
-  "options": [
-    "SPENSR",
-    "西寺郷太",
-    "馬渕直純",
-    "岡田実音"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 172,
-  "prompt": "1stアルバム『れにちゃんWORLD』の1曲目は？",
-  "options": [
-    "じれったいな",
-    "SKY HIGH",
-    "Dancing れにちゃん",
-    "Tail wind"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 173,
-  "prompt": "『れにちゃんWORLD』に収録された、BEGINの島袋 優が作曲した曲は？",
-  "options": [
-    "「３文字」の宝物",
-    "Voyage！",
-    "一緒に",
-    "spart!"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに"
-},
-{
-  "id": 174,
-  "prompt": "高城れにのソロライブ「まるごとれにちゃん」の開催日は？",
-  "options": [
-    "2017年3月9日",
-    "2018年3月9日",
-    "2019年3月9日",
-    "2020年3月9日"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "id": 175,
-  "prompt": "「まるごとれにちゃん」のライブ映像作品の発売日は？",
-  "options": [
-    "2016年8月30日",
-    "2017年8月30日",
-    "2018年8月30日",
-    "2019年8月30日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "高城れに"
-},
-{
-  "prompt": "百田夏菜子が初めて開催したソロコンサートのタイトルは？",
-  "options": [
-    "Talk With Me ～シンデレラタイム～",
-    "Talk With Me Xmas Night ～シンデレラタイム～",
-    "VITAMIN-B",
-    "いろいろ"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "百田夏菜子",
-  "id": 176
-},
-{
-  "prompt": "初のソロコンサート「Talk With Me ～シンデレラタイム～」の会場は？",
-  "options": [
-    "さいたまスーパーアリーナ",
-    "東京国際フォーラム ホールA",
-    "横浜アリーナ",
-    "ぴあアリーナMM"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子",
-  "id": 177
-},
-{
-  "prompt": "「Talk With Me ～シンデレラタイム～」が開催された日程は？",
-  "options": [
-    "2020年7月11日・12日",
-    "2021年10月16日・17日",
-    "2022年7月11日・12日",
-    "2023年12月24日・25日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子",
-  "id": 178
-},
-{
-  "prompt": "「Talk With Me ～シンデレラタイム～」のLIVE CD発売日は？",
-  "options": [
-    "2021年12月19日",
-    "2022年7月12日",
-    "2023年12月25日",
-    "2024年7月12日"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 179
-},
-{
-  "prompt": "百田夏菜子の2回目のソロコンサートのタイトルは？",
-  "options": [
-    "Talk With Me Xmas Night ～シンデレラタイム～",
-    "Talk With Me ～シンデレラタイム～",
-    "いろいろ",
-    "OTOGIMASHOW"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "百田夏菜子",
-  "id": 180
-},
-{
-  "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」の開催日は？",
-  "options": [
-    "2022年12月25日",
-    "2023年12月25日",
-    "2024年12月24日",
-    "2025年12月25日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "百田夏菜子",
-  "id": 181
-},
-{
-  "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」が開催された会場は？",
-  "options": [
-    "さいたまスーパーアリーナ",
-    "東京国際フォーラム ホールA",
-    "TOKYO GARDEN THEATER",
-    "KT Zepp Yokohama"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子",
-  "id": 182
-},
-{
-  "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」の映像作品に収録されたメディア構成は？",
-  "options": [
-    "Blu-ray1枚＋CD2枚",
-    "DVD1枚＋CD1枚",
-    "Blu-ray2枚＋CD1枚",
-    "CD3枚のみ"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 183
-},
-{
-  "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」本編の1曲目は？",
-  "options": [
-    "サンタさん",
-    "クリスマスしよ♡",
-    "ニュームーンに恋して",
-    "それぞれのミライ"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 184
-},
-{
-  "prompt": "同公演のアンコール1曲目は？",
-  "options": [
-    "サンタさん",
-    "渚のラララ",
-    "ひかり",
-    "太陽とえくぼ"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 185
-},
-{
-  "prompt": "百田夏菜子が2025年に開催したソロライブツアーのタイトルは？",
-  "options": [
-    "MOMOTA KANAKO Live Tour 2025「VITAMIN-B」",
-    "SHIORI TAMAI 12 Colors",
-    "AYAKA NATION 2025",
-    "RENI TAKAGI Solo Concert Tour 2025「OTOGIMASHOW」"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子",
-  "id": 186
-},
-{
-  "prompt": "2025年の「VITAMIN-B」ツアー開催地の組み合わせは？",
-  "options": [
-    "大阪・東京・神奈川・愛知",
-    "東京・大阪・福岡・北海道",
-    "神奈川・愛知・京都・広島",
-    "東京・名古屋・仙台・沖縄"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 187
-},
-{
-  "prompt": "百田夏菜子が30歳を記念して刊行したフォト＆スタイルブックのタイトルは？",
-  "options": [
-    "えくぼは恋の落とし穴♡ Anniversary30",
-    "colorS",
-    "A-rin Assort",
-    "れにちゃんWORLD"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "百田夏菜子",
-  "id": 188
-},
-{
-  "prompt": "「えくぼは恋の落とし穴♡ Anniversary30」の発売日は？",
-  "options": [
-    "2023年12月24日",
-    "2024年12月24日",
-    "2025年2月12日",
-    "2025年7月12日"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 189
-},
-{
-  "prompt": "同フォト＆スタイルブックの撮影が行われた、百田夏菜子の出身地は？",
-  "options": [
-    "神奈川県",
-    "東京都",
-    "静岡県",
-    "愛知県"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "百田夏菜子",
-  "id": 190
-},
-{
-  "prompt": "同フォト＆スタイルブックに掲載された、ファンからの質問コーナーは何問のQ＆A？",
-  "options": [
-    "30問",
-    "50問",
-    "100問",
-    "150問"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 191
-},
-{
-  "prompt": "映画「すくってごらん」で百田夏菜子が演じた役名は？",
-  "options": [
-    "生駒吉乃",
-    "川谷レイカ",
-    "高橋さおり",
-    "橋爪裕子"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 192
-},
-{
-  "prompt": "映画「魔女見習いをさがして」で百田夏菜子が声を担当した人物は？",
-  "options": [
-    "長瀬ソラ",
-    "吉月ミレ",
-    "川谷レイカ",
-    "妹尾あいこ"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "百田夏菜子",
-  "id": 193
-},
-{
-  "prompt": "玉井詩織が初めて開催したソロコンサートのタイトルは？",
-  "options": [
-    "いろいろ",
-    "colorS",
-    "Talk With Me",
-    "AYAKA NATION"
-  ],
-  "correct": 0,
-  "level": "初級",
-  "member": "玉井詩織",
-  "id": 194
-},
-{
-  "prompt": "ソロコンサート「いろいろ」の東京公演は何日間開催された？",
-  "options": [
-    "1日間",
-    "2日間",
-    "3日間",
-    "4日間"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織",
-  "id": 195
-},
-{
-  "prompt": "「いろいろ」東京公演の会場は？",
-  "options": [
-    "東京国際フォーラム ホールA",
-    "さいたまスーパーアリーナ",
-    "横浜アリーナ",
-    "大阪フェスティバルホール"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "玉井詩織",
-  "id": 196
-},
-{
-  "prompt": "「いろいろ」の大阪追加公演が行われた会場は？",
-  "options": [
-    "オリックス劇場",
-    "フェスティバルホール",
-    "大阪城ホール",
-    "Zepp Namba"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織",
-  "id": 197
-},
-{
-  "prompt": "「いろいろ」大阪追加公演の日程は？",
-  "options": [
-    "2024年3月2日・3日",
-    "2024年5月5日・6日",
-    "2024年6月5日・6日",
-    "2024年7月5日・6日"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 198
-},
-{
-  "prompt": "映画「悪夢ちゃん The 夢ovie」で玉井詩織が声を担当したキャラクターは？",
-  "options": [
-    "夢獣",
-    "ジュリアス・ワーナー",
-    "橋爪裕子",
-    "新田撫"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 199
-},
-{
-  "prompt": "2026年公開の映画「踊る大捜査線 N.E.W. メトロポリスを駆け抜けろ！」で玉井詩織が演じた役名は？",
-  "options": [
-    "掛井れのん",
-    "新田撫",
-    "大島静香",
-    "ジュリアス・ワーナー"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 200
-},
-{
-  "prompt": "「SHIORI TAMAI 12 Colors」で毎月の楽曲制作のもとになった写真は、合計何シーン？",
-  "options": [
-    "4シーン",
-    "8シーン",
-    "10シーン",
-    "12シーン"
-  ],
-  "correct": 3,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 201
-},
-{
-  "prompt": "「SHIORI TAMAI 12 Colors」では、1年間で何曲の新曲を発表する企画だった？",
-  "options": [
-    "6曲",
-    "8曲",
-    "12曲",
-    "24曲"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "玉井詩織",
-  "id": 202
-},
-{
-  "prompt": "玉井詩織が2011年に初めて披露したソロ曲は？",
-  "options": [
-    "涙目のアリス",
-    "…愛ですか？",
-    "Shape",
-    "日常"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 203
-},
-{
-  "prompt": "「…愛ですか？」を初披露した公演が行われた会場は？",
-  "options": [
-    "中野サンプラザホール",
-    "横浜アリーナ",
-    "東京国際フォーラム ホールA",
-    "さいたまスーパーアリーナ"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 204
-},
-{
-  "prompt": "玉井詩織の2曲目のソロナンバーとして誕生した曲は？",
-  "options": [
-    "涙目のアリス",
-    "Another World",
-    "We Stand Alone",
-    "HAPPY-END"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 205
-},
-{
-  "prompt": "玉井詩織が出演した2021年公開の映画は？",
-  "options": [
-    "都会のトム＆ソーヤ",
-    "すくってごらん",
-    "魔女見習いをさがして",
-    "シロメ"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "玉井詩織",
-  "id": 206
-},
-{
-  "prompt": "映画「都会のトム＆ソーヤ」で玉井詩織が演じた役名は？",
-  "options": [
-    "橋爪裕子",
-    "ジュリアス・ワーナー",
-    "加藤明美",
-    "西条美紀"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 207
-},
-{
-  "prompt": "映画「幕が上がる」で玉井詩織が演じた人物は？",
-  "options": [
-    "高橋さおり",
-    "橋爪裕子",
-    "西条美紀",
-    "加藤明美"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "玉井詩織",
-  "id": 208
-},
-{
-  "prompt": "映画「ドラゴンボールZ 復活の「F」」で玉井詩織が声を担当した役は？",
-  "options": [
-    "天使",
-    "ブルマ",
-    "チチ",
-    "人造人間18号"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 209
-},
-{
-  "prompt": "ドラマ「あのクズを殴ってやりたいんだ」で玉井詩織が演じた役名は？",
-  "options": [
-    "新田撫",
-    "大島静香",
-    "掛井れのん",
-    "橋爪裕子"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 210
-},
-{
-  "prompt": "ドラマ「それぞれの孤独のグルメ」で玉井詩織の出演形態は？",
-  "options": [
-    "ゲスト出演",
-    "主演",
-    "ナレーションのみ",
-    "主題歌のみ"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "玉井詩織",
-  "id": 211
-},
-{
-  "prompt": "佐々木彩夏の1stソロアルバム「A-rin Assort」の発売日は？",
-  "options": [
-    "2017年8月23日",
-    "2019年7月8日",
-    "2020年7月8日",
-    "2021年7月8日"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 212
-},
-{
-  "prompt": "「A-rin Assort」初回限定盤の形態は？",
-  "options": [
-    "CD＋Blu-ray",
-    "CD＋DVD",
-    "CD3枚組",
-    "Blu-rayのみ"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 213
-},
-{
-  "prompt": "「A-rin Assort」通常盤の形態は？",
-  "options": [
-    "CD Only",
-    "CD＋Blu-ray",
-    "CD＋DVD",
-    "配信のみ"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 214
-},
-{
-  "prompt": "「A-rin Assort」初回限定盤に封入されたSPECIAL MAGAZINEは何ページ？",
-  "options": [
-    "24ページ",
-    "32ページ",
-    "40ページ",
-    "48ページ"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 215
-},
-{
-  "prompt": "SPECIAL MAGAZINEの企画名として掲載されているものは？",
-  "options": [
-    "IN THE A-rin’s BAG",
-    "SHIORI’S ROOM",
-    "RENICHAN DIARY",
-    "KANAKO’S TRAVEL"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 216
-},
-{
-  "prompt": "「A-rin Assort」初回限定盤Blu-rayに収録された制作過程の映像は？",
-  "options": [
-    "Making of「A-rin Assort」",
-    "Making of「colorS」",
-    "Making of「ビタミンB」",
-    "Making of「OTOGIMASHOU」"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 217
-},
-{
-  "prompt": "「AYAKA-NATION 2016 in 横浜アリーナ」の会場は？",
-  "options": [
-    "横浜アリーナ",
-    "両国国技館",
-    "東京ガーデンシアター",
-    "さいたまスーパーアリーナ"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 218
-},
-{
-  "prompt": "「AYAKA-NATION 2016 in 横浜アリーナ」のBlu-ray映像特典として収録された舞台裏映像のタイトルは？",
-  "options": [
-    "あーりんのあーりんによるあーりんのための舞台ウラ",
-    "AYAKA NATIONの作り方",
-    "あーりんの休日",
-    "舞台裏の一週間"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 219
-},
-{
-  "prompt": "「AYAKA-NATION 2017」の会場は？",
-  "options": [
-    "両国国技館",
-    "横浜アリーナ",
-    "東京国際フォーラム",
-    "ぴあアリーナMM"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 220
-},
-{
-  "prompt": "「AYAKA NATION 2019」の公演テーマとして紹介された世界観は？",
-  "options": [
-    "不思議な森",
-    "豪華客船",
-    "秘密の美術館",
-    "お菓子の国"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 221
-},
-{
-  "prompt": "2024年の「AYAKA NATION Special Edition『VIP ROOM A⁺』」最終公演の会場は？",
-  "options": [
-    "Zepp Haneda",
-    "Zepp Namba",
-    "Zepp Nagoya",
-    "TOKYO GARDEN THEATER"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 222
-},
-{
-  "prompt": "2024年の「VIP ROOM A⁺」Zepp Haneda公演の日付は？",
-  "options": [
-    "2024年6月14日",
-    "2024年9月28日",
-    "2024年10月21日",
-    "2025年6月14日"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 223
-},
-{
-  "prompt": "「AYAKA NATION 2025 VIP ROOM A⁺ ～the Voyage～」の開催日は？",
-  "options": [
-    "2024年9月28日",
-    "2025年3月9日",
-    "2025年6月14日",
-    "2026年6月11日"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 224
-},
-{
-  "prompt": "「AYAKA NATION 2025 VIP ROOM A⁺ ～the Voyage～」の会場は？",
-  "options": [
-    "東京ガーデンシアター",
-    "横浜アリーナ",
-    "両国国技館",
-    "KT Zepp Yokohama"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 225
-},
-{
-  "prompt": "「AYAKA NATION 2025 VIP ROOM A⁺ ～the Voyage～」の舞台設定は？",
-  "options": [
-    "豪華客船のクルーズ",
-    "不思議な森の冒険",
-    "美術館の展示室",
-    "宇宙ステーション"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 226
-},
-{
-  "prompt": "「AYAKA NATION 2025」のセットリスト冒頭の曲は？",
-  "options": [
-    "Ladybird",
-    "Lady Cat",
-    "A-rin Kingdom",
-    "Bunny Gone Bad"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 227
-},
-{
-  "prompt": "「AYAKA NATION 2025」のアンコールに含まれていた曲は？",
-  "options": [
-    "A-rin Kingdom",
-    "Shape",
-    "おとぎましょう",
-    "ビタミンB"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "佐々木彩夏",
-  "id": 228
-},
-{
-  "prompt": "映画「幕が上がる」で佐々木彩夏が演じた役名は？",
-  "options": [
-    "加藤明美",
-    "橋爪裕子",
-    "高橋さおり",
-    "西条美紀"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "佐々木彩夏",
-  "id": 229
-},
-{
-  "prompt": "高城れにのソロライブ「30祭」が開催された日は？",
-  "options": [
-    "2022年3月9日",
-    "2023年3月9日",
-    "2023年6月25日",
-    "2024年6月25日"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "高城れに",
-  "id": 230
-},
-{
-  "prompt": "ソロライブ「30祭」の会場は？",
-  "options": [
-    "ぴあアリーナMM",
-    "神奈川県民ホール",
-    "KT Zepp Yokohama",
-    "東京国際フォーラム ホールA"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "高城れに",
-  "id": 231
-},
-{
-  "prompt": "「30祭」は高城れにの何を記念したライブ？",
-  "options": [
-    "20歳の誕生日",
-    "25歳の誕生日",
-    "30歳の誕生日",
-    "ソロ活動10周年"
-  ],
-  "correct": 2,
-  "level": "初級",
-  "member": "高城れに",
-  "id": 232
-},
-{
-  "prompt": "「30祭」にゲスト出演したwacciのメンバーは？",
-  "options": [
-    "橋口洋平",
-    "横山克",
-    "前山田健一",
-    "ナオト・インティライミ"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 233
-},
-{
-  "prompt": "高城れにの楽曲「じゃないほう」の作詞・作曲を担当したのは？",
-  "options": [
-    "橋口洋平（wacci）",
-    "けんたあろは",
-    "只野菜摘",
-    "西寺郷太"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 234
-},
-{
-  "prompt": "「じゃないほう」の編曲を担当したのは？",
-  "options": [
-    "村中慧慈（wacci）",
-    "木内 健",
-    "日比野裕史",
-    "馬渕直純"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 235
-},
-{
-  "prompt": "高城れにソロライブ「30祭」の本編1曲目は？",
-  "options": [
-    "誇り高きアイドル",
-    "SKY HIGH",
-    "じれったいな",
-    "まるごとれにちゃん"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 236
-},
-{
-  "prompt": "「30祭」で橋口洋平（wacci）と披露した曲は？",
-  "options": [
-    "じゃないほう",
-    "おとぎましょう",
-    "Dancing れにちゃん",
-    "君色のひかり"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 237
-},
-{
-  "prompt": "高城れにの「Yokohama開高祭」が開催された日は？",
-  "options": [
-    "2022年3月9日",
-    "2023年3月9日",
-    "2023年6月25日",
-    "2024年3月9日"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 238
-},
-{
-  "prompt": "「まるごとれにちゃん2022 RENICHAN WORLD」の開催日は？",
-  "options": [
-    "2021年3月9日",
-    "2022年3月9日",
-    "2023年3月9日",
-    "2024年3月9日"
-  ],
-  "correct": 1,
-  "level": "中級",
-  "member": "高城れに",
-  "id": 239
-},
-{
-  "prompt": "「まるごとれにちゃん2022 RENICHAN WORLD」神奈川公演の会場は？",
-  "options": [
-    "神奈川県民ホール 大ホール",
-    "ぴあアリーナMM",
-    "横浜アリーナ",
-    "KT Zepp Yokohama"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 240
-},
-{
-  "prompt": "「まるごとれにちゃん2022 RENICHAN WORLD」は神奈川公演のほか、どの地域でも開催された？",
-  "options": [
-    "大阪・愛知",
-    "東京・千葉",
-    "北海道・宮城",
-    "福岡・広島"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 241
-},
-{
-  "prompt": "高城れにの2025年ソロコンサートツアーのタイトルは？",
-  "options": [
-    "OTOGIMASHOW",
-    "RENICHAN WORLD",
-    "Talk With Me",
-    "VIP ROOM A⁺"
-  ],
-  "correct": 0,
-  "level": "中級",
-  "member": "高城れに",
-  "id": 242
-},
-{
-  "prompt": "2025年10月20日の「OTOGIMASHOW」公演会場は？",
-  "options": [
-    "KT Zepp Yokohama",
-    "KT Zepp Osaka",
-    "ぴあアリーナMM",
-    "神奈川県民ホール"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 243
-},
-{
-  "prompt": "2025年10月20日の「OTOGIMASHOW」公演のオープニング曲は？",
-  "options": [
-    "おとぎましょう",
-    "SKY HIGH",
-    "じゃないほう",
-    "Dancing れにちゃん"
-  ],
-  "correct": 0,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 244
-},
-{
-  "prompt": "RENI TAKAGI Solo Concert Tour 2025「OTOGIMASHOW」LIVE Blu-rayの発売日は？",
-  "options": [
-    "2025年10月15日",
-    "2026年3月9日",
-    "2026年6月21日",
-    "2026年7月22日"
-  ],
-  "correct": 2,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 245
-},
-{
-  "prompt": "高城れにの配信曲「ボンボン☆サンバ☆ボンバYeah!」のリリース日は？",
-  "options": [
-    "2025年7月22日",
-    "2026年6月21日",
-    "2026年7月22日",
-    "2026年10月21日"
-  ],
-  "correct": 2,
-  "level": "中級",
-  "member": "高城れに",
-  "id": 246
-},
-{
-  "prompt": "高城れに「ポジティブ・アテンションプリーズ！」の配信日は？",
-  "options": [
-    "2023年7月5日",
-    "2024年7月5日",
-    "2025年7月5日",
-    "2026年7月5日"
-  ],
-  "correct": 1,
-  "level": "上級",
-  "member": "高城れに",
-  "id": 247
-},
-{
-  "id": 248,
-  "prompt": "2008年5月17日の初お披露目時、ももいろクローバーは何人編成だった？",
-  "options": [
-    "4人",
-    "5人",
-    "6人",
-    "7人"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 249,
-  "prompt": "2008年5月17日の初お披露目で、メンバーが歌唱した楽曲は？",
-  "options": [
-    "あの空へ向かって",
-    "冷凍みかん",
-    "MILKY WAY",
-    "未来へススメ！"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 250,
-  "prompt": "2009年に初めて全国を回ったツアーの名称は？",
-  "options": [
-    "新秋ジャイアントシリーズ",
-    "ヤマダ電機ツアー",
-    "春の最強タッグ決定戦",
-    "セカンドデビューツアー"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 251,
-  "prompt": "2009年の全国ツアーで「ETCアイドル」として紹介された理由は？",
-  "options": [
-    "高速道路のETC割引を活用して全国を回ったから",
-    "全会場でETCカードを配布したから",
-    "高速道路のサービスエリアだけで公演したから",
-    "車のナンバーをすべて同じにしたから"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 252,
-  "prompt": "2009年の「CHAMPION CARNIVAL AKBA 5DAYS」では、5日間で有料・無料イベントを合わせて何公演行った？",
-  "options": [
-    "15公演",
-    "20公演",
-    "25公演",
-    "30公演"
-  ],
-  "correct": 3,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 253,
-  "prompt": "2010年の「セカンドデビューツアー 秋の陣」は、全何回公演だった？",
-  "options": [
-    "全27回",
-    "全32回",
-    "全37回",
-    "全42回"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 254,
-  "prompt": "2010年12月24日、ももクロ初の単独ホールライブが開催された会場は？",
-  "options": [
-    "中野サンプラザ",
-    "日本青年館",
-    "渋谷公会堂",
-    "東京キネマ倶楽部"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 255,
-  "prompt": "2011年の立川フロム中武ライブで生まれた「国立川」という呼び名は、何と何を掛け合わせた言葉？",
-  "options": [
-    "国立競技場と立川",
-    "国立市と川崎",
-    "国道と立川",
-    "国立音楽大学と川崎"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 256,
-  "prompt": "2011年4月、早見あかり卒業翌日から始まった「試練の七番勝負」の会場は？",
-  "options": [
-    "中野サンプラザ",
-    "横浜BLITZ",
-    "東京キネマ倶楽部",
-    "品川ステラボール"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 257,
-  "prompt": "公式ヒストリーで「モノノフ」という言葉が初めて公式に使われたイベントの会場は？",
-  "options": [
-    "日本青年館",
-    "横浜BLITZ",
-    "Zepp Tokyo",
-    "さいたまスーパーアリーナ"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 258,
-  "prompt": "ももクロ初の海外ライブが行われた国は？",
-  "options": [
-    "フランス",
-    "アメリカ",
-    "ドイツ",
-    "韓国"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 259,
-  "prompt": "「夏のバカ騒ぎ」の発祥となった2011年の野外ライブ会場は？",
-  "options": [
-    "よみうりランド オープンシアターEAST",
-    "日産スタジアム",
-    "味の素スタジアム",
-    "西武ドーム"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 260,
-  "prompt": "2011年の「ももいろクリスマス2011」で、演出のモチーフとして取り入れられた格闘技イベントは？",
-  "options": [
-    "PRIDE",
-    "K-1 WORLD GP",
-    "RIZIN",
-    "UFC"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 261,
-  "prompt": "「ももクロ春の一大事2012」2日目のステージ演出の特徴は？",
-  "options": [
-    "360度ステージ",
-    "水上ステージ",
-    "客席中央の円形ステージ",
-    "花道のないセンターステージ"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 262,
-  "prompt": "2012年の「夏のバカ騒ぎ Summer Dive Tour」の最終公演が行われた会場は？",
-  "options": [
-    "東京ドーム",
-    "西武ドーム",
-    "ナゴヤドーム",
-    "京セラドーム大阪"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 263,
-  "prompt": "2012年7月、ももクロが出演した日本文化紹介イベント「Japan Expo」が開催された国は？",
-  "options": [
-    "イギリス",
-    "ドイツ",
-    "フランス",
-    "スペイン"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 264,
-  "prompt": "「あーりんロボ」が初登場した2013年のイベントは？",
-  "options": [
-    "ももクロの子供祭り2013",
-    "ももいろ夜ばなし 第二夜",
-    "ももクロ夏のバカ騒ぎ2013",
-    "ももいろクリスマス2013"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 265,
-  "prompt": "2013年の「Ozzfest Japan」で、ももクロのステージにギターで参加した組み合わせは？",
-  "options": [
-    "NARASAKIと和嶋慎治",
-    "布袋寅泰と松崎しげる",
-    "HYDEとYOSHIKI",
-    "マーティ・フリードマンとDAITA"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 266,
-  "prompt": "2013年8月の「夏のバカ騒ぎ WORLD SUMMER DIVE」日産スタジアム大会で、公式ヒストリーに記録された動員規模はおよそ何人？",
-  "options": [
-    "約3万人",
-    "約4万人",
-    "約6万人",
-    "約8万人"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 267,
-  "prompt": "2013年の「GOUNN」ツアーでは、サイリウムの使用が解禁されたのはどのタイミング？",
-  "options": [
-    "第1部の冒頭",
-    "第1部の終盤",
-    "第2部",
-    "アンコールのみ"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 268,
-  "prompt": "2014年の「桃神祭」で、スタジアム内に登場した巨大なパフォーマンス道具は？",
-  "options": [
-    "巨大な神輿",
-    "巨大な気球",
-    "巨大な観覧車",
-    "巨大な蒸気機関車"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 269,
-  "prompt": "2015年3月、KISSのジャパンツアー東京公演にスペシャルゲストとして出演した際、コラボのきっかけとなった楽曲は？",
-  "options": [
-    "夢の浮世に咲いてみな",
-    "MOON PRIDE",
-    "『Z』の誓い",
-    "サラバ、愛しき悲しみたちよ"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 270,
-  "prompt": "2015年7月の「Anime Expo」単独ライブが開催されたアメリカの都市は？",
-  "options": [
-    "ニューヨーク",
-    "ロサンゼルス",
-    "シカゴ",
-    "サンフランシスコ"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 271,
-  "prompt": "2014年の「チビッ子祭り」の参加条件として示された身長制限は？",
-  "options": [
-    "女性155cm以下・男性159cm以下",
-    "女性150cm以下・男性155cm以下",
-    "女性160cm以下・男性165cm以下",
-    "女性145cm以下・男性150cm以下"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 272,
-  "prompt": "2015年の「ももいろクリスマス」は、初めてどの場所で開催された？",
-  "options": [
-    "スキー場",
-    "遊園地",
-    "野球場",
-    "港の屋外広場"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 273,
-  "prompt": "2016年の初ドームツアー「DOME TREK」で、DAY1とDAY2にそれぞれ掲げられたアルバムの組み合わせは？",
-  "options": [
-    "DAY1「白金の夜明け」／DAY2「AMARANTHUS」",
-    "DAY1「AMARANTHUS」／DAY2「白金の夜明け」",
-    "DAY1「5TH DIMENSION」／DAY2「AMARANTHUS」",
-    "DAY1「AMARANTHUS」／DAY2「祝典」"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 274,
-  "prompt": "2016年に開催された、ももクロ初のアメリカツアー「第432回 アメリカ横断ウルトラライブ」の訪問順は？",
-  "options": [
-    "ニューヨーク→ロサンゼルス→ハワイ",
-    "ハワイ→ロサンゼルス→ニューヨーク",
-    "ロサンゼルス→ハワイ→ニューヨーク",
-    "ハワイ→ニューヨーク→ロサンゼルス"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 275,
-  "prompt": "2017年に始まった初の全国47都道府県ツアー「青春」は、どの市からスタートした？",
-  "options": [
-    "滋賀県彦根市",
-    "静岡県浜松市",
-    "神奈川県横浜市",
-    "埼玉県富士見市"
-  ],
-  "correct": 0,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 276,
-  "prompt": "ももクロが「ROCK IN JAPAN FESTIVAL」に初出演したのは何年？",
-  "options": [
-    "2015年",
-    "2016年",
-    "2017年",
-    "2018年"
-  ],
-  "correct": 2,
-  "level": "Z級",
-  "member": null
-},
-{
-  "id": 277,
-  "prompt": "2017年の「ももいろクリスマス」で、初めて公演が開催された関西の会場は？",
-  "options": [
-    "神戸ワールド記念ホール",
-    "大阪城ホール",
-    "京都パルスプラザ",
-    "神戸国際会館"
-  ],
-  "correct": 1,
-  "level": "Z級",
-  "member": null
-}
+  {
+    "id": 1,
+    "prompt": "「ももいろクローバーZ」のグループ名に含まれるアルファベットは？",
+    "options": [
+      "A",
+      "X",
+      "Z",
+      "M"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 2,
+    "prompt": "メンバーカラーが黄色のメンバーは？",
+    "options": [
+      "百田夏菜子",
+      "玉井詩織",
+      "佐々木彩夏",
+      "高城れに"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 3,
+    "prompt": "メンバーカラーが紫のメンバーは？",
+    "options": [
+      "百田夏菜子",
+      "玉井詩織",
+      "佐々木彩夏",
+      "高城れに"
+    ],
+    "correct": 3,
+    "level": "初級",
+    "member": "高城れに"
+  },
+  {
+    "id": 4,
+    "prompt": "メンバーカラーが赤のメンバーは？",
+    "options": [
+      "百田夏菜子",
+      "玉井詩織",
+      "佐々木彩夏",
+      "高城れに"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 5,
+    "prompt": "メンバーカラーがピンクのメンバーは？",
+    "options": [
+      "百田夏菜子",
+      "玉井詩織",
+      "佐々木彩夏",
+      "高城れに"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 6,
+    "prompt": "百田夏菜子の誕生日は？",
+    "options": [
+      "1994年7月12日",
+      "1995年6月4日",
+      "1996年6月11日",
+      "1993年6月21日"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 7,
+    "prompt": "百田夏菜子の出身地は？",
+    "options": [
+      "神奈川県",
+      "静岡県",
+      "東京都",
+      "埼玉県"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 8,
+    "prompt": "百田夏菜子の血液型は？",
+    "options": [
+      "A型",
+      "B型",
+      "AB型",
+      "O型"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 9,
+    "prompt": "百田夏菜子の公式プロフィールにある特技の組み合わせは？",
+    "options": [
+      "新体操・ダンス・バスケ",
+      "料理・水泳・ピアノ",
+      "書道・歌・英会話",
+      "テニス・スキー・裁縫"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 10,
+    "prompt": "百田夏菜子の公式プロフィールにあるニックネームの一つは？",
+    "options": [
+      "しおりん",
+      "あーりん",
+      "れに",
+      "でこちゃん"
+    ],
+    "correct": 3,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 11,
+    "prompt": "百田夏菜子の公式プロフィールに記載された好きな言葉は？",
+    "options": [
+      "ありがとう",
+      "感謝",
+      "思いやり",
+      "一発逆転"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 12,
+    "prompt": "玉井詩織の誕生日は？",
+    "options": [
+      "1994年7月12日",
+      "1995年6月4日",
+      "1996年6月11日",
+      "1993年6月21日"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 13,
+    "prompt": "玉井詩織の出身地は？",
+    "options": [
+      "静岡県",
+      "東京都",
+      "神奈川県",
+      "千葉県"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 14,
+    "prompt": "玉井詩織の血液型は？",
+    "options": [
+      "A型",
+      "B型",
+      "AB型",
+      "O型"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 15,
+    "prompt": "玉井詩織の公式プロフィールにあるニックネームは？",
+    "options": [
+      "かなこぉ↑↑",
+      "しおりん",
+      "あーりん",
+      "れに"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 16,
+    "prompt": "玉井詩織の公式プロフィールにある趣味は？",
+    "options": [
+      "旅行・食べること",
+      "読書・映画鑑賞",
+      "異次元について考える",
+      "家でDVD鑑賞"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 17,
+    "prompt": "玉井詩織の公式プロフィールに記載された好きな言葉は？",
+    "options": [
+      "感謝",
+      "思いやり",
+      "ありがとう",
+      "一発逆転"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 18,
+    "prompt": "佐々木彩夏の誕生日は？",
+    "options": [
+      "1994年7月12日",
+      "1995年6月4日",
+      "1996年6月11日",
+      "1993年6月21日"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 19,
+    "prompt": "佐々木彩夏の出身地は？",
+    "options": [
+      "静岡県",
+      "神奈川県",
+      "東京都",
+      "埼玉県"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 20,
+    "prompt": "佐々木彩夏の血液型は？",
+    "options": [
+      "A型",
+      "B型",
+      "AB型",
+      "O型"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 21,
+    "prompt": "佐々木彩夏の公式プロフィールにあるニックネームは？",
+    "options": [
+      "しおりん",
+      "れに",
+      "あーりん",
+      "でこちゃん"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 22,
+    "prompt": "佐々木彩夏の公式プロフィールにある趣味に含まれるものは？",
+    "options": [
+      "釣り",
+      "読書",
+      "登山",
+      "天体観測"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 23,
+    "prompt": "佐々木彩夏の公式プロフィールに記載された好きな言葉は？",
+    "options": [
+      "感謝",
+      "ありがとう",
+      "一発逆転",
+      "思いやり"
+    ],
+    "correct": 3,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 24,
+    "prompt": "高城れにの誕生日は？",
+    "options": [
+      "1994年7月12日",
+      "1995年6月4日",
+      "1996年6月11日",
+      "1993年6月21日"
+    ],
+    "correct": 3,
+    "level": "初級",
+    "member": "高城れに"
+  },
+  {
+    "id": 25,
+    "prompt": "高城れにの出身地は？",
+    "options": [
+      "神奈川県",
+      "静岡県",
+      "東京都",
+      "千葉県"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "高城れに"
+  },
+  {
+    "id": 26,
+    "prompt": "高城れにの血液型は？",
+    "options": [
+      "A型",
+      "B型",
+      "AB型",
+      "O型"
+    ],
+    "correct": 3,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 27,
+    "prompt": "高城れにの公式プロフィールにある特技は？",
+    "options": [
+      "新体操",
+      "幽体離脱",
+      "ピアノ",
+      "料理"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 28,
+    "prompt": "高城れにの公式プロフィールにある好きな食べ物は？",
+    "options": [
+      "シュークリーム",
+      "いちご",
+      "さつま芋",
+      "焼肉"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": "高城れに"
+  },
+  {
+    "id": 29,
+    "prompt": "高城れにの公式プロフィールに記載された好きな言葉は？",
+    "options": [
+      "感謝",
+      "ありがとう",
+      "思いやり",
+      "一発逆転"
+    ],
+    "correct": 3,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 30,
+    "prompt": "ももいろクローバーが結成された年は？",
+    "options": [
+      "2006年",
+      "2007年",
+      "2008年",
+      "2009年"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 31,
+    "prompt": "結成時のグループ名は？",
+    "options": [
+      "ももいろクローバー",
+      "ももいろクローバーZ",
+      "ももいろスターズ",
+      "週末クローバー"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 32,
+    "prompt": "インディーズデビュー曲は？",
+    "options": [
+      "未来へススメ！",
+      "ももいろパンチ",
+      "行くぜっ！怪盗少女",
+      "ピンキージョーンズ"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 33,
+    "prompt": "「ももいろパンチ」の発売日は？",
+    "options": [
+      "2008年5月17日",
+      "2009年8月5日",
+      "2010年5月5日",
+      "2011年3月9日"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 34,
+    "prompt": "メジャーデビュー曲は？",
+    "options": [
+      "ももいろパンチ",
+      "ピンキージョーンズ",
+      "行くぜっ！怪盗少女",
+      "ミライボウル"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 35,
+    "prompt": "「行くぜっ！怪盗少女」のメジャーデビュー日は？",
+    "options": [
+      "2009年8月5日",
+      "2010年5月5日",
+      "2011年4月10日",
+      "2012年5月17日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 36,
+    "prompt": "2011年4月にグループを脱退したメンバーは？",
+    "options": [
+      "有安杏果",
+      "早見あかり",
+      "伊倉愛美",
+      "高井つき奈"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 37,
+    "prompt": "早見あかりの脱退後、グループ名はどうなった？",
+    "options": [
+      "ももいろクローバーZに改名",
+      "ももいろスターに改名",
+      "名称を変更しなかった",
+      "週末ヒロインに改名"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 38,
+    "prompt": "NHK紅白歌合戦に初出場した年は？",
+    "options": [
+      "2010年",
+      "2011年",
+      "2012年",
+      "2013年"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 39,
+    "prompt": "初の東京・国立競技場での単独ライブを行ったのは？",
+    "options": [
+      "2012年3月",
+      "2013年5月",
+      "2014年3月",
+      "2015年8月"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 40,
+    "prompt": "結成10周年を記念した初の東京ドーム公演が行われた年は？",
+    "options": [
+      "2016年",
+      "2017年",
+      "2018年",
+      "2019年"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 41,
+    "prompt": "有安杏果がグループを卒業したのは何年？",
+    "options": [
+      "2016年",
+      "2017年",
+      "2018年",
+      "2019年"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 42,
+    "prompt": "結成記念日は何月何日？",
+    "options": [
+      "3月9日",
+      "5月5日",
+      "5月17日",
+      "8月5日"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 43,
+    "prompt": "「未来へススメ！」の発売年は？",
+    "options": [
+      "2008年",
+      "2009年",
+      "2010年",
+      "2011年"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 44,
+    "prompt": "「ピンキージョーンズ」の発売日は？",
+    "options": [
+      "2010年5月5日",
+      "2010年11月10日",
+      "2011年3月9日",
+      "2011年7月6日"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 45,
+    "prompt": "「ミライボウル／Chai Maxx」の発売日は？",
+    "options": [
+      "2010年11月10日",
+      "2011年3月9日",
+      "2011年7月6日",
+      "2012年3月7日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 46,
+    "prompt": "「Z伝説 ～終わりなき革命～」と同日に発売されたシングルは？",
+    "options": [
+      "D’の純情",
+      "ピンキージョーンズ",
+      "猛烈宇宙交響曲・第七楽章「無限の愛」",
+      "サラバ、愛しき悲しみたちよ"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 47,
+    "prompt": "1stフルアルバム「バトル アンド ロマンス」の発売日は？",
+    "options": [
+      "2010年5月5日",
+      "2011年7月27日",
+      "2012年4月21日",
+      "2013年4月10日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 48,
+    "prompt": "「バトル アンド ロマンス」に収録されている曲は？",
+    "options": [
+      "青春賦",
+      "桃色空",
+      "ワニとシャンプー",
+      "MOON PRIDE"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 49,
+    "prompt": "2016年2月17日に同時発売された3rd・4thアルバムの組み合わせは？",
+    "options": [
+      "AMARANTHUS／白金の夜明け",
+      "バトル アンド ロマンス／祝典",
+      "桃も十、番茶も出花／MOMOIRO CLOVER Z",
+      "白金の夜明け／祝典"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 50,
+    "prompt": "「AMARANTHUS」は何枚目のフルアルバム？",
+    "options": [
+      "1st",
+      "2nd",
+      "3rd",
+      "4th"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 51,
+    "prompt": "「白金の夜明け」は何枚目のフルアルバム？",
+    "options": [
+      "2nd",
+      "3rd",
+      "4th",
+      "5th"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": null
+  },
+  {
+    "id": 52,
+    "prompt": "「白金の夜明け」の読み方は？",
+    "options": [
+      "しろがねのよあけ",
+      "はっきんのよあけ",
+      "はくきんのよあけ",
+      "しろきんのよあけ"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 53,
+    "prompt": "2019年5月17日に発売された5thアルバムは？",
+    "options": [
+      "祝典",
+      "MOMOIRO CLOVER Z",
+      "AMARANTHUS",
+      "バトル アンド ロマンス"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 54,
+    "prompt": "2022年5月17日に発売された6thアルバムは？",
+    "options": [
+      "祝典",
+      "白金の夜明け",
+      "桃も十、番茶も出花",
+      "MOMOIRO CLOVER Z"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 55,
+    "prompt": "「白金の夜明け」に収録されている曲は？",
+    "options": [
+      "走れ！",
+      "モノクロデッサン",
+      "MOON PRIDE",
+      "ももいろパンチ"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": null
+  },
+  {
+    "id": 56,
+    "prompt": "「未来へススメ！」の発売日は？",
+    "options": [
+      "2009年8月5日",
+      "2009年11月11日",
+      "2010年5月5日",
+      "2010年11月10日"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 57,
+    "prompt": "2010年8月23日に行われた、キングレコードへの移籍に関する記者会見の会場は？",
+    "options": [
+      "東京・目白セントカタリナ教会",
+      "東京・中野サンプラザ",
+      "東京・日本青年館",
+      "東京・Zepp東京"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 58,
+    "prompt": "2010年12月24日に会場限定シングルとして販売された作品は？",
+    "options": [
+      "白い風",
+      "ももクリ",
+      "あかりんへ贈る歌",
+      "僕等のセンチュリー"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 59,
+    "prompt": "公式ヒストリーで「ももいろクローバーZ 誕生」と記録されている日は？",
+    "options": [
+      "2011年3月9日",
+      "2011年4月10日",
+      "2011年6月11日",
+      "2011年7月6日"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 60,
+    "prompt": "2011年6月11日に受注限定販売シングルとして発表された曲は？",
+    "options": [
+      "あかりんへ贈る歌",
+      "白い風",
+      "労働讃歌",
+      "D’の純情"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 61,
+    "prompt": "2011年7月6日に同日発売されたシングルの組み合わせは？",
+    "options": [
+      "Z伝説～終わりなき革命～／D’の純情",
+      "労働讃歌／白い風",
+      "ミライボウル／Chai Maxx",
+      "猛烈宇宙交響曲・第七楽章「無限の愛」／Ｚ女戦争"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 62,
+    "prompt": "「労働讃歌」が発売された日は？",
+    "options": [
+      "2011年7月6日",
+      "2011年8月20日",
+      "2011年11月23日",
+      "2011年12月25日"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 63,
+    "prompt": "2011年10月30日に開催された「ももクロ女祭り2011」の会場は？",
+    "options": [
+      "東京・Shibuya O-EAST",
+      "東京・品川ステラボール",
+      "東京・日本武道館",
+      "埼玉・さいたまスーパーアリーナ"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 64,
+    "prompt": "2011年11月6日に開催された「ももクロ男祭り2011」の会場は？",
+    "options": [
+      "東京・Shibuya O-EAST",
+      "東京・品川ステラボール",
+      "東京・中野サンプラザ",
+      "神奈川・横浜アリーナ"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 65,
+    "prompt": "2011年12月25日にさいたまスーパーアリーナ大会の会場限定シングルとして販売された曲は？",
+    "options": [
+      "白い風",
+      "ももクリ",
+      "一粒の笑顔で...",
+      "泣いちゃいそう冬"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 66,
+    "prompt": "「猛烈宇宙交響曲・第七楽章『無限の愛』」の発売日は？",
+    "options": [
+      "2011年11月23日",
+      "2012年3月7日",
+      "2012年6月27日",
+      "2012年11月21日"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 67,
+    "prompt": "2012年4月21日に「春の一大事2012」会場限定販売アルバムとして発売された作品は？",
+    "options": [
+      "ももクロ★オールスターズ2012",
+      "入口のない出口",
+      "5TH DIMENSION",
+      "バトル アンド ロマンス"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 68,
+    "prompt": "公式ヒストリーで「Ｚ女戦争」の発売日として記録されているのは？",
+    "options": [
+      "2012年3月7日",
+      "2012年4月21日",
+      "2012年6月27日",
+      "2012年8月5日"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 69,
+    "prompt": "2012年8月5日に始動した、ももいろクローバーZの公式ファンクラブ名は？",
+    "options": [
+      "ANGEL EYES",
+      "MOMOIRO CLUB",
+      "CLOVER'S ROOM",
+      "Z FAMILY"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 70,
+    "prompt": "2012年11月17日に東京・Zepp東京で開催された「ももいろ夜ばなし第一夜」の副題は？",
+    "options": [
+      "玄冬",
+      "白秋",
+      "春宵",
+      "紅蓮"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 71,
+    "prompt": "2012年10月5日に開催された「ももクロ女祭り2012」の会場は？",
+    "options": [
+      "東京・日本武道館",
+      "東京・国立代々木競技場",
+      "東京・Zepp東京",
+      "大阪・大阪城ホール"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 72,
+    "prompt": "2013年4月10日に発売された、ももいろクローバーZの2ndアルバムは？",
+    "options": [
+      "5TH DIMENSION",
+      "入口のない出口",
+      "AMARANTHUS",
+      "白金の夜明け"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 73,
+    "prompt": "2013年6月5日に発売された「ももいろクローバー 1st FULL ALBUM」のタイトルは？",
+    "options": [
+      "バトル アンド ロマンス",
+      "5TH DIMENSION",
+      "入口のない出口",
+      "桃も十、番茶も出花"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 74,
+    "prompt": "公式ヒストリーで10thシングルとして記録されている「GOUNN」の発売日は？",
+    "options": [
+      "2013年9月25日",
+      "2013年11月6日",
+      "2013年11月27日",
+      "2014年1月29日"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 75,
+    "prompt": "2014年7月30日に発売された12thシングルは？",
+    "options": [
+      "泣いてもいいんだよ",
+      "MOON PRIDE",
+      "GOUNN",
+      "サラバ、愛しき悲しみたちよ"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 76,
+    "prompt": "百田夏菜子の公式プロフィールに記載されている趣味は？",
+    "options": [
+      "家でのんびりDVD鑑賞",
+      "旅行・食べること",
+      "読書・映画鑑賞",
+      "体を動かすこと・ダンス"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 77,
+    "prompt": "百田夏菜子が公式プロフィールで長所として挙げている組み合わせは？",
+    "options": [
+      "好奇心旺盛・優柔不断",
+      "明るい・負けず嫌い",
+      "ポジティブ・マイペース",
+      "面倒見がよい・さっぱりしている"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 78,
+    "prompt": "百田夏菜子が公式プロフィールで好きな食べ物として挙げているものは？",
+    "options": [
+      "いちご",
+      "シュークリーム",
+      "スウィーツ",
+      "さつま芋"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 79,
+    "prompt": "百田夏菜子が自分の性格を一言で表した言葉は？",
+    "options": [
+      "オトボケ！",
+      "負けず嫌い",
+      "マイペース",
+      "甘えん坊"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 80,
+    "prompt": "百田夏菜子にとって、ももクロはどのような場所？",
+    "options": [
+      "第二の家族",
+      "私を成長させてくれる場所",
+      "一番の宝物",
+      "夢いっぱいのもの"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 81,
+    "prompt": "玉井詩織の公式プロフィールに記載されている特技は？",
+    "options": [
+      "新体操・ダンス・バスケ",
+      "どこでも寝れる・身体を動かすこと",
+      "ダンス・幽体離脱",
+      "料理・お菓子作り"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 82,
+    "prompt": "玉井詩織が公式プロフィールで長所として挙げているのは？",
+    "options": [
+      "明るく負けず嫌い",
+      "好奇心旺盛",
+      "ポジティブ",
+      "朝すぐ起きてご機嫌が良い"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 83,
+    "prompt": "玉井詩織が公式プロフィールで短所として挙げているのは？",
+    "options": [
+      "優柔不断",
+      "めんどくさがり",
+      "ぬけているところ",
+      "人の話を聞いていない"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 84,
+    "prompt": "玉井詩織が公式プロフィールで自分の性格を一言で表した言葉は？",
+    "options": [
+      "マイペース",
+      "オトボケ！",
+      "負けず嫌い",
+      "甘えん坊"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 85,
+    "prompt": "玉井詩織にとって、ももクロはどのような存在？",
+    "options": [
+      "私を成長させてくれる場所",
+      "第二の家族",
+      "一番の宝物",
+      "ダイヤモンドのような夢"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 86,
+    "prompt": "佐々木彩夏の公式プロフィールに記載されている特技は？",
+    "options": [
+      "どこでも寝れること",
+      "新体操・ダンス・バスケ",
+      "ダンス・髪を手早くお団子にできること",
+      "幽体離脱"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 87,
+    "prompt": "佐々木彩夏が公式プロフィールで長所として挙げているのは？",
+    "options": [
+      "好奇心旺盛",
+      "朝すぐ起きられて機嫌が良い",
+      "明るく負けず嫌い",
+      "ポジティブ"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 88,
+    "prompt": "佐々木彩夏が公式プロフィールで好きな食べ物として挙げている組み合わせは？",
+    "options": [
+      "スウィーツ・いちご",
+      "さつま芋・焼肉",
+      "シュークリーム・サラダ・オムライス",
+      "雲丹・牡蠣・白子"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 89,
+    "prompt": "佐々木彩夏が自分の性格を説明する言葉に含まれている特徴は？",
+    "options": [
+      "負けず嫌いで好奇心旺盛",
+      "面倒見がよく、小さなことにクヨクヨしない",
+      "マイペースで人の話を聞かない",
+      "ポジティブでオトボケ"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 90,
+    "prompt": "佐々木彩夏にとって、ももクロはどのようなもの？",
+    "options": [
+      "第二の家族",
+      "私を成長させてくれる場所",
+      "ダイヤモンドみたいに光り輝く夢いっぱいのもの",
+      "一番の宝物"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 91,
+    "prompt": "高城れにの公式プロフィールに記載されている趣味は？",
+    "options": [
+      "旅行・食べること",
+      "読書・映画鑑賞",
+      "体を動かすこと・ダンス・異次元について考える",
+      "家でのんびりDVD鑑賞"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 92,
+    "prompt": "高城れにが公式プロフィールで長所として挙げているのは？",
+    "options": [
+      "好奇心旺盛",
+      "ポジティブ",
+      "明るく負けず嫌い",
+      "面倒見がよい"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 93,
+    "prompt": "高城れにが公式プロフィールで短所として挙げているのは？",
+    "options": [
+      "優柔不断",
+      "めんどくさがり",
+      "ぬけているところ",
+      "人の話を聞いていない"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 94,
+    "prompt": "高城れにが自分の性格を一言で表した言葉は？",
+    "options": [
+      "マイペース",
+      "負けず嫌い",
+      "オトボケ！",
+      "甘えん坊"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 95,
+    "prompt": "高城れににとって、ももクロはどのような存在？",
+    "options": [
+      "第二の家族",
+      "私の一番の宝物",
+      "私を成長させてくれる場所",
+      "夢いっぱいのもの"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 96,
+    "prompt": "百田夏菜子の1stソロアルバムのタイトルは？",
+    "options": [
+      "ビタミンB",
+      "colorS",
+      "れにちゃんWORLD",
+      "30 STREET!!!"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 97,
+    "prompt": "『ビタミンB』の発売日は？",
+    "options": [
+      "2024年6月4日",
+      "2025年2月12日",
+      "2025年10月15日",
+      "2026年6月11日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 98,
+    "prompt": "『ビタミンB』のCDに収録された曲数は？",
+    "options": [
+      "9曲",
+      "11曲",
+      "13曲",
+      "16曲"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 99,
+    "prompt": "『ビタミンB』の1曲目は？",
+    "options": [
+      "ビタミンB",
+      "惚れたが勝ちのI LOVE YOU",
+      "ukiukihuman!",
+      "未知数"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 100,
+    "prompt": "『ビタミンB』のタイトル曲の作詞を担当したのは？",
+    "options": [
+      "百田夏菜子",
+      "只野菜摘",
+      "綾小路 翔",
+      "岡田実音"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 101,
+    "prompt": "『ビタミンB』で百田夏菜子自身が作詞した曲は？",
+    "options": [
+      "未知数",
+      "惚れたが勝ちのI LOVE YOU",
+      "熱帯夜 Fantasy",
+      "赤い風船"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 102,
+    "prompt": "『ビタミンB』収録曲「わかってるのに」の作詞に参加した人物は？",
+    "options": [
+      "ナオト・インティライミ",
+      "西寺郷太",
+      "前山田健一",
+      "亀田誠治"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 103,
+    "prompt": "『ビタミンB』収録曲「惚れたが勝ちのI LOVE YOU」の作詞・作曲を担当したのは？",
+    "options": [
+      "岡田実音",
+      "綾小路 翔",
+      "只野菜摘",
+      "Kanata Okajima"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 104,
+    "prompt": "『ビタミンB』収録曲「熱帯夜 Fantasy」の作詞者は？",
+    "options": [
+      "百田夏菜子",
+      "只野菜摘",
+      "Kanata Okajima",
+      "岡田実音"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 105,
+    "prompt": "『ビタミンB』収録曲で、クリスマスを題名に含む曲は？",
+    "options": [
+      "今日の君へ",
+      "クリスマスしよ♡",
+      "赤い風船",
+      "ひかり"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 106,
+    "prompt": "『ビタミンB』収録曲「それぞれのミライ」の作詞者は？",
+    "options": [
+      "百田夏菜子",
+      "岡田実音",
+      "綾小路 翔",
+      "ナオト・インティライミ"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 107,
+    "prompt": "『ビタミンB』の初回限定盤に付属する映像メディアは？",
+    "options": [
+      "DVD",
+      "Blu-ray",
+      "USBメモリ",
+      "ライブCD"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 108,
+    "prompt": "『ビタミンB』初回限定盤のBlu-rayに収録されたライブは？",
+    "options": [
+      "Talk With Me Xmas Night",
+      "百田夏菜子 30th BIRTHDAY LIVE",
+      "AYAKA NATION 2022",
+      "いろいろ"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 109,
+    "prompt": "百田夏菜子の配信EP『30th』がリリースされたのは？",
+    "options": [
+      "2023年7月12日",
+      "2024年7月12日",
+      "2025年2月12日",
+      "2026年7月12日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 110,
+    "prompt": "配信EP『30th』の発売に関連して開催されたライブは？",
+    "options": [
+      "百田夏菜子 30th BIRTHDAY LIVE",
+      "OTOGIMASHOW",
+      "AYAKA NATION 2025",
+      "ソロコンサート「いろいろ」"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 111,
+    "prompt": "配信EP『30th』に収録された曲はどれ？",
+    "options": [
+      "Doubt",
+      "Shape",
+      "Lady Cat",
+      "おとぎましょう"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 112,
+    "prompt": "配信EP『30th』に収録された「ukiukihuman!」の作詞者は？",
+    "options": [
+      "百田夏菜子",
+      "岡田実音",
+      "Kanata Okajima",
+      "綾小路 翔"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 113,
+    "prompt": "配信EP『30th』に収録された「熱帯夜 Fantasy」の作曲者は？",
+    "options": [
+      "岡田実音",
+      "百田夏菜子",
+      "綾小路 翔",
+      "只野菜摘"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 114,
+    "prompt": "配信EP『30th』に収録された「それぞれのミライ」の編曲者は？",
+    "options": [
+      "高島智明",
+      "日比野裕史",
+      "村山☆潤",
+      "木内 健"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 115,
+    "prompt": "『ビタミンB』初回限定盤に付属するM∞CARDの内容は？",
+    "options": [
+      "アルバムドキュメンタリー",
+      "写真集",
+      "ラジオ音源",
+      "カラオケ音源"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子"
+  },
+  {
+    "id": 116,
+    "prompt": "玉井詩織の1stソロアルバムのタイトルは？",
+    "options": [
+      "ビタミンB",
+      "colorS",
+      "れにちゃんWORLD",
+      "30th"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 117,
+    "prompt": "『colorS』の発売日は？",
+    "options": [
+      "2023年1月20日",
+      "2024年6月4日",
+      "2025年2月12日",
+      "2026年10月21日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 118,
+    "prompt": "『colorS』につながった12か月連続ソロ曲企画の名称は？",
+    "options": [
+      "AYAKA NATION",
+      "SHIORI TAMAI 12 Colors",
+      "OTOGIMASHOU",
+      "MOMOIRO PROJECT"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 119,
+    "prompt": "2023年のドラマ「ネバー・ギブアップ！～竹島水族館ものがたり～」で玉井詩織が演じた役は？",
+    "options": [
+      "大島静香",
+      "新田撫",
+      "橋爪裕子",
+      "掛井れのん"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 120,
+    "prompt": "『colorS』の本編ディスクの1曲目は？",
+    "options": [
+      "Another World",
+      "暁",
+      "日常",
+      "Eyes on me"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 121,
+    "prompt": "『colorS』本編の2曲目は？",
+    "options": [
+      "暁",
+      "Another World",
+      "Spicy Girl",
+      "泣くな向日葵"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 122,
+    "prompt": "『colorS』本編の3曲目は？",
+    "options": [
+      "日常",
+      "Eyes on me",
+      "HAPPY-END",
+      "マリンブルー"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 123,
+    "prompt": "『colorS』本編に収録されている「Spicy Girl」は何曲目？",
+    "options": [
+      "3曲目",
+      "5曲目",
+      "7曲目",
+      "9曲目"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 124,
+    "prompt": "『colorS』本編の8曲目は？",
+    "options": [
+      "HAPPY-END",
+      "マリンブルー",
+      "Sepia",
+      "宝石"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 125,
+    "prompt": "『colorS』本編の9曲目は？",
+    "options": [
+      "宝石",
+      "ベルベットの森",
+      "Sepia",
+      "We Stand Alone"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 126,
+    "prompt": "『colorS』本編の10曲目は？",
+    "options": [
+      "Sepia",
+      "宝石",
+      "Shape",
+      "泣くな向日葵"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 127,
+    "prompt": "『colorS』本編の最後に収録された新曲は？",
+    "options": [
+      "Shape",
+      "暁",
+      "日常",
+      "Another World"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 128,
+    "prompt": "『colorS』にボーナストラックとして収録された曲はどれ？",
+    "options": [
+      "風の谷のナウシカ",
+      "Doubt",
+      "Lady Cat",
+      "おとぎましょう"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 129,
+    "prompt": "『colorS』のボーナストラック「…愛ですか？」の表記は？",
+    "options": [
+      "…愛ですか？-NEW SHIORI ver.-",
+      "…愛ですか？-NEW MOMO ver.-",
+      "…愛ですか？-2024 ver.-",
+      "…愛ですか？-Live ver.-"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 130,
+    "prompt": "『colorS』初回限定盤のCDは何枚組？",
+    "options": [
+      "1枚",
+      "2枚",
+      "3枚",
+      "4枚"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 131,
+    "prompt": "『colorS』初回限定盤に付属する映像メディアは？",
+    "options": [
+      "DVD",
+      "Blu-ray",
+      "VHS",
+      "付属しない"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 132,
+    "prompt": "『colorS』初回限定盤のDISC2・DISC3に収録されたのは？",
+    "options": [
+      "「いろいろ」ライブCD",
+      "ミュージックビデオ集",
+      "ラジオ番組",
+      "メイキング映像"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 133,
+    "prompt": "『colorS』通常盤の形態は？",
+    "options": [
+      "CD Only",
+      "CD＋Blu-ray",
+      "CD3枚＋Blu-ray",
+      "配信のみ"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 134,
+    "prompt": "2026年10月に玉井詩織がフィーチャリング参加したNight Tempoの曲は？",
+    "options": [
+      "恋すれどGood-Byeはいつも背中合わせ",
+      "ベルベットの森",
+      "まわるきもち",
+      "Spicy Girl"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 135,
+    "prompt": "「恋すれどGood-Byeはいつも背中合わせ feat. 玉井詩織」の配信日は？",
+    "options": [
+      "2025年10月21日",
+      "2026年6月4日",
+      "2026年10月21日",
+      "2026年11月1日"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "玉井詩織"
+  },
+  {
+    "id": 136,
+    "prompt": "佐々木彩夏のソロコンサートシリーズの名称は？",
+    "options": [
+      "AYAKA NATION",
+      "SHIORI COLORS",
+      "OTOGIMASHOW",
+      "Talk With Me"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 137,
+    "prompt": "『AYAKA NATION 2022 in TOKYO GARDEN THEATER』の開催日は？",
+    "options": [
+      "2021年7月18日",
+      "2022年7月18日",
+      "2023年5月21日",
+      "2024年7月15日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 138,
+    "prompt": "『AYAKA NATION 2022』の会場は？",
+    "options": [
+      "横浜アリーナ",
+      "両国国技館",
+      "TOKYO GARDEN THEATER",
+      "神奈川県民ホール"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 139,
+    "prompt": "「Lady Cat」はどの公演のテーマソングとして制作された？",
+    "options": [
+      "AYAKA NATION 2017",
+      "AYAKA NATION 2021",
+      "AYAKA NATION 2022",
+      "AYAKA NATION 2025"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 140,
+    "prompt": "「Lady Cat」の配信シングルのリリース日は？",
+    "options": [
+      "2020年7月12日",
+      "2021年6月11日",
+      "2022年7月19日",
+      "2023年5月21日"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 141,
+    "prompt": "「Lady Cat」の作詞に参加した人物は？",
+    "options": [
+      "栗原暁",
+      "前山田健一",
+      "辻村有記",
+      "けんたあろは"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 142,
+    "prompt": "「Where We Go」が制作された目的は？",
+    "options": [
+      "AYAKA NATION 2025に向けて",
+      "AYAKA NATION 2017に向けて",
+      "1stソロアルバム発売記念",
+      "ももクロ結成15周年記念"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 143,
+    "prompt": "「Where We Go」のテーマとして公式に紹介されたのは？",
+    "options": [
+      "宇宙旅行",
+      "人生の旅路",
+      "夏の海",
+      "魔法の世界"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 144,
+    "prompt": "「Where We Go」の作詞を担当したのは？",
+    "options": [
+      "前山田健一",
+      "辻村有記",
+      "栗原暁",
+      "只野菜摘"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 145,
+    "prompt": "「Where We Go」の作曲に参加した組み合わせは？",
+    "options": [
+      "辻村有記・伊藤 賢",
+      "栗原暁・今井了介",
+      "前山田健一・西寺郷太",
+      "岡田実音・高島智明"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 146,
+    "prompt": "「30 STREET!!!」は何を記念して制作された楽曲？",
+    "options": [
+      "佐々木彩夏の30歳",
+      "ももクロ結成20周年",
+      "AYAKA NATION 10回目",
+      "ソロデビュー10周年"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 147,
+    "prompt": "「30 STREET!!!」の作詞・作曲を担当したのは？",
+    "options": [
+      "辻村有記",
+      "前山田健一",
+      "綾小路 翔",
+      "西寺郷太"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 148,
+    "prompt": "佐々木彩夏のソロシングル「My Cherry Pie／My Hamburger Boy」の発売日は？",
+    "options": [
+      "2016年8月23日",
+      "2017年8月23日",
+      "2018年8月23日",
+      "2019年8月23日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 149,
+    "prompt": "「My Cherry Pie／My Hamburger Boy」の制作に全曲関わった作家は？",
+    "options": [
+      "前山田健一",
+      "只野菜摘",
+      "岡田実音",
+      "亀田誠治"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 150,
+    "prompt": "2017年のソロシングルに収録されたカバー曲は？",
+    "options": [
+      "キューティーハニー",
+      "残酷な天使のテーゼ",
+      "CAT’S EYE",
+      "White Love"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 151,
+    "prompt": "無観客配信ライブ「A-CHANNEL」が開催された日は？",
+    "options": [
+      "2019年7月12日",
+      "2020年7月12日",
+      "2021年7月12日",
+      "2022年7月12日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 152,
+    "prompt": "「A-CHANNEL」の映像作品のタイトル表記は？",
+    "options": [
+      "A-CHANNEL",
+      "A-RIN KINGDOM",
+      "AYAKA NATION",
+      "30 STREET!!!"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 153,
+    "prompt": "『AYAKA NATION 2021』の会場は？",
+    "options": [
+      "両国国技館",
+      "横浜アリーナ",
+      "TOKYO GARDEN THEATER",
+      "日本武道館"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 154,
+    "prompt": "『AYAKA NATION 2021 in Yokohama Arena』の映像特典として収録されたメイキングの副題は？",
+    "options": [
+      "キング・オブ・アイドル あーりんと仲間達の記録",
+      "アーヤカ姫は怪盗あーりん",
+      "まるごとあーりん",
+      "あーりんの休日"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 155,
+    "prompt": "『AYAKA NATION 2022』のアンコール曲に含まれていたのは？",
+    "options": [
+      "あーりんはあーりん♡",
+      "Dancing れにちゃん",
+      "Shape",
+      "ビタミンB"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏"
+  },
+  {
+    "id": 156,
+    "prompt": "高城れにの1stソロアルバムのタイトルは？",
+    "options": [
+      "OTOGIMASHOU",
+      "れにちゃんWORLD",
+      "colorS",
+      "ビタミンB"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "高城れに"
+  },
+  {
+    "id": 157,
+    "prompt": "『れにちゃんWORLD』の発売日は？",
+    "options": [
+      "2019年8月18日",
+      "2020年8月18日",
+      "2021年8月18日",
+      "2022年8月18日"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 158,
+    "prompt": "高城れにの2ndソロアルバムのタイトルは？",
+    "options": [
+      "れにちゃんWORLD",
+      "OTOGIMASHOU",
+      "まるごとれにちゃん",
+      "おとぎましょう"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": "高城れに"
+  },
+  {
+    "id": 159,
+    "prompt": "『OTOGIMASHOU』の発売日は？",
+    "options": [
+      "2024年10月15日",
+      "2025年10月15日",
+      "2025年9月19日",
+      "2026年10月15日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 160,
+    "prompt": "『OTOGIMASHOU』のアルバムコンセプトは？",
+    "options": [
+      "宇宙旅行",
+      "御伽噺",
+      "海の冒険",
+      "学園生活"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 161,
+    "prompt": "『OTOGIMASHOU』のリード曲は？",
+    "options": [
+      "SKY HIGH",
+      "おとぎましょう",
+      "Tail wind",
+      "じれったいな"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 162,
+    "prompt": "「おとぎましょう」の先行配信日は？",
+    "options": [
+      "2025年9月19日",
+      "2025年10月15日",
+      "2025年11月2日",
+      "2026年9月19日"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 163,
+    "prompt": "「おとぎましょう」の作詞・作曲・編曲を担当したのは？",
+    "options": [
+      "西寺郷太",
+      "けんたあろは",
+      "馬渕直純",
+      "草野華余子"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 164,
+    "prompt": "『OTOGIMASHOU』のボーナストラックは？",
+    "options": [
+      "なんでなんでハテナん？",
+      "ユーアノッアロン",
+      "一緒に",
+      "春夏秋冬"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 165,
+    "prompt": "「なんでなんでハテナん？」がオープニング曲になっている番組は？",
+    "options": [
+      "高城れにの週末ももクロ☆パンチ!!",
+      "はてな？を解明 名探偵れに姫",
+      "おはスタ",
+      "音龍門"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 166,
+    "prompt": "「レニー来航！！」で高城れにと共演するアーティストは？",
+    "options": [
+      "サイプレス上野とロベルト吉野",
+      "Night Tempo",
+      "BEGIN",
+      "little by little"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 167,
+    "prompt": "「message」の作詞を担当したのは？",
+    "options": [
+      "只野菜摘",
+      "高城れに",
+      "山崎あおい",
+      "けんたあろは"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 168,
+    "prompt": "「じゃないほう」の作詞を担当したのは？",
+    "options": [
+      "橋口洋平",
+      "前山田健一",
+      "草野華余子",
+      "綾小路 翔"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 169,
+    "prompt": "「シオン」の作詞を担当したのは？",
+    "options": [
+      "只野菜摘",
+      "山崎あおい",
+      "eNu",
+      "AKIRA"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 170,
+    "prompt": "「Lovely Monster」の作詞を担当したのは？",
+    "options": [
+      "ASOBOiSM",
+      "けんたあろは",
+      "高城れに",
+      "只野菜摘"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 171,
+    "prompt": "「Lovely Monster」の作曲・編曲を担当したのは？",
+    "options": [
+      "SPENSR",
+      "西寺郷太",
+      "馬渕直純",
+      "岡田実音"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 172,
+    "prompt": "1stアルバム『れにちゃんWORLD』の1曲目は？",
+    "options": [
+      "じれったいな",
+      "SKY HIGH",
+      "Dancing れにちゃん",
+      "Tail wind"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 173,
+    "prompt": "『れにちゃんWORLD』に収録された、BEGINの島袋 優が作曲した曲は？",
+    "options": [
+      "「３文字」の宝物",
+      "Voyage！",
+      "一緒に",
+      "spart!"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに"
+  },
+  {
+    "id": 174,
+    "prompt": "高城れにのソロライブ「まるごとれにちゃん」の開催日は？",
+    "options": [
+      "2017年3月9日",
+      "2018年3月9日",
+      "2019年3月9日",
+      "2020年3月9日"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "id": 175,
+    "prompt": "「まるごとれにちゃん」のライブ映像作品の発売日は？",
+    "options": [
+      "2016年8月30日",
+      "2017年8月30日",
+      "2018年8月30日",
+      "2019年8月30日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "高城れに"
+  },
+  {
+    "prompt": "百田夏菜子が初めて開催したソロコンサートのタイトルは？",
+    "options": [
+      "Talk With Me ～シンデレラタイム～",
+      "Talk With Me Xmas Night ～シンデレラタイム～",
+      "VITAMIN-B",
+      "いろいろ"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "百田夏菜子",
+    "id": 176
+  },
+  {
+    "prompt": "初のソロコンサート「Talk With Me ～シンデレラタイム～」の会場は？",
+    "options": [
+      "さいたまスーパーアリーナ",
+      "東京国際フォーラム ホールA",
+      "横浜アリーナ",
+      "ぴあアリーナMM"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子",
+    "id": 177
+  },
+  {
+    "prompt": "「Talk With Me ～シンデレラタイム～」が開催された日程は？",
+    "options": [
+      "2020年7月11日・12日",
+      "2021年10月16日・17日",
+      "2022年7月11日・12日",
+      "2023年12月24日・25日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子",
+    "id": 178
+  },
+  {
+    "prompt": "「Talk With Me ～シンデレラタイム～」のLIVE CD発売日は？",
+    "options": [
+      "2021年12月19日",
+      "2022年7月12日",
+      "2023年12月25日",
+      "2024年7月12日"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 179
+  },
+  {
+    "prompt": "百田夏菜子の2回目のソロコンサートのタイトルは？",
+    "options": [
+      "Talk With Me Xmas Night ～シンデレラタイム～",
+      "Talk With Me ～シンデレラタイム～",
+      "いろいろ",
+      "OTOGIMASHOW"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "百田夏菜子",
+    "id": 180
+  },
+  {
+    "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」の開催日は？",
+    "options": [
+      "2022年12月25日",
+      "2023年12月25日",
+      "2024年12月24日",
+      "2025年12月25日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "百田夏菜子",
+    "id": 181
+  },
+  {
+    "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」が開催された会場は？",
+    "options": [
+      "さいたまスーパーアリーナ",
+      "東京国際フォーラム ホールA",
+      "TOKYO GARDEN THEATER",
+      "KT Zepp Yokohama"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子",
+    "id": 182
+  },
+  {
+    "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」の映像作品に収録されたメディア構成は？",
+    "options": [
+      "Blu-ray1枚＋CD2枚",
+      "DVD1枚＋CD1枚",
+      "Blu-ray2枚＋CD1枚",
+      "CD3枚のみ"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 183
+  },
+  {
+    "prompt": "「Talk With Me Xmas Night ～シンデレラタイム～」本編の1曲目は？",
+    "options": [
+      "サンタさん",
+      "クリスマスしよ♡",
+      "ニュームーンに恋して",
+      "それぞれのミライ"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 184
+  },
+  {
+    "prompt": "同公演のアンコール1曲目は？",
+    "options": [
+      "サンタさん",
+      "渚のラララ",
+      "ひかり",
+      "太陽とえくぼ"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 185
+  },
+  {
+    "prompt": "百田夏菜子が2025年に開催したソロライブツアーのタイトルは？",
+    "options": [
+      "MOMOTA KANAKO Live Tour 2025「VITAMIN-B」",
+      "SHIORI TAMAI 12 Colors",
+      "AYAKA NATION 2025",
+      "RENI TAKAGI Solo Concert Tour 2025「OTOGIMASHOW」"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子",
+    "id": 186
+  },
+  {
+    "prompt": "2025年の「VITAMIN-B」ツアー開催地の組み合わせは？",
+    "options": [
+      "大阪・東京・神奈川・愛知",
+      "東京・大阪・福岡・北海道",
+      "神奈川・愛知・京都・広島",
+      "東京・名古屋・仙台・沖縄"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 187
+  },
+  {
+    "prompt": "百田夏菜子が30歳を記念して刊行したフォト＆スタイルブックのタイトルは？",
+    "options": [
+      "えくぼは恋の落とし穴♡ Anniversary30",
+      "colorS",
+      "A-rin Assort",
+      "れにちゃんWORLD"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "百田夏菜子",
+    "id": 188
+  },
+  {
+    "prompt": "「えくぼは恋の落とし穴♡ Anniversary30」の発売日は？",
+    "options": [
+      "2023年12月24日",
+      "2024年12月24日",
+      "2025年2月12日",
+      "2025年7月12日"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 189
+  },
+  {
+    "prompt": "同フォト＆スタイルブックの撮影が行われた、百田夏菜子の出身地は？",
+    "options": [
+      "神奈川県",
+      "東京都",
+      "静岡県",
+      "愛知県"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "百田夏菜子",
+    "id": 190
+  },
+  {
+    "prompt": "同フォト＆スタイルブックに掲載された、ファンからの質問コーナーは何問のQ＆A？",
+    "options": [
+      "30問",
+      "50問",
+      "100問",
+      "150問"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 191
+  },
+  {
+    "prompt": "映画「すくってごらん」で百田夏菜子が演じた役名は？",
+    "options": [
+      "生駒吉乃",
+      "川谷レイカ",
+      "高橋さおり",
+      "橋爪裕子"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 192
+  },
+  {
+    "prompt": "映画「魔女見習いをさがして」で百田夏菜子が声を担当した人物は？",
+    "options": [
+      "長瀬ソラ",
+      "吉月ミレ",
+      "川谷レイカ",
+      "妹尾あいこ"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "百田夏菜子",
+    "id": 193
+  },
+  {
+    "prompt": "玉井詩織が初めて開催したソロコンサートのタイトルは？",
+    "options": [
+      "いろいろ",
+      "colorS",
+      "Talk With Me",
+      "AYAKA NATION"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": "玉井詩織",
+    "id": 194
+  },
+  {
+    "prompt": "ソロコンサート「いろいろ」の東京公演は何日間開催された？",
+    "options": [
+      "1日間",
+      "2日間",
+      "3日間",
+      "4日間"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織",
+    "id": 195
+  },
+  {
+    "prompt": "「いろいろ」東京公演の会場は？",
+    "options": [
+      "東京国際フォーラム ホールA",
+      "さいたまスーパーアリーナ",
+      "横浜アリーナ",
+      "大阪フェスティバルホール"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "玉井詩織",
+    "id": 196
+  },
+  {
+    "prompt": "「いろいろ」の大阪追加公演が行われた会場は？",
+    "options": [
+      "オリックス劇場",
+      "フェスティバルホール",
+      "大阪城ホール",
+      "Zepp Namba"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織",
+    "id": 197
+  },
+  {
+    "prompt": "「いろいろ」大阪追加公演の日程は？",
+    "options": [
+      "2024年3月2日・3日",
+      "2024年5月5日・6日",
+      "2024年6月5日・6日",
+      "2024年7月5日・6日"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 198
+  },
+  {
+    "prompt": "映画「悪夢ちゃん The 夢ovie」で玉井詩織が声を担当したキャラクターは？",
+    "options": [
+      "夢獣",
+      "ジュリアス・ワーナー",
+      "橋爪裕子",
+      "新田撫"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 199
+  },
+  {
+    "prompt": "2026年公開の映画「踊る大捜査線 N.E.W. メトロポリスを駆け抜けろ！」で玉井詩織が演じた役名は？",
+    "options": [
+      "掛井れのん",
+      "新田撫",
+      "大島静香",
+      "ジュリアス・ワーナー"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 200
+  },
+  {
+    "prompt": "「SHIORI TAMAI 12 Colors」で毎月の楽曲制作のもとになった写真は、合計何シーン？",
+    "options": [
+      "4シーン",
+      "8シーン",
+      "10シーン",
+      "12シーン"
+    ],
+    "correct": 3,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 201
+  },
+  {
+    "prompt": "「SHIORI TAMAI 12 Colors」では、1年間で何曲の新曲を発表する企画だった？",
+    "options": [
+      "6曲",
+      "8曲",
+      "12曲",
+      "24曲"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "玉井詩織",
+    "id": 202
+  },
+  {
+    "prompt": "玉井詩織が2011年に初めて披露したソロ曲は？",
+    "options": [
+      "涙目のアリス",
+      "…愛ですか？",
+      "Shape",
+      "日常"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 203
+  },
+  {
+    "prompt": "「…愛ですか？」を初披露した公演が行われた会場は？",
+    "options": [
+      "中野サンプラザホール",
+      "横浜アリーナ",
+      "東京国際フォーラム ホールA",
+      "さいたまスーパーアリーナ"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 204
+  },
+  {
+    "prompt": "玉井詩織の2曲目のソロナンバーとして誕生した曲は？",
+    "options": [
+      "涙目のアリス",
+      "Another World",
+      "We Stand Alone",
+      "HAPPY-END"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 205
+  },
+  {
+    "prompt": "玉井詩織が出演した2021年公開の映画は？",
+    "options": [
+      "都会のトム＆ソーヤ",
+      "すくってごらん",
+      "魔女見習いをさがして",
+      "シロメ"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "玉井詩織",
+    "id": 206
+  },
+  {
+    "prompt": "映画「都会のトム＆ソーヤ」で玉井詩織が演じた役名は？",
+    "options": [
+      "橋爪裕子",
+      "ジュリアス・ワーナー",
+      "加藤明美",
+      "西条美紀"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 207
+  },
+  {
+    "prompt": "映画「幕が上がる」で玉井詩織が演じた人物は？",
+    "options": [
+      "高橋さおり",
+      "橋爪裕子",
+      "西条美紀",
+      "加藤明美"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "玉井詩織",
+    "id": 208
+  },
+  {
+    "prompt": "映画「ドラゴンボールZ 復活の「F」」で玉井詩織が声を担当した役は？",
+    "options": [
+      "天使",
+      "ブルマ",
+      "チチ",
+      "人造人間18号"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 209
+  },
+  {
+    "prompt": "ドラマ「あのクズを殴ってやりたいんだ」で玉井詩織が演じた役名は？",
+    "options": [
+      "新田撫",
+      "大島静香",
+      "掛井れのん",
+      "橋爪裕子"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 210
+  },
+  {
+    "prompt": "ドラマ「それぞれの孤独のグルメ」で玉井詩織の出演形態は？",
+    "options": [
+      "ゲスト出演",
+      "主演",
+      "ナレーションのみ",
+      "主題歌のみ"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "玉井詩織",
+    "id": 211
+  },
+  {
+    "prompt": "佐々木彩夏の1stソロアルバム「A-rin Assort」の発売日は？",
+    "options": [
+      "2017年8月23日",
+      "2019年7月8日",
+      "2020年7月8日",
+      "2021年7月8日"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 212
+  },
+  {
+    "prompt": "「A-rin Assort」初回限定盤の形態は？",
+    "options": [
+      "CD＋Blu-ray",
+      "CD＋DVD",
+      "CD3枚組",
+      "Blu-rayのみ"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 213
+  },
+  {
+    "prompt": "「A-rin Assort」通常盤の形態は？",
+    "options": [
+      "CD Only",
+      "CD＋Blu-ray",
+      "CD＋DVD",
+      "配信のみ"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 214
+  },
+  {
+    "prompt": "「A-rin Assort」初回限定盤に封入されたSPECIAL MAGAZINEは何ページ？",
+    "options": [
+      "24ページ",
+      "32ページ",
+      "40ページ",
+      "48ページ"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 215
+  },
+  {
+    "prompt": "SPECIAL MAGAZINEの企画名として掲載されているものは？",
+    "options": [
+      "IN THE A-rin’s BAG",
+      "SHIORI’S ROOM",
+      "RENICHAN DIARY",
+      "KANAKO’S TRAVEL"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 216
+  },
+  {
+    "prompt": "「A-rin Assort」初回限定盤Blu-rayに収録された制作過程の映像は？",
+    "options": [
+      "Making of「A-rin Assort」",
+      "Making of「colorS」",
+      "Making of「ビタミンB」",
+      "Making of「OTOGIMASHOU」"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 217
+  },
+  {
+    "prompt": "「AYAKA-NATION 2016 in 横浜アリーナ」の会場は？",
+    "options": [
+      "横浜アリーナ",
+      "両国国技館",
+      "東京ガーデンシアター",
+      "さいたまスーパーアリーナ"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 218
+  },
+  {
+    "prompt": "「AYAKA-NATION 2016 in 横浜アリーナ」のBlu-ray映像特典として収録された舞台裏映像のタイトルは？",
+    "options": [
+      "あーりんのあーりんによるあーりんのための舞台ウラ",
+      "AYAKA NATIONの作り方",
+      "あーりんの休日",
+      "舞台裏の一週間"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 219
+  },
+  {
+    "prompt": "「AYAKA-NATION 2017」の会場は？",
+    "options": [
+      "両国国技館",
+      "横浜アリーナ",
+      "東京国際フォーラム",
+      "ぴあアリーナMM"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 220
+  },
+  {
+    "prompt": "「AYAKA NATION 2019」の公演テーマとして紹介された世界観は？",
+    "options": [
+      "不思議な森",
+      "豪華客船",
+      "秘密の美術館",
+      "お菓子の国"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 221
+  },
+  {
+    "prompt": "2024年の「AYAKA NATION Special Edition『VIP ROOM A⁺』」最終公演の会場は？",
+    "options": [
+      "Zepp Haneda",
+      "Zepp Namba",
+      "Zepp Nagoya",
+      "TOKYO GARDEN THEATER"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 222
+  },
+  {
+    "prompt": "2024年の「VIP ROOM A⁺」Zepp Haneda公演の日付は？",
+    "options": [
+      "2024年6月14日",
+      "2024年9月28日",
+      "2024年10月21日",
+      "2025年6月14日"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 223
+  },
+  {
+    "prompt": "「AYAKA NATION 2025 VIP ROOM A⁺ ～the Voyage～」の開催日は？",
+    "options": [
+      "2024年9月28日",
+      "2025年3月9日",
+      "2025年6月14日",
+      "2026年6月11日"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 224
+  },
+  {
+    "prompt": "「AYAKA NATION 2025 VIP ROOM A⁺ ～the Voyage～」の会場は？",
+    "options": [
+      "東京ガーデンシアター",
+      "横浜アリーナ",
+      "両国国技館",
+      "KT Zepp Yokohama"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 225
+  },
+  {
+    "prompt": "「AYAKA NATION 2025 VIP ROOM A⁺ ～the Voyage～」の舞台設定は？",
+    "options": [
+      "豪華客船のクルーズ",
+      "不思議な森の冒険",
+      "美術館の展示室",
+      "宇宙ステーション"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 226
+  },
+  {
+    "prompt": "「AYAKA NATION 2025」のセットリスト冒頭の曲は？",
+    "options": [
+      "Ladybird",
+      "Lady Cat",
+      "A-rin Kingdom",
+      "Bunny Gone Bad"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 227
+  },
+  {
+    "prompt": "「AYAKA NATION 2025」のアンコールに含まれていた曲は？",
+    "options": [
+      "A-rin Kingdom",
+      "Shape",
+      "おとぎましょう",
+      "ビタミンB"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "佐々木彩夏",
+    "id": 228
+  },
+  {
+    "prompt": "映画「幕が上がる」で佐々木彩夏が演じた役名は？",
+    "options": [
+      "加藤明美",
+      "橋爪裕子",
+      "高橋さおり",
+      "西条美紀"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "佐々木彩夏",
+    "id": 229
+  },
+  {
+    "prompt": "高城れにのソロライブ「30祭」が開催された日は？",
+    "options": [
+      "2022年3月9日",
+      "2023年3月9日",
+      "2023年6月25日",
+      "2024年6月25日"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "高城れに",
+    "id": 230
+  },
+  {
+    "prompt": "ソロライブ「30祭」の会場は？",
+    "options": [
+      "ぴあアリーナMM",
+      "神奈川県民ホール",
+      "KT Zepp Yokohama",
+      "東京国際フォーラム ホールA"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "高城れに",
+    "id": 231
+  },
+  {
+    "prompt": "「30祭」は高城れにの何を記念したライブ？",
+    "options": [
+      "20歳の誕生日",
+      "25歳の誕生日",
+      "30歳の誕生日",
+      "ソロ活動10周年"
+    ],
+    "correct": 2,
+    "level": "初級",
+    "member": "高城れに",
+    "id": 232
+  },
+  {
+    "prompt": "「30祭」にゲスト出演したwacciのメンバーは？",
+    "options": [
+      "橋口洋平",
+      "横山克",
+      "前山田健一",
+      "ナオト・インティライミ"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 233
+  },
+  {
+    "prompt": "高城れにの楽曲「じゃないほう」の作詞・作曲を担当したのは？",
+    "options": [
+      "橋口洋平（wacci）",
+      "けんたあろは",
+      "只野菜摘",
+      "西寺郷太"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 234
+  },
+  {
+    "prompt": "「じゃないほう」の編曲を担当したのは？",
+    "options": [
+      "村中慧慈（wacci）",
+      "木内 健",
+      "日比野裕史",
+      "馬渕直純"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 235
+  },
+  {
+    "prompt": "高城れにソロライブ「30祭」の本編1曲目は？",
+    "options": [
+      "誇り高きアイドル",
+      "SKY HIGH",
+      "じれったいな",
+      "まるごとれにちゃん"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 236
+  },
+  {
+    "prompt": "「30祭」で橋口洋平（wacci）と披露した曲は？",
+    "options": [
+      "じゃないほう",
+      "おとぎましょう",
+      "Dancing れにちゃん",
+      "君色のひかり"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 237
+  },
+  {
+    "prompt": "高城れにの「Yokohama開高祭」が開催された日は？",
+    "options": [
+      "2022年3月9日",
+      "2023年3月9日",
+      "2023年6月25日",
+      "2024年3月9日"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 238
+  },
+  {
+    "prompt": "「まるごとれにちゃん2022 RENICHAN WORLD」の開催日は？",
+    "options": [
+      "2021年3月9日",
+      "2022年3月9日",
+      "2023年3月9日",
+      "2024年3月9日"
+    ],
+    "correct": 1,
+    "level": "中級",
+    "member": "高城れに",
+    "id": 239
+  },
+  {
+    "prompt": "「まるごとれにちゃん2022 RENICHAN WORLD」神奈川公演の会場は？",
+    "options": [
+      "神奈川県民ホール 大ホール",
+      "ぴあアリーナMM",
+      "横浜アリーナ",
+      "KT Zepp Yokohama"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 240
+  },
+  {
+    "prompt": "「まるごとれにちゃん2022 RENICHAN WORLD」は神奈川公演のほか、どの地域でも開催された？",
+    "options": [
+      "大阪・愛知",
+      "東京・千葉",
+      "北海道・宮城",
+      "福岡・広島"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 241
+  },
+  {
+    "prompt": "高城れにの2025年ソロコンサートツアーのタイトルは？",
+    "options": [
+      "OTOGIMASHOW",
+      "RENICHAN WORLD",
+      "Talk With Me",
+      "VIP ROOM A⁺"
+    ],
+    "correct": 0,
+    "level": "中級",
+    "member": "高城れに",
+    "id": 242
+  },
+  {
+    "prompt": "2025年10月20日の「OTOGIMASHOW」公演会場は？",
+    "options": [
+      "KT Zepp Yokohama",
+      "KT Zepp Osaka",
+      "ぴあアリーナMM",
+      "神奈川県民ホール"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 243
+  },
+  {
+    "prompt": "2025年10月20日の「OTOGIMASHOW」公演のオープニング曲は？",
+    "options": [
+      "おとぎましょう",
+      "SKY HIGH",
+      "じゃないほう",
+      "Dancing れにちゃん"
+    ],
+    "correct": 0,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 244
+  },
+  {
+    "prompt": "RENI TAKAGI Solo Concert Tour 2025「OTOGIMASHOW」LIVE Blu-rayの発売日は？",
+    "options": [
+      "2025年10月15日",
+      "2026年3月9日",
+      "2026年6月21日",
+      "2026年7月22日"
+    ],
+    "correct": 2,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 245
+  },
+  {
+    "prompt": "高城れにの配信曲「ボンボン☆サンバ☆ボンバYeah!」のリリース日は？",
+    "options": [
+      "2025年7月22日",
+      "2026年6月21日",
+      "2026年7月22日",
+      "2026年10月21日"
+    ],
+    "correct": 2,
+    "level": "中級",
+    "member": "高城れに",
+    "id": 246
+  },
+  {
+    "prompt": "高城れに「ポジティブ・アテンションプリーズ！」の配信日は？",
+    "options": [
+      "2023年7月5日",
+      "2024年7月5日",
+      "2025年7月5日",
+      "2026年7月5日"
+    ],
+    "correct": 1,
+    "level": "上級",
+    "member": "高城れに",
+    "id": 247
+  },
+  {
+    "id": 248,
+    "prompt": "2008年5月17日の初お披露目時、ももいろクローバーは何人編成だった？",
+    "options": [
+      "4人",
+      "5人",
+      "6人",
+      "7人"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 249,
+    "prompt": "2008年5月17日の初お披露目で、メンバーが歌唱した楽曲は？",
+    "options": [
+      "あの空へ向かって",
+      "冷凍みかん",
+      "MILKY WAY",
+      "未来へススメ！"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 250,
+    "prompt": "2009年に初めて全国を回ったツアーの名称は？",
+    "options": [
+      "新秋ジャイアントシリーズ",
+      "ヤマダ電機ツアー",
+      "春の最強タッグ決定戦",
+      "セカンドデビューツアー"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 251,
+    "prompt": "2009年の全国ツアーで「ETCアイドル」として紹介された理由は？",
+    "options": [
+      "高速道路のETC割引を活用して全国を回ったから",
+      "全会場でETCカードを配布したから",
+      "高速道路のサービスエリアだけで公演したから",
+      "車のナンバーをすべて同じにしたから"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 252,
+    "prompt": "2009年の「CHAMPION CARNIVAL AKBA 5DAYS」では、5日間で有料・無料イベントを合わせて何公演行った？",
+    "options": [
+      "15公演",
+      "20公演",
+      "25公演",
+      "30公演"
+    ],
+    "correct": 3,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 253,
+    "prompt": "2010年の「セカンドデビューツアー 秋の陣」は、全何回公演だった？",
+    "options": [
+      "全27回",
+      "全32回",
+      "全37回",
+      "全42回"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 254,
+    "prompt": "2010年12月24日、ももクロ初の単独ホールライブが開催された会場は？",
+    "options": [
+      "中野サンプラザ",
+      "日本青年館",
+      "渋谷公会堂",
+      "東京キネマ倶楽部"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 255,
+    "prompt": "2011年の立川フロム中武ライブで生まれた「国立川」という呼び名は、何と何を掛け合わせた言葉？",
+    "options": [
+      "国立競技場と立川",
+      "国立市と川崎",
+      "国道と立川",
+      "国立音楽大学と川崎"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 256,
+    "prompt": "2011年4月、早見あかり卒業翌日から始まった「試練の七番勝負」の会場は？",
+    "options": [
+      "中野サンプラザ",
+      "横浜BLITZ",
+      "東京キネマ倶楽部",
+      "品川ステラボール"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 257,
+    "prompt": "公式ヒストリーで「モノノフ」という言葉が初めて公式に使われたイベントの会場は？",
+    "options": [
+      "日本青年館",
+      "横浜BLITZ",
+      "Zepp Tokyo",
+      "さいたまスーパーアリーナ"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 258,
+    "prompt": "ももクロ初の海外ライブが行われた国は？",
+    "options": [
+      "フランス",
+      "アメリカ",
+      "ドイツ",
+      "韓国"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 259,
+    "prompt": "「夏のバカ騒ぎ」の発祥となった2011年の野外ライブ会場は？",
+    "options": [
+      "よみうりランド オープンシアターEAST",
+      "日産スタジアム",
+      "味の素スタジアム",
+      "西武ドーム"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 260,
+    "prompt": "2011年の「ももいろクリスマス2011」で、演出のモチーフとして取り入れられた格闘技イベントは？",
+    "options": [
+      "PRIDE",
+      "K-1 WORLD GP",
+      "RIZIN",
+      "UFC"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 261,
+    "prompt": "「ももクロ春の一大事2012」2日目のステージ演出の特徴は？",
+    "options": [
+      "360度ステージ",
+      "水上ステージ",
+      "客席中央の円形ステージ",
+      "花道のないセンターステージ"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 262,
+    "prompt": "2012年の「夏のバカ騒ぎ Summer Dive Tour」の最終公演が行われた会場は？",
+    "options": [
+      "東京ドーム",
+      "西武ドーム",
+      "ナゴヤドーム",
+      "京セラドーム大阪"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 263,
+    "prompt": "2012年7月、ももクロが出演した日本文化紹介イベント「Japan Expo」が開催された国は？",
+    "options": [
+      "イギリス",
+      "ドイツ",
+      "フランス",
+      "スペイン"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 264,
+    "prompt": "「あーりんロボ」が初登場した2013年のイベントは？",
+    "options": [
+      "ももクロの子供祭り2013",
+      "ももいろ夜ばなし 第二夜",
+      "ももクロ夏のバカ騒ぎ2013",
+      "ももいろクリスマス2013"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 265,
+    "prompt": "2013年の「Ozzfest Japan」で、ももクロのステージにギターで参加した組み合わせは？",
+    "options": [
+      "NARASAKIと和嶋慎治",
+      "布袋寅泰と松崎しげる",
+      "HYDEとYOSHIKI",
+      "マーティ・フリードマンとDAITA"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 266,
+    "prompt": "2013年8月の「夏のバカ騒ぎ WORLD SUMMER DIVE」日産スタジアム大会で、公式ヒストリーに記録された動員規模はおよそ何人？",
+    "options": [
+      "約3万人",
+      "約4万人",
+      "約6万人",
+      "約8万人"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 267,
+    "prompt": "2013年の「GOUNN」ツアーでは、サイリウムの使用が解禁されたのはどのタイミング？",
+    "options": [
+      "第1部の冒頭",
+      "第1部の終盤",
+      "第2部",
+      "アンコールのみ"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 268,
+    "prompt": "2014年の「桃神祭」で、スタジアム内に登場した巨大なパフォーマンス道具は？",
+    "options": [
+      "巨大な神輿",
+      "巨大な気球",
+      "巨大な観覧車",
+      "巨大な蒸気機関車"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 269,
+    "prompt": "2015年3月、KISSのジャパンツアー東京公演にスペシャルゲストとして出演した際、コラボのきっかけとなった楽曲は？",
+    "options": [
+      "夢の浮世に咲いてみな",
+      "MOON PRIDE",
+      "『Z』の誓い",
+      "サラバ、愛しき悲しみたちよ"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 270,
+    "prompt": "2015年7月の「Anime Expo」単独ライブが開催されたアメリカの都市は？",
+    "options": [
+      "ニューヨーク",
+      "ロサンゼルス",
+      "シカゴ",
+      "サンフランシスコ"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 271,
+    "prompt": "2014年の「チビッ子祭り」の参加条件として示された身長制限は？",
+    "options": [
+      "女性155cm以下・男性159cm以下",
+      "女性150cm以下・男性155cm以下",
+      "女性160cm以下・男性165cm以下",
+      "女性145cm以下・男性150cm以下"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 272,
+    "prompt": "2015年の「ももいろクリスマス」は、初めてどの場所で開催された？",
+    "options": [
+      "スキー場",
+      "遊園地",
+      "野球場",
+      "港の屋外広場"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 273,
+    "prompt": "2016年の初ドームツアー「DOME TREK」で、DAY1とDAY2にそれぞれ掲げられたアルバムの組み合わせは？",
+    "options": [
+      "DAY1「白金の夜明け」／DAY2「AMARANTHUS」",
+      "DAY1「AMARANTHUS」／DAY2「白金の夜明け」",
+      "DAY1「5TH DIMENSION」／DAY2「AMARANTHUS」",
+      "DAY1「AMARANTHUS」／DAY2「祝典」"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 274,
+    "prompt": "2016年に開催された、ももクロ初のアメリカツアー「第432回 アメリカ横断ウルトラライブ」の訪問順は？",
+    "options": [
+      "ニューヨーク→ロサンゼルス→ハワイ",
+      "ハワイ→ロサンゼルス→ニューヨーク",
+      "ロサンゼルス→ハワイ→ニューヨーク",
+      "ハワイ→ニューヨーク→ロサンゼルス"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 275,
+    "prompt": "2017年に始まった初の全国47都道府県ツアー「青春」は、どの市からスタートした？",
+    "options": [
+      "滋賀県彦根市",
+      "静岡県浜松市",
+      "神奈川県横浜市",
+      "埼玉県富士見市"
+    ],
+    "correct": 0,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 276,
+    "prompt": "ももクロが「ROCK IN JAPAN FESTIVAL」に初出演したのは何年？",
+    "options": [
+      "2015年",
+      "2016年",
+      "2017年",
+      "2018年"
+    ],
+    "correct": 2,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 277,
+    "prompt": "2017年の「ももいろクリスマス」で、初めて公演が開催された関西の会場は？",
+    "options": [
+      "神戸ワールド記念ホール",
+      "大阪城ホール",
+      "京都パルスプラザ",
+      "神戸国際会館"
+    ],
+    "correct": 1,
+    "level": "Z級",
+    "member": null
+  },
+  {
+    "id": 278,
+    "prompt": "現在の公式プロフィールで、ももいろクローバーZは何人のメンバーからなる？",
+    "options": [
+      "3人",
+      "4人",
+      "5人",
+      "6人"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 279,
+    "prompt": "ももいろクローバーZの公式サイトで、グループ名の前に付けられている呼び名は？",
+    "options": [
+      "週末ヒロイン",
+      "永遠のアイドル",
+      "青春ヒロイン",
+      "笑顔のヒロイン"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 280,
+    "prompt": "2018年に発売された、ももいろクローバーZのベストアルバムのタイトルは？",
+    "options": [
+      "桃も十、番茶も出花",
+      "入口のない出口",
+      "バトル アンド ロマンス",
+      "祝典"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 281,
+    "prompt": "「MOON PRIDE」がオープニング主題歌に起用されたアニメは？",
+    "options": [
+      "美少女戦士セーラームーンCrystal",
+      "ドラゴンボールZ",
+      "クレヨンしんちゃん",
+      "美少女戦士セーラームーンS"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 282,
+    "prompt": "「『Z』の誓い」が主題歌になった映画は？",
+    "options": [
+      "ドラゴンボールZ 復活の「F」",
+      "幕が上がる",
+      "美少女戦士セーラームーンCrystal",
+      "クレヨンしんちゃん 爆盛！カンフーボーイズ ～拉麺大乱～"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 283,
+    "prompt": "「笑一笑 ～シャオイーシャオ！～」が主題歌に起用された映画は？",
+    "options": [
+      "映画クレヨンしんちゃん 爆盛！カンフーボーイズ ～拉麺大乱～",
+      "映画ドラゴンボールZ 復活の「F」",
+      "映画 幕が上がる",
+      "映画 美少女戦士セーラームーンCrystal"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 284,
+    "prompt": "2020年にリリースされた配信アルバム『ZZ's』のリリース形態は？",
+    "options": [
+      "配信アルバム",
+      "CDシングル",
+      "ライブBlu-ray",
+      "アナログ盤"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 285,
+    "prompt": "配信アルバム『ZZ's Ⅱ』に収録されたセルフリメイク曲は何曲？",
+    "options": [
+      "8曲",
+      "10曲",
+      "12曲",
+      "14曲"
+    ],
+    "correct": 1,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 286,
+    "prompt": "2026年8月に配信された「無 我 夢 中」がテーマソングになったゲームは？",
+    "options": [
+      "機動戦士ガンダム アーセナルコマンダー ver.β",
+      "ドラゴンボールZ ドッカンバトル",
+      "機動戦士ガンダム エクストリームバーサス",
+      "スーパーロボット大戦"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  },
+  {
+    "id": 287,
+    "prompt": "6thアルバム『祝典』の1曲目に収録されている曲は？",
+    "options": [
+      "Opening Ceremony -阿-",
+      "PLAY!",
+      "ダンシングタンク♡",
+      "MYSTERION"
+    ],
+    "correct": 0,
+    "level": "初級",
+    "member": null
+  }
 ];
 const app=document.getElementById('app');let list=[],idx=0,score=0,choice=null;
 function home(){app.innerHTML=`<section class="hero"><div class="eyebrow">MOMOIRO CHALLENGE</div><h1>ももクロQUIZ</h1><p>ももクロに関するクイズに挑戦！<br>毎回ランダムに選ばれる10問で楽しもう。</p><button class="primary" onclick="start()">クイズに挑戦</button></section><section class="section"><div class="section-title">メンバー別クイズ</div><div class="grid">${['百田夏菜子 ❤️','玉井詩織 💛','佐々木彩夏 💗','高城れに 💜'].map(x=>`<button class="tile" onclick="start('member','${x.split(' ')[0]}')">${x}<small>メンバーにまつわる問題</small></button>`).join('')}</div></section><section class="section"><div class="section-title">難易度を選んで挑戦</div><div class="grid">${['初級','中級','上級','Z級'].map(x=>`<button class="tile" onclick="start('level','${x}')">${x}<small>レベルを選んで挑戦</small></button>`).join('')}</div></section>`}
