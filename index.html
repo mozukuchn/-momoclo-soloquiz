@@ -239,19 +239,26 @@ body:has(.question) .option:active {
 .brand{white-space:nowrap}.top-nav{display:flex;align-items:center;gap:6px}.nav-item{padding:9px 13px;border:1px solid rgba(67,178,214,.32);border-radius:999px;background:rgba(255,255,255,.82);color:#258bb7;font-size:12px;font-weight:900;letter-spacing:.04em;white-space:nowrap;box-shadow:0 3px 9px rgba(58,163,202,.08)}.nav-item:active{transform:translateY(1px)}
 @media(max-width:480px){.top{align-items:center;gap:6px;padding:9px 8px}.brand{font-size:11px;letter-spacing:.8px}.top-nav{gap:4px}.nav-item{padding:8px 10px;font-size:11px}}
 
-#bgm-player{position:fixed;right:12px;bottom:12px;z-index:1000;display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid rgba(255,255,255,.95);border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 7px 22px rgba(42,139,177,.2);backdrop-filter:blur(12px);color:#32647e;font-size:11px;font-weight:800}
+.bgm-menu{position:relative;flex:0 0 auto}
+.bgm-menu summary{list-style:none;cursor:pointer;padding:9px 13px;border:1px solid rgba(67,178,214,.32);border-radius:999px;background:rgba(255,255,255,.88);color:#258bb7;font-size:12px;font-weight:900;letter-spacing:.02em;white-space:nowrap;box-shadow:0 3px 9px rgba(58,163,202,.08)}
+.bgm-menu summary::-webkit-details-marker{display:none}
+.bgm-menu[open] summary{background:#e7faff}
+.bgm-menu-panel{position:absolute;right:0;top:calc(100% + 9px);z-index:1100;display:flex;align-items:center;gap:9px;min-width:210px;padding:12px;border:1px solid rgba(255,255,255,.98);border-radius:16px;background:rgba(255,255,255,.97);box-shadow:0 8px 24px rgba(42,139,177,.2);backdrop-filter:blur(12px);color:#32647e;font-size:11px;font-weight:800}
 #bgm-toggle{border:1px solid rgba(67,178,214,.35);border-radius:999px;padding:8px 12px;background:linear-gradient(100deg,#e7faff,#fff);color:#258bb7;font-size:11px;font-weight:900;white-space:nowrap}
 #bgm-toggle.is-on{color:white;background:linear-gradient(100deg,#43c6e9,#299bd2)}
 #bgm-volume{width:76px;accent-color:#299bc5}
-@media(max-width:380px){#bgm-player{right:8px;bottom:8px;gap:6px;padding:7px 8px}#bgm-volume{width:58px}}
+@media(max-width:480px){.bgm-menu summary{padding:8px 9px;font-size:11px}.bgm-menu-panel{right:0;min-width:195px;gap:7px;padding:10px}#bgm-volume{width:68px}}
 
-</style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div class="brand">🎤 MOMOCLO QUIZ</div><nav class="top-nav" aria-label="メインメニュー"><button class="nav-item" type="button" onclick="home()">ホーム</button><button class="nav-item" type="button" onclick="showHistory()">MENU</button></nav></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main>
-
-<div id="bgm-player" aria-label="BGM controls">
-  <button id="bgm-toggle" type="button" aria-pressed="false" onclick="toggleBgm()">♫ BGM OFF</button>
-  <label for="bgm-volume">音量</label>
-  <input id="bgm-volume" type="range" min="0" max="1" step="0.01" value="0.28" aria-label="BGM volume">
-</div>
+</style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div class="brand">🎤 MOMOCLO QUIZ</div><nav class="top-nav" aria-label="メインメニュー"><button class="nav-item" type="button" onclick="home()">ホーム</button><button class="nav-item" type="button" onclick="showHistory()">MENU</button>
+<details class="bgm-menu">
+  <summary>♫ BGM</summary>
+  <div class="bgm-menu-panel" aria-label="BGM settings">
+    <button id="bgm-toggle" type="button" aria-pressed="false" onclick="toggleBgm()">♫ BGM OFF</button>
+    <label for="bgm-volume">音量</label>
+    <input id="bgm-volume" type="range" min="0" max="1" step="0.01" value="0.28" aria-label="BGM volume">
+  </div>
+</details>
+</nav></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main>
 
 <script>
 // BGM：最初のタップ後に再生（スマートフォンの自動再生制限に対応）
