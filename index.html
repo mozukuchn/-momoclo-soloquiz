@@ -643,7 +643,30 @@ function playIntroClip(){
   });
 }
 function normalizeIntroAnswer(value){
-  return String(value||'').normalize('NFKC').toLowerCase().replace(/[\s　・!！?？。、,，．.「」『』]/g,'');
+  let normalized=String(value||'').normalize('NFKC').toLowerCase()
+    .replace(/[\s　]/g,'')
+    .replace(/[\p{P}\p{S}]/gu,'');
+  // 「Z ver.」「ZZ ver.」は Z / ZZ の識別を残し、末尾の ver 表記だけ任意にする
+  normalized=normalized.replace(/(z{1,2})ver$/,'$1');
+  return normalized;
+}
+function introAnswerAliases(title){
+  const aliases={
+    'MOON PRIDE':['ムーンプライド'],
+    'Moon Revenge':['ムーンリベンジ'],
+    'Link Link':['リンクリンク'],
+    'Dream Wave':['ドリームウェーブ'],
+    'words of the mind-brandnew journey-':[
+      'ワーズオブザマインドブランニュージャーニー',
+      'ワーズオブマインドブランニュージャーニー'
+    ]
+  };
+  return aliases[title]||[];
+}
+function isCorrectIntroAnswer(answer,title){
+  const accepted=[title,...introAnswerAliases(title)];
+  const normalizedAnswer=normalizeIntroAnswer(answer);
+  return accepted.some(candidate=>normalizeIntroAnswer(candidate)===normalizedAnswer);
 }
 function submitIntroAnswer(event){
   if(event)event.preventDefault();
@@ -651,7 +674,7 @@ function submitIntroAnswer(event){
   const input=document.getElementById('intro-answer-input');
   const answer=input?input.value.trim():'';
   if(!answer){if(input){input.focus();input.placeholder='曲名を入力してね';}return;}
-  answerIntro(normalizeIntroAnswer(answer)===normalizeIntroAnswer(window.introCorrectTitle));
+  answerIntro(isCorrectIntroAnswer(answer,window.introCorrectTitle));
 }
 function answerIntro(isCorrect){
   if(introAnswered)return;introAnswered=true;
