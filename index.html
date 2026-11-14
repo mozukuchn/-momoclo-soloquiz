@@ -317,7 +317,7 @@ button.portal-card:active{transform:translateY(2px)}
 .intro-audio-mark{display:flex;align-items:center;justify-content:center;min-height:92px;margin:16px auto;padding:18px;border-radius:18px;background:linear-gradient(135deg,#fff1f7,#eef7ff);color:#285b79;font-size:30px;font-weight:900;letter-spacing:5px;max-width:360px}
 #intro-audio-status{min-height:1.5em;margin:10px 0 0}
 #intro-play-button:disabled{opacity:.75;cursor:wait}
-</style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div class="brand">MOMOCLO PORTAL</div><div id="user-top" class="user-top" style="display:none"></div><nav class="top-nav" aria-label="メインメニュー"><button class="nav-item" type="button" onclick="showPortal()">ポータル</button><button class="nav-item" type="button" onclick="showHistory()">MENU</button></nav></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式サイトです。公式とは関係ありません。</p></main>
+</style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div class="brand">MOMOCLO PORTAL</div><div id="user-top" class="user-top" style="display:none"></div><nav class="top-nav" aria-label="メインメニュー"><button class="nav-item" type="button" onclick="showPortal()">ポータル</button><button class="nav-item" type="button" onclick="showHistory()">MENU</button></nav></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main>
 
 <div id="bgm-player" aria-label="BGM controls">
   <button id="bgm-toggle" type="button" aria-pressed="false" onclick="toggleBgm()">♫ BGM OFF</button>
@@ -587,9 +587,9 @@ function showIntroDon(){
   app.innerHTML=`<section class="hero portal-intro"><div class="hero-sparkle">♫　✦　♫</div><div class="eyebrow">MOMO CLOVER Z MUSIC GAME</div><h1>イントロ<span>ドン！</span></h1><p>用意された音源からイントロを聴いて曲名を当てよう！<br>収録曲は最初から設定されています。</p><div class="hero-foot">LISTEN & GUESS ✧</div></section>
   <section class="card"><a class="back" href="#" onclick="showPortal();return false">← ポータルに戻る</a>
   <h2 style="margin:8px 0;color:#285b79">🎵 収録曲：${introSongs.length}曲</h2>
-  <p class="muted">アップロードされた音源ファイルを使って再生します。YouTube動画や広告は流れません。</p>
+  <p class="muted"></p>
   <div class="intro-song-count">全${introSongs.length}曲からランダムで出題！</div>
-  <p class="muted">各曲の冒頭7秒を再生します。曲を登録する必要はありません。</p>
+  <p class="muted">。</p>
   <button class="primary" type="button" onclick="beginIntroDon()" id="intro-start">イントロドンを始める</button>
   <button class="schedule-back" type="button" onclick="showPortal()">← ポータルに戻る</button></section>`;
 }
@@ -659,17 +659,17 @@ function introAnswerAliases(title){
   const aliases={
     '行くぜっ！怪盗少女':['いくぜっかいとうしょうじょ','怪盗少女','かいとうしょうじょ'],
     'サラバ、愛しき悲しみたちよ':['さらばいとしきかなしみたちよ','サラバ','さらば'],
-    'MOON PRIDE':['ムーンプライド','ムンプラ','むんぷら'],
+    'MOON PRIDE':['ムーンプライド'],
     'Moon Revenge':['ムーンリベンジ','むんりべ','ムンリベ'],
     '月虹':['げっこう'],
     '青春賦':['せいしゅんふ'],
     '行く春来る春':['いくはるくるはる'],
-    '走れ！-Z ver.-':['はしれz','走れZ','はしれzバージョン','走れZver.','走れzver.'],
+    '走れ！-Z ver.-':['はしれz','走れZ','はしれzバージョン'],
     'Link Link':['リンクリンク'],
     'words of the mind-brandnew journey-':[
       'ワーズオブザマインドブランニュージャーニー',
       'ワーズオブマインドブランニュージャーニー',
-      'ワーズ','わーず'
+      'ワーズ'
     ],
     'Dream Wave':['ドリームウェーブ'],
     '最強パレパレード':['さいきょうぱれぱれーど','パレパレ','ぱれぱれ'],
