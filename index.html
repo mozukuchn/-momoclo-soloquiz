@@ -551,11 +551,28 @@ function filterSchedule(type,button){
 }
 
 // イントロドン：アップロードされた音源ファイルのみを使用（YouTube広告なし）
+
 const introSongs=[
-  {title:'行くぜっ！怪盗少女 -ZZ ver.-',audio:'audio/intro-01.mp3'},
-  {title:'サラバ、愛しき悲しみたちよ -ZZ ver.-',audio:'audio/intro-02.mp3'},
-  {title:'Moon Revenge',audio:'audio/intro-03.mp3'},
-  {title:'月虹',audio:'audio/intro-04.mp3'}
+  {
+    title:'行くぜっ！怪盗少女 -ZZ ver.-',
+    audio:'audio/行くぜっ!怪盗少女-ZZ ver.-.mp3'
+  },
+  {
+    title:'MOON PRIDE',
+    audio:'audio/MOON PRIDE.mp3'
+  },
+  {
+    title:'Moon Revenge',
+    audio:'audio/Moon Revenge.mp3'
+  },
+  {
+    title:'サラバ、愛しき悲しみたちよ -ZZ ver.-',
+    audio:'audio/サラバ、愛しき悲しみたちよ-ZZ ver.-.mp3'
+  },
+  {
+    title:'月虹',
+    audio:'audio/月虹.mp3'
+  }
 ];
 let introQuestions=[],introIndex=0,introScore=0,introAnswered=false;
 let introAudioPlayer=null,introAudioStopTimer=null;
