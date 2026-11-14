@@ -293,6 +293,20 @@ button.portal-card:active{transform:translateY(2px)}
 
 
 .schedule-section{padding-bottom:28px}.schedule-filters{display:flex;gap:7px;overflow-x:auto;padding:2px 1px 12px;margin-bottom:5px}.schedule-filter{flex:0 0 auto;border:1px solid rgba(75,174,210,.28);border-radius:99px;padding:8px 13px;background:rgba(255,255,255,.78);color:#39718b;font:inherit;font-size:11px;font-weight:800}.schedule-filter.selected{background:linear-gradient(100deg,#67c9e7,#7da9e9);border-color:transparent;color:#fff;box-shadow:0 4px 10px rgba(68,157,195,.2)}.schedule-list{display:grid;gap:11px}.schedule-item{display:flex;gap:13px;padding:15px 13px;border:1px solid rgba(255,255,255,.95);border-radius:18px;background:var(--glass);box-shadow:var(--shadow),inset 0 0 0 1px rgba(91,195,225,.10);backdrop-filter:blur(12px)}.schedule-date{flex:0 0 54px;display:flex;flex-direction:column;align-items:center;justify-content:center;align-self:flex-start;padding:9px 4px;border-radius:14px;background:linear-gradient(145deg,#e3f8ff,#f7fcff);color:#347f9f}.schedule-date b{font-size:25px;line-height:1.1}.schedule-date span{font-size:9px;font-weight:800;margin-top:4px}.schedule-info{min-width:0;flex:1}.schedule-kind{display:inline-block;padding:3px 8px;border-radius:99px;font-size:9px;font-weight:900;letter-spacing:.5px;background:#e6f6ff;color:#2988b3}.schedule-kind.live{background:#ffe9f1;color:#d45c8c}.schedule-kind.event{background:#f0eaff;color:#8064c5}.schedule-kind.tv{background:#e9f6eb;color:#488b5c}.schedule-kind.streaming{background:#fff2df;color:#b77a32}.schedule-kind.radio{background:#e8f4ff;color:#477eb7}.schedule-info h3{margin:7px 0 5px;color:#285b79;font-size:13px;line-height:1.55}.schedule-info p{margin:0 0 7px;color:var(--muted);font-size:11px;line-height:1.65}.schedule-info small{display:block;margin:0 0 7px;color:#8a7e99;font-size:10px}.schedule-info a{color:#258bb7;font-size:11px;font-weight:800;text-decoration:none}.schedule-note{margin:16px 2px;color:var(--muted);font-size:10px;line-height:1.7}.schedule-official{display:block;padding:14px;text-align:center;border-radius:14px;background:linear-gradient(100deg,#67c9e7,#7da9e9);color:#fff;font-size:13px;font-weight:900;text-decoration:none;box-shadow:0 5px 14px rgba(68,157,195,.2)}.schedule-back{display:block;width:100%;margin-top:12px;padding:12px;border:1px solid rgba(75,174,210,.25);border-radius:14px;background:rgba(255,255,255,.78);color:#39718b;font:inherit;font-size:12px;font-weight:800}
+
+/* イントロドン */
+.intro-upload{display:block;width:100%;padding:14px;border:1px dashed #76c8e2;border-radius:15px;background:#f5fcff;color:#32647e;font-weight:800}
+.intro-song-count{margin:10px 0;color:#6d8da1;font-size:12px}
+.intro-playbox{margin:18px 0;padding:22px 16px;border:1px solid #bce8f5;border-radius:20px;background:linear-gradient(145deg,#f4fcff,#fff);text-align:center}
+.intro-play-icon{font-size:42px;margin-bottom:8px}
+.intro-options{display:grid;gap:10px;margin-top:16px}
+.intro-option{width:100%;padding:14px;border:1px solid rgba(95,181,211,.36);border-radius:15px;background:#fff;color:#355f76;font-weight:900;text-align:left}
+.intro-option:disabled{opacity:1}
+.intro-option.correct{border:2px solid #16a765;background:#e8fff2;color:#126b43}
+.intro-option.wrong{border:2px solid #e05262;background:#fff0f2;color:#a82b3b}
+.intro-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.intro-actions .primary{flex:1;min-width:140px}
+
 </style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div class="brand">MOMOCLO PORTAL</div><div id="user-top" class="user-top" style="display:none"></div><nav class="top-nav" aria-label="メインメニュー"><button class="nav-item" type="button" onclick="showPortal()">ポータル</button><button class="nav-item" type="button" onclick="showHistory()">MENU</button></nav></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main>
 
 <div id="bgm-player" aria-label="BGM controls">
@@ -476,6 +490,7 @@ function showPortal(){
   <div class="portal-grid">
     <button class="portal-card active" type="button" onclick="home()"><span class="portal-icon">🎤</span><strong>ももクロQUIZ</strong><small>クイズ・タイムアタック・マルチ対戦</small><span class="portal-status">公開中　↗</span></button>
     <div class="portal-card"><span class="portal-icon">🎮</span><strong>ゲーム</strong><small>新しいゲームコンテンツ</small><span class="portal-status">準備中</span></div>
+    <button class="portal-card active" type="button" onclick="showIntroDon()"><span class="portal-icon">🎧</span><strong>イントロドン</strong><small>曲を聴いてタイトルを当てよう！</small><span class="portal-status">公開中　↗</span></button>
     <button class="portal-card active" type="button" onclick="showSchedule()"><span class="portal-icon">🗓️</span><strong>スケジュール</strong><small>ライブ・イベント・テレビ・配信予定</small><span class="portal-status">公開中　↗</span></button>
     <div class="portal-card"><span class="portal-icon">✧</span><strong>新コンテンツ</strong><small>これから追加予定</small><span class="portal-status">COMING SOON</span></div>
   </div></section>`;
@@ -523,6 +538,75 @@ function filterSchedule(type,button){
   document.querySelectorAll('.schedule-filter').forEach(el=>el.classList.remove('selected'));
   if(button)button.classList.add('selected');
   document.querySelectorAll('.schedule-item').forEach(item=>{item.style.display=(type==='ALL'||item.dataset.scheduleType===type)?'flex':'none'});
+}
+
+// イントロドン：ユーザーが選んだ音源ファイルをブラウザ内で再生
+let introSongs=[],introQuestions=[],introIndex=0,introScore=0,introAudio=null,introAnswered=false;
+function introEscape(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function stopIntroAudio(){if(introAudio){introAudio.pause();introAudio.currentTime=0;introAudio=null;}}
+function showIntroDon(){
+  stopTimeAttack();timeAttackActive=false;stopIntroAudio();
+  if(bgmPlayer){document.body.appendChild(bgmPlayer);bgmPlayer.style.display="none";}
+  updateUserTop();
+  app.innerHTML=`<section class="hero portal-intro"><div class="hero-sparkle">♫　✦　♫</div><div class="eyebrow">MOMO CLOVER Z MUSIC GAME</div><h1>イントロ<span>ドン！</span></h1><p>曲のイントロを聴いて、曲名を当てよう！<br>自分の音源ファイルを読み込んで遊べます。</p><div class="hero-foot">LISTEN & GUESS ✧</div></section>
+  <section class="card"><a class="back" href="#" onclick="showPortal();return false">← ポータルに戻る</a>
+  <h2 style="margin:8px 0;color:#285b79">🎵 音源を読み込む</h2>
+  <p class="muted">音源ファイルを複数選択してね。ファイル名がそのまま曲名になります（例：行くぜっ！怪盗少女.mp3）。</p>
+  <input class="intro-upload" id="intro-files" type="file" accept="audio/*" multiple onchange="loadIntroFiles(this.files)">
+  <div class="intro-song-count" id="intro-song-count">まだ音源が読み込まれていません。</div>
+  <p class="muted">※音源はこの端末のブラウザ内で再生され、サーバーには送信されません。利用する音源は自分で用意したもの・使用許諾のあるものを使ってね。</p>
+  <button class="primary" type="button" onclick="beginIntroDon()" id="intro-start" disabled>イントロドンを始める</button>
+  <button class="schedule-back" type="button" onclick="showPortal()">← ポータルに戻る</button></section>`;
+}
+function loadIntroFiles(files){
+  stopIntroAudio();
+  introSongs=Array.from(files||[]).filter(f=>f.type.startsWith('audio/')).map(file=>({title:file.name.replace(/\.[^.]+$/,''),url:URL.createObjectURL(file)}));
+  const count=document.getElementById('intro-song-count'),start=document.getElementById('intro-start');
+  if(count)count.textContent=`${introSongs.length}曲 読み込み済み`;
+  if(start)start.disabled=introSongs.length<2;
+}
+function beginIntroDon(){
+  if(introSongs.length<2)return;
+  stopIntroAudio();
+  introQuestions=[...introSongs].sort(()=>Math.random()-.5).slice(0,Math.min(10,introSongs.length));
+  introIndex=0;introScore=0;renderIntroQuestion();
+}
+function renderIntroQuestion(){
+  stopIntroAudio();introAnswered=false;
+  if(introIndex>=introQuestions.length){renderIntroResult();return;}
+  const song=introQuestions[introIndex];
+  const choices=[song,...introSongs.filter(x=>x!==song).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
+  app.innerHTML=`<section class="card"><a class="back" href="#" onclick="showIntroDon();return false">← イントロドンの設定へ</a>
+  <div class="section-heading"><span class="section-icon">🎧</span><div><div class="section-title">第${introIndex+1}問 / ${introQuestions.length}問</div><div class="section-sub">現在の正解数：${introScore}</div></div></div>
+  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">再生ボタンを押してイントロを聴こう！</p><button class="primary" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button></div>
+  <div class="intro-options">${choices.map((c,i)=>`<button class="intro-option" type="button" data-title="${introEscape(c.title)}" onclick="answerIntro(this,${c===song})">${['A','B','C','D'][i]}　${introEscape(c.title)}</button>`).join('')}</div>
+  <div id="intro-feedback" aria-live="polite"></div><button id="intro-next" class="primary" type="button" style="display:none" onclick="nextIntroQuestion()">${introIndex+1===introQuestions.length?'結果を見る':'次の問題へ'}</button>
+  </section>`;
+  // 選択肢の正解判定は曲オブジェクトのタイトルで照合
+  window.introCorrectTitle=song.title;
+}
+function playIntroClip(){
+  stopIntroAudio();
+  const song=introQuestions[introIndex];if(!song)return;
+  introAudio=new Audio(song.url);introAudio.currentTime=0;
+  introAudio.play().catch(()=>{const box=document.getElementById('intro-feedback');if(box)box.innerHTML='<p class="muted">音声を再生できませんでした。もう一度お試しください。</p>';});
+  setTimeout(()=>{if(introAudio){introAudio.pause();}},7000);
+}
+function answerIntro(button,isCorrect){
+  if(introAnswered)return;introAnswered=true;stopIntroAudio();
+  if(isCorrect)introScore++;
+  document.querySelectorAll('.intro-option').forEach(el=>{
+    el.disabled=true;
+    if(el.dataset.title===window.introCorrectTitle)el.classList.add('correct');
+    else if(el===button&&!isCorrect)el.classList.add('wrong');
+  });
+  const feedback=document.getElementById('intro-feedback');
+  if(feedback)feedback.innerHTML=`<div class="answer-result ${isCorrect?'is-correct':'is-wrong'}"><div class="answer-icon">${isCorrect?'○':'×'}</div><div><div class="answer-title">${isCorrect?'正解！':'残念！'}</div><div class="answer-detail">${introEscape(window.introCorrectTitle)}</div></div></div>`;
+  const next=document.getElementById('intro-next');if(next)next.style.display='block';
+}
+function nextIntroQuestion(){introIndex++;renderIntroQuestion();}
+function renderIntroResult(){
+  app.innerHTML=`<section class="card"><div class="hero-sparkle">✦　♫　✦</div><h1 style="text-align:center;color:#285b79">RESULT</h1><p class="muted" style="text-align:center">イントロドン終了！</p><div style="text-align:center;margin:24px 0"><div class="big">${introScore}<span style="font-size:25px"> / ${introQuestions.length}</span></div><div style="font-weight:900;color:#32647e">正解数</div></div><button class="primary" type="button" onclick="beginIntroDon()">もう一度挑戦</button><button class="schedule-back" type="button" onclick="showIntroDon()">音源を選び直す</button><button class="schedule-back" type="button" onclick="showPortal()">← ポータルに戻る</button></section>`;
 }
 function home(){stopTimeAttack();timeAttackActive=false;if(bgmPlayer){document.body.appendChild(bgmPlayer);bgmPlayer.style.display="none";}const members=[{name:'百田夏菜子',icon:'❤️',color:'red',tag:'RED'},{name:'玉井詩織',icon:'💛',color:'yellow',tag:'YELLOW'},{name:'佐々木彩夏',icon:'💗',color:'pink',tag:'PINK'},{name:'高城れに',icon:'💜',color:'purple',tag:'PURPLE'}];const levels=[{name:'初級',icon:'⭐',note:'まずはここから'},{name:'中級',icon:'⭐⭐',note:'少しずつレベルアップ'},{name:'上級',icon:'⭐⭐⭐',note:'知識を試そう'},{name:'Z級',icon:'👑',note:'ファン上級者向け'}];updateUserTop();app.innerHTML=`<section class="hero"><div class="hero-sparkle">✦　♡　✦</div><div class="eyebrow">MOMOCLO UNOFFICIAL FAN QUIZ</div><h1>ももクロ<span>QUIZ</span></h1><p>あなたの“好き”をクイズでチェック♡<br>ランダム10問にチャレンジしよう！</p><button class="primary" onclick="start()">クイズに挑戦</button><button class="primary" style="background:linear-gradient(100deg,#ff9bba,#e66b9a);box-shadow:0 6px 0 #c34d7d,0 10px 22px rgba(210,90,140,.2)" onclick="startTimeAttack()">⏱️ 早押しタイムアタック</button><button class="primary" style="background:linear-gradient(100deg,#8d83e8,#5c78d8);box-shadow:0 6px 0 #485eb7,0 10px 22px rgba(85,100,190,.2)" onclick="showMultiplayer()">👥 マルチ対戦</button><div class="hero-foot">LET'S ENJOY MOMOCLO TIME ✧</div></section><section class="section"><div class="section-heading"><span class="section-icon">♡</span><div><div class="section-title">メンバー別クイズ</div><div class="section-sub">推しメンの問題にチャレンジ！</div></div></div><div class="grid member-grid">${members.map(m=>`<button class="tile member-tile ${m.color}" onclick="start('member','${m.name}')"><span class="member-tag">${m.tag}</span><span class="member-name">${m.name}</span><span class="member-heart">${m.icon}</span><small>PROFILE & QUIZ　↗</small></button>`).join('')}</div></section><section class="section"><div class="section-heading"><span class="section-icon">✧</span><div><div class="section-title">難易度を選んで挑戦</div><div class="section-sub">今の気分に合わせて選んでね</div></div></div><div class="grid level-grid">${levels.map((l,i)=>`<button class="tile level-tile level-${i}" onclick="start('level','${l.name}')"><span class="level-icon">${l.icon}</span><span class="level-name">${l.name}</span><small>${l.note}</small></button>`).join('')}</div></section><section class="section"><div class="section-heading"><span class="section-icon">♫</span><div><div class="section-title">その他のクイズ</div><div class="section-sub">好きなカテゴリを選んでね</div></div></div><div class="grid category-grid"><button class="tile level-tile" onclick="start('category','歌詞')"><span class="level-icon">🎵</span><span class="level-name">歌詞</span><small>歌詞に関するクイズ</small></button><button class="tile level-tile" onclick="start('category','ももクロchan')"><span class="level-icon">📺</span><span class="level-name">ももクロchan</span><small>ももクロchanに関するクイズ</small></button></div></section><div class="home-note">♡　全問正解を目指してがんばろう！　♡</div>`}
 function start(type=null,val=null,avoidPrevious=false){currentType=type||null;currentVal=type?val:null;const allPool=questions.filter(q=>!currentType||q[currentType]===currentVal);const previousKey=(currentType||'all')+'::'+String(currentVal??'');const previousIds=lastRunKey===previousKey?lastRunIds:[];const freshPool=avoidPrevious?allPool.filter(q=>!previousIds.includes(q.id)):allPool;const pool=freshPool.length?freshPool:allPool;if(!pool.length){app.innerHTML=`<section class="card"><a href="#" onclick="home();return false">← ホーム</a><p>この条件の問題はまだありません。</p></section>`;return}const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};if(!currentType){const stages=[['初級',3],['中級',3],['上級',2],['Z級',2]];list=stages.flatMap(([level,count])=>shuffle(pool.filter(q=>q.level===level)).slice(0,count));if(list.length<10){const used=new Set(list);list.push(...shuffle(pool.filter(q=>!used.has(q))).slice(0,10-list.length))}}else{list=shuffle(pool).slice(0,10)}// 出題ごとに正解位置をランダム化し、A〜Dにできるだけ均等に配分する
