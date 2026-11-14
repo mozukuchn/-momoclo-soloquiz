@@ -551,28 +551,12 @@ function filterSchedule(type,button){
 }
 
 // イントロドン：アップロードされた音源ファイルのみを使用（YouTube広告なし）
-
 const introSongs=[
-  {
-    title:'行くぜっ！怪盗少女 -ZZ ver.-',
-    audio:'audio/行くぜっ!怪盗少女-ZZ ver.-.mp3'
-  },
-  {
-    title:'MOON PRIDE',
-    audio:'audio/MOON PRIDE.mp3'
-  },
-  {
-    title:'Moon Revenge',
-    audio:'audio/Moon Revenge.mp3'
-  },
-  {
-    title:'サラバ、愛しき悲しみたちよ -ZZ ver.-',
-    audio:'audio/サラバ、愛しき悲しみたちよ-ZZ ver.-.mp3'
-  },
-  {
-    title:'月虹',
-    audio:'audio/月虹.mp3'
-  }
+  {title:'行くぜっ！怪盗少女 -ZZ ver.-',audio:'audio/行くぜっ!怪盗少女-ZZ ver.-.mp3'},
+  {title:'サラバ、愛しき悲しみたちよ -ZZ ver.-',audio:'audio/サラバ、愛しき悲しみたちよ-ZZ ver.-.mp3'},
+  {title:'MOON PRIDE',audio:'audio/MOON PRIDE.mp3'},
+  {title:'Moon Revenge',audio:'audio/Moon Revenge.mp3'},
+  {title:'月虹',audio:'audio/月虹.mp3'}
 ];
 let introQuestions=[],introIndex=0,introScore=0,introAnswered=false;
 let introAudioPlayer=null,introAudioStopTimer=null;
@@ -621,7 +605,7 @@ function playIntroClip(){
   stopIntroAudio();
   const song=introQuestions[introIndex],button=document.getElementById('intro-play-button'),status=document.getElementById('intro-audio-status');
   if(!song||!song.audio)return;
-  introAudioPlayer=new Audio(song.audio);
+  introAudioPlayer=new Audio(encodeURI(song.audio));
   introAudioPlayer.preload='auto';
   if(button){button.disabled=true;button.textContent='♪ 再生中…';}
   if(status)status.textContent='イントロ再生中…';
@@ -630,6 +614,11 @@ function playIntroClip(){
     if(introAudioPlayer!==player)return;
     stopIntroAudio();
     if(status)status.textContent='再生が終わりました。もう一度聴けます。';
+  },{once:true});
+  player.addEventListener('error',()=>{
+    if(introAudioPlayer!==player)return;
+    stopIntroAudio();
+    if(status)status.textContent='音源ファイルを読み込めません。GitHubのaudioフォルダ内のファイル名を確認してください。';
   },{once:true});
   player.play().then(()=>{
     introAudioStopTimer=setTimeout(()=>{
