@@ -609,7 +609,7 @@ function renderIntroQuestion(){
   <div id="intro-feedback" aria-live="polite"></div><button id="intro-next" class="primary" type="button" style="display:none" onclick="nextIntroQuestion()">${introIndex+1===introQuestions.length?'結果を見る':'次の問題へ'}</button>
   </section>`;
   window.introCorrectTitle=song.title;
-  const input=document.getElementById('intro-answer-input');if(input)input.focus();
+  // 入力欄をタップするまでキーボードを自動表示しない
 }
 function playIntroClip(){
   stopIntroAudio();
@@ -644,22 +644,38 @@ function playIntroClip(){
 }
 function normalizeIntroAnswer(value){
   let normalized=String(value||'').normalize('NFKC').toLowerCase()
-    .replace(/[\s　]/g,'')
-    .replace(/[\p{P}\p{S}]/gu,'');
-  // 「Z ver.」「ZZ ver.」は Z / ZZ の識別を残し、末尾の ver 表記だけ任意にする
+    .replace(/[\\s　]/g,'')
+    .replace(/[\\p{P}\\p{S}]/gu,'');
+  // カタカナをひらがなに統一（漢字の読み別名と比較できるようにする）
+  normalized=Array.from(normalized).map(ch=>{
+    const code=ch.codePointAt(0);
+    return code>=0x30A1&&code<=0x30F6?String.fromCodePoint(code-0x60):ch;
+  }).join('');
+  // Z ver. / ZZ ver. は末尾の ver. のみ任意。Z と ZZ は区別する
   normalized=normalized.replace(/(z{1,2})ver$/,'$1');
   return normalized;
 }
 function introAnswerAliases(title){
   const aliases={
+    '行くぜっ！怪盗少女':['いくぜっかいとうしょうじょ','怪盗少女','かいとうしょうじょ'],
+    'サラバ、愛しき悲しみたちよ':['さらばいとしきかなしみたちよ','サラバ','さらば'],
     'MOON PRIDE':['ムーンプライド'],
     'Moon Revenge':['ムーンリベンジ'],
+    '月虹':['げっこう'],
+    '青春賦':['せいしゅんふ'],
+    '行く春来る春':['いくはるくるはる'],
+    '走れ！-Z ver.-':['はしれz','はしれ'],
     'Link Link':['リンクリンク'],
-    'Dream Wave':['ドリームウェーブ'],
     'words of the mind-brandnew journey-':[
       'ワーズオブザマインドブランニュージャーニー',
       'ワーズオブマインドブランニュージャーニー'
-    ]
+    ],
+    'Dream Wave':['ドリームウェーブ'],
+    '最強パレパレード':['さいきょうぱれぱれーど'],
+    'あの空へ向かって':['あのそらへむかって'],
+    'ももいろパンチ':['ももいろぱんち'],
+    '気分はSuper Girl':['きぶんはsupergirl','きぶんはスーパーガール'],
+    'ツヨクツヨク':['つよくつよく']
   };
   return aliases[title]||[];
 }
