@@ -604,7 +604,7 @@ function renderIntroQuestion(){
   const song=introQuestions[introIndex];
   app.innerHTML=`<section class="card"><a class="back" href="#" onclick="showIntroDon();return false">← イントロドンに戻る</a>
   <div class="section-heading"><span class="section-icon">🎧</span><div><div class="section-title">第${introIndex+1}問 / ${introQuestions.length}問</div><div class="section-sub">現在の正解数：${introScore}</div></div></div>
-  <div class="intro-playbox"><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">イントロを聴いて、曲名を入力してね！</p><button class="primary" id="intro-play-button" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button><p class="muted" id="intro-audio-status" aria-live="polite">再生ボタンを押すとイントロが7秒流れます</p></div>
+  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">イントロを聴いて、曲名を入力してね！</p><div class="intro-audio-mark" aria-hidden="true">🎵　？　🎵</div><button class="primary" id="intro-play-button" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button><p class="muted" id="intro-audio-status" aria-live="polite">再生ボタンを押すとイントロが7秒流れます</p></div>
   <form class="intro-answer-form" onsubmit="submitIntroAnswer(event)"><label for="intro-answer-input" style="display:block;margin:18px 0 8px;font-weight:900;color:#32647e">曲名を入力</label><input id="intro-answer-input" type="text" autocomplete="off" placeholder="例：行くぜっ！怪盗少女" style="display:block;width:100%;padding:15px;border:1px solid #9bd8eb;border-radius:14px;font:inherit;color:#285b79;background:#fff" /><button id="intro-submit" class="primary" type="submit">解答する</button></form>
   <div id="intro-feedback" aria-live="polite"></div><button id="intro-next" class="primary" type="button" style="display:none" onclick="nextIntroQuestion()">${introIndex+1===introQuestions.length?'結果を見る':'次の問題へ'}</button>
   </section>`;
@@ -659,16 +659,17 @@ function introAnswerAliases(title){
   const aliases={
     '行くぜっ！怪盗少女':['いくぜっかいとうしょうじょ','怪盗少女','かいとうしょうじょ'],
     'サラバ、愛しき悲しみたちよ':['さらばいとしきかなしみたちよ','サラバ','さらば'],
-    'MOON PRIDE':['ムーンプライド'],
-    'Moon Revenge':['ムーンリベンジ'],
+    'MOON PRIDE':['ムーンプライド','ムンプラ','むんぷら'],
+    'Moon Revenge':['ムーンリベンジ','むんりべ','ムンリベ'],
     '月虹':['げっこう'],
     '青春賦':['せいしゅんふ'],
     '行く春来る春':['いくはるくるはる'],
-    '走れ！-Z ver.-':['はしれz'],
+    '走れ！-Z ver.-':['はしれz','走れZ','はしれzバージョン','走れZver.','走れzver.'],
     'Link Link':['リンクリンク'],
     'words of the mind-brandnew journey-':[
       'ワーズオブザマインドブランニュージャーニー',
-      'ワーズオブマインドブランニュージャーニー'
+      'ワーズオブマインドブランニュージャーニー',
+      'ワーズ','わーず'
     ],
     'Dream Wave':['ドリームウェーブ'],
     '最強パレパレード':['さいきょうぱれぱれーど','パレパレ','ぱれぱれ'],
