@@ -602,15 +602,14 @@ function renderIntroQuestion(){
   stopIntroAudio();introAnswered=false;
   if(introIndex>=introQuestions.length){renderIntroResult();return;}
   const song=introQuestions[introIndex];
-  const choices=[song,...introSongs.filter(x=>x!==song).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
   app.innerHTML=`<section class="card"><a class="back" href="#" onclick="showIntroDon();return false">← イントロドンに戻る</a>
   <div class="section-heading"><span class="section-icon">🎧</span><div><div class="section-title">第${introIndex+1}問 / ${introQuestions.length}問</div><div class="section-sub">現在の正解数：${introScore}</div></div></div>
-  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">音声だけでイントロを聴いて答えてね！</p><div class="intro-audio-mark" aria-hidden="true">🎵　？　🎵</div><button class="primary" id="intro-play-button" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button><p class="muted" id="intro-audio-status" aria-live="polite">再生ボタンを押すとイントロが7秒流れます</p></div>
-  <div class="intro-options">${choices.map((c,i)=>`<button class="intro-option" type="button" data-title="${introEscape(c.title)}" onclick="answerIntro(this,${c===song})">${['A','B','C','D'][i]}　${introEscape(c.title)}</button>`).join('')}</div>
+  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">イントロを聴いて、曲名を入力してね！</p><div class="intro-audio-mark" aria-hidden="true">🎵　？　🎵</div><button class="primary" id="intro-play-button" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button><p class="muted" id="intro-audio-status" aria-live="polite">再生ボタンを押すとイントロが7秒流れます</p></div>
+  <form class="intro-answer-form" onsubmit="submitIntroAnswer(event)"><label for="intro-answer-input" style="display:block;margin:18px 0 8px;font-weight:900;color:#32647e">曲名を入力</label><input id="intro-answer-input" type="text" autocomplete="off" placeholder="例：行くぜっ！怪盗少女" style="display:block;width:100%;padding:15px;border:1px solid #9bd8eb;border-radius:14px;font:inherit;color:#285b79;background:#fff" /><button id="intro-submit" class="primary" type="submit">解答する</button></form>
   <div id="intro-feedback" aria-live="polite"></div><button id="intro-next" class="primary" type="button" style="display:none" onclick="nextIntroQuestion()">${introIndex+1===introQuestions.length?'結果を見る':'次の問題へ'}</button>
   </section>`;
-  // 選択肢の正解判定は曲オブジェクトのタイトルで照合
   window.introCorrectTitle=song.title;
+  const input=document.getElementById('intro-answer-input');if(input)input.focus();
 }
 function playIntroClip(){
   stopIntroAudio();
@@ -643,17 +642,25 @@ function playIntroClip(){
     if(status)status.textContent='音源を再生できません。音声ファイルが同じフォルダ構成でアップロードされているか確認してください。';
   });
 }
-function answerIntro(button,isCorrect){
+function normalizeIntroAnswer(value){
+  return String(value||'').normalize('NFKC').toLowerCase().replace(/[\s　・!！?？。、,，．.「」『』]/g,'');
+}
+function submitIntroAnswer(event){
+  if(event)event.preventDefault();
+  if(introAnswered)return;
+  const input=document.getElementById('intro-answer-input');
+  const answer=input?input.value.trim():'';
+  if(!answer){if(input){input.focus();input.placeholder='曲名を入力してね';}return;}
+  answerIntro(normalizeIntroAnswer(answer)===normalizeIntroAnswer(window.introCorrectTitle));
+}
+function answerIntro(isCorrect){
   if(introAnswered)return;introAnswered=true;
   stopIntroAudio();
   if(isCorrect)introScore++;
-  document.querySelectorAll('.intro-option').forEach(el=>{
-    el.disabled=true;
-    if(el.dataset.title===window.introCorrectTitle)el.classList.add('correct');
-    else if(el===button&&!isCorrect)el.classList.add('wrong');
-  });
+  const input=document.getElementById('intro-answer-input');if(input)input.disabled=true;
+  const submit=document.getElementById('intro-submit');if(submit)submit.disabled=true;
   const feedback=document.getElementById('intro-feedback');
-  if(feedback)feedback.innerHTML=`<div class="answer-result ${isCorrect?'is-correct':'is-wrong'}"><div class="answer-icon">${isCorrect?'○':'×'}</div><div><div class="answer-title">${isCorrect?'正解！':'残念！'}</div><div class="answer-detail">${introEscape(window.introCorrectTitle)}</div></div></div>`;
+  if(feedback)feedback.innerHTML=`<div class="answer-result ${isCorrect?'is-correct':'is-wrong'}"><div class="answer-icon">${isCorrect?'○':'×'}</div><div><div class="answer-title">${isCorrect?'正解！':'残念！'}</div><div class="answer-detail">正解：${introEscape(window.introCorrectTitle)}</div></div></div>`;
   const next=document.getElementById('intro-next');if(next)next.style.display='block';
 }
 function nextIntroQuestion(){introIndex++;renderIntroQuestion();}
