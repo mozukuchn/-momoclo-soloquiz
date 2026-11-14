@@ -540,29 +540,44 @@ function filterSchedule(type,button){
   document.querySelectorAll('.schedule-item').forEach(item=>{item.style.display=(type==='ALL'||item.dataset.scheduleType===type)?'flex':'none'});
 }
 
-// イントロドン：ユーザーが選んだ音源ファイルをブラウザ内で再生
-let introSongs=[],introQuestions=[],introIndex=0,introScore=0,introAudio=null,introAnswered=false;
+// イントロドン：YouTube公式埋め込みプレイヤーでイントロを再生
+let introSongs=[],introQuestions=[],introIndex=0,introScore=0,introAnswered=false;
 function introEscape(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function stopIntroAudio(){if(introAudio){introAudio.pause();introAudio.currentTime=0;introAudio=null;}}
+function stopIntroAudio(){const frame=document.getElementById('intro-youtube-frame');if(frame)frame.remove();}
+function getYouTubeId(value){
+  try{
+    const u=new URL(value.trim());
+    if(u.hostname==='youtu.be'||u.hostname.endsWith('.youtu.be'))return u.pathname.split('/').filter(Boolean)[0]||null;
+    if(u.hostname.includes('youtube.com')){
+      if(u.pathname==='/watch')return u.searchParams.get('v');
+      const m=u.pathname.match(/^\/(?:embed|shorts|live)\/([^/?]+)/);return m?m[1]:null;
+    }
+  }catch(e){}
+  return null;
+}
 function showIntroDon(){
   stopTimeAttack();timeAttackActive=false;stopIntroAudio();
   if(bgmPlayer){document.body.appendChild(bgmPlayer);bgmPlayer.style.display="none";}
   updateUserTop();
-  app.innerHTML=`<section class="hero portal-intro"><div class="hero-sparkle">♫　✦　♫</div><div class="eyebrow">MOMO CLOVER Z MUSIC GAME</div><h1>イントロ<span>ドン！</span></h1><p>曲のイントロを聴いて、曲名を当てよう！<br>自分の音源ファイルを読み込んで遊べます。</p><div class="hero-foot">LISTEN & GUESS ✧</div></section>
+  app.innerHTML=`<section class="hero portal-intro"><div class="hero-sparkle">♫　✦　♫</div><div class="eyebrow">MOMO CLOVER Z MUSIC GAME</div><h1>イントロ<span>ドン！</span></h1><p>YouTubeの動画を使って、曲のイントロを当てよう！<br>動画URLを登録するだけで遊べます。</p><div class="hero-foot">LISTEN & GUESS ✧</div></section>
   <section class="card"><a class="back" href="#" onclick="showPortal();return false">← ポータルに戻る</a>
-  <h2 style="margin:8px 0;color:#285b79">🎵 音源を読み込む</h2>
-  <p class="muted">音源ファイルを複数選択してね。ファイル名がそのまま曲名になります（例：行くぜっ！怪盗少女.mp3）。</p>
-  <input class="intro-upload" id="intro-files" type="file" accept="audio/*" multiple onchange="loadIntroFiles(this.files)">
-  <div class="intro-song-count" id="intro-song-count">まだ音源が読み込まれていません。</div>
-  <p class="muted">※音源はこの端末のブラウザ内で再生され、サーバーには送信されません。利用する音源は自分で用意したもの・使用許諾のあるものを使ってね。</p>
+  <h2 style="margin:8px 0;color:#285b79">🎵 YouTube動画を登録</h2>
+  <p class="muted">1行に「曲名 | YouTube URL」の形式で入力してね。2曲以上登録するとゲームを始められます。</p>
+  <textarea class="intro-upload" id="intro-youtube-list" rows="7" placeholder="行くぜっ！怪盗少女 | https://www.youtube.com/watch?v=動画ID&#10;走れ！ | https://youtu.be/動画ID" oninput="loadIntroYouTubeList(this.value)"></textarea>
+  <div class="intro-song-count" id="intro-song-count">曲名とYouTube URLを入力してください。</div>
+  <p class="muted">※再生にはYouTube公式プレイヤーを使用します。動画側で埋め込みが許可されていない場合や、地域・年齢・公開設定などの制限がある場合は再生できません。広告が表示されることがあります。</p>
   <button class="primary" type="button" onclick="beginIntroDon()" id="intro-start" disabled>イントロドンを始める</button>
   <button class="schedule-back" type="button" onclick="showPortal()">← ポータルに戻る</button></section>`;
 }
-function loadIntroFiles(files){
+function loadIntroYouTubeList(value){
   stopIntroAudio();
-  introSongs=Array.from(files||[]).filter(f=>f.type.startsWith('audio/')).map(file=>({title:file.name.replace(/\.[^.]+$/,''),url:URL.createObjectURL(file)}));
+  introSongs=String(value||'').split(/\r?\n/).map(line=>{
+    const parts=line.split('|');if(parts.length<2)return null;
+    const title=parts[0].trim(),url=parts.slice(1).join('|').trim(),videoId=getYouTubeId(url);
+    return title&&videoId?{title,videoId}:null;
+  }).filter(Boolean);
   const count=document.getElementById('intro-song-count'),start=document.getElementById('intro-start');
-  if(count)count.textContent=`${introSongs.length}曲 読み込み済み`;
+  if(count)count.textContent=`${introSongs.length}曲 登録済み（URL形式が正しい行のみ）`;
   if(start)start.disabled=introSongs.length<2;
 }
 function beginIntroDon(){
@@ -578,7 +593,7 @@ function renderIntroQuestion(){
   const choices=[song,...introSongs.filter(x=>x!==song).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
   app.innerHTML=`<section class="card"><a class="back" href="#" onclick="showIntroDon();return false">← イントロドンの設定へ</a>
   <div class="section-heading"><span class="section-icon">🎧</span><div><div class="section-title">第${introIndex+1}問 / ${introQuestions.length}問</div><div class="section-sub">現在の正解数：${introScore}</div></div></div>
-  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">再生ボタンを押してイントロを聴こう！</p><button class="primary" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button></div>
+  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">再生ボタンを押してYouTubeでイントロを聴こう！</p><div id="intro-youtube-player"></div><button class="primary" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button></div>
   <div class="intro-options">${choices.map((c,i)=>`<button class="intro-option" type="button" data-title="${introEscape(c.title)}" onclick="answerIntro(this,${c===song})">${['A','B','C','D'][i]}　${introEscape(c.title)}</button>`).join('')}</div>
   <div id="intro-feedback" aria-live="polite"></div><button id="intro-next" class="primary" type="button" style="display:none" onclick="nextIntroQuestion()">${introIndex+1===introQuestions.length?'結果を見る':'次の問題へ'}</button>
   </section>`;
@@ -587,10 +602,9 @@ function renderIntroQuestion(){
 }
 function playIntroClip(){
   stopIntroAudio();
-  const song=introQuestions[introIndex];if(!song)return;
-  introAudio=new Audio(song.url);introAudio.currentTime=0;
-  introAudio.play().catch(()=>{const box=document.getElementById('intro-feedback');if(box)box.innerHTML='<p class="muted">音声を再生できませんでした。もう一度お試しください。</p>';});
-  setTimeout(()=>{if(introAudio){introAudio.pause();}},7000);
+  const song=introQuestions[introIndex],holder=document.getElementById('intro-youtube-player');if(!song||!holder)return;
+  // YouTube公式埋め込みプレイヤー。7秒地点で終了する設定。
+  holder.innerHTML=`<iframe id="intro-youtube-frame" width="100%" height="220" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.videoId)}?autoplay=1&start=0&end=7&playsinline=1&rel=0" title="イントロ再生" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen style="border:0;border-radius:14px;max-width:100%"></iframe>`;
 }
 function answerIntro(button,isCorrect){
   if(introAnswered)return;introAnswered=true;stopIntroAudio();
