@@ -299,6 +299,12 @@ button.portal-card:active{transform:translateY(2px)}
 .intro-song-count{margin:10px 0;color:#6d8da1;font-size:12px}
 .intro-playbox{margin:18px 0;padding:22px 16px;border:1px solid #bce8f5;border-radius:20px;background:linear-gradient(145deg,#f4fcff,#fff);text-align:center}
 .intro-play-icon{font-size:42px;margin-bottom:8px}
+.intro-video-wrap{position:relative;width:100%;max-width:560px;margin:12px auto 0;overflow:hidden;border-radius:14px;background:#183e58;aspect-ratio:16/9}
+.intro-video-wrap iframe{display:block;width:100%;height:100%;border:0}
+.intro-video-cover{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:linear-gradient(145deg,rgba(33,83,116,.97),rgba(78,139,174,.97));color:#fff;font-weight:900;transition:opacity .25s ease}
+.intro-video-cover .question-mark{font-size:clamp(76px,18vw,120px);line-height:1;text-shadow:0 5px 18px rgba(0,0,0,.2)}
+.intro-video-cover small{font-size:12px;letter-spacing:1px}
+.intro-video-cover.is-revealed{opacity:0;pointer-events:none}
 .intro-options{display:grid;gap:10px;margin-top:16px}
 .intro-option{width:100%;padding:14px;border:1px solid rgba(95,181,211,.36);border-radius:15px;background:#fff;color:#355f76;font-weight:900;text-align:left}
 .intro-option:disabled{opacity:1}
@@ -307,6 +313,10 @@ button.portal-card:active{transform:translateY(2px)}
 .intro-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
 .intro-actions .primary{flex:1;min-width:140px}
 
+
+.intro-audio-mark{display:flex;align-items:center;justify-content:center;min-height:92px;margin:16px auto;padding:18px;border-radius:18px;background:linear-gradient(135deg,#fff1f7,#eef7ff);color:#285b79;font-size:30px;font-weight:900;letter-spacing:5px;max-width:360px}
+#intro-audio-status{min-height:1.5em;margin:10px 0 0}
+#intro-play-button:disabled{opacity:.75;cursor:wait}
 </style></head><body><div class="virtual-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><main class="wrap"><header class="top"><div class="brand">MOMOCLO PORTAL</div><div id="user-top" class="user-top" style="display:none"></div><nav class="top-nav" aria-label="メインメニュー"><button class="nav-item" type="button" onclick="showPortal()">ポータル</button><button class="nav-item" type="button" onclick="showHistory()">MENU</button></nav></header><div id="app"></div><p class="footer">本サイトはファン制作の非公式クイズ企画です。公式とは関係ありません。</p></main>
 
 <div id="bgm-player" aria-label="BGM controls">
@@ -540,32 +550,34 @@ function filterSchedule(type,button){
   document.querySelectorAll('.schedule-item').forEach(item=>{item.style.display=(type==='ALL'||item.dataset.scheduleType===type)?'flex':'none'});
 }
 
-// イントロドン：公式チャンネル／レーベル公開動画をあらかじめ収録
+// イントロドン：アップロードされた音源ファイルのみを使用（YouTube広告なし）
 const introSongs=[
-  {title:'行くぜっ！怪盗少女 -ZZ ver.-',videoId:'KOaNO_FyusM'},
-  {title:'走れ！-PLAY ACTIVE！2022 ver.-',videoId:'tCD81ACqUYk'},
-  {title:'サラバ、愛しき悲しみたちよ',videoId:'OWSbfCPkTBk'},
-  {title:'Z女戦争',videoId:'-72Lje6nwg0'},
-  {title:'MOON PRIDE',videoId:'c0Va228UhRs'},
-  {title:'青春賦',videoId:'Ns05Cyj2v2s'},
-  {title:'ヒカリミチ',videoId:'cg0T5v1VGd0'},
-  {title:'Re:Story',videoId:'iALETAS0Xo0'},
-  {title:'境界のペンデュラム',videoId:'BD1BkOEhie0'},
-  {title:'猛烈宇宙交響曲・第七楽章「無限の愛」',videoId:'TIokp4MonxE'}
+  {title:'行くぜっ！怪盗少女 -ZZ ver.-',audio:'audio/intro-01.mp3'},
+  {title:'サラバ、愛しき悲しみたちよ -ZZ ver.-',audio:'audio/intro-02.mp3'},
+  {title:'Moon Revenge',audio:'audio/intro-03.mp3'},
+  {title:'月虹',audio:'audio/intro-04.mp3'}
 ];
 let introQuestions=[],introIndex=0,introScore=0,introAnswered=false;
+let introAudioPlayer=null,introAudioStopTimer=null;
 function introEscape(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function stopIntroAudio(){const frame=document.getElementById('intro-youtube-frame');if(frame)frame.remove();}
+function stopIntroAudio(){
+  if(introAudioStopTimer){clearTimeout(introAudioStopTimer);introAudioStopTimer=null;}
+  if(introAudioPlayer){introAudioPlayer.pause();introAudioPlayer.currentTime=0;introAudioPlayer=null;}
+  const status=document.getElementById('intro-audio-status');
+  if(status)status.textContent='再生ボタンを押すとイントロが7秒流れます';
+  const button=document.getElementById('intro-play-button');
+  if(button){button.disabled=false;button.textContent='▶ イントロを再生（7秒）';}
+}
 function showIntroDon(){
   stopTimeAttack();timeAttackActive=false;stopIntroAudio();
   if(bgmPlayer){document.body.appendChild(bgmPlayer);bgmPlayer.style.display="none";}
   updateUserTop();
-  app.innerHTML=`<section class="hero portal-intro"><div class="hero-sparkle">♫　✦　♫</div><div class="eyebrow">MOMO CLOVER Z MUSIC GAME</div><h1>イントロ<span>ドン！</span></h1><p>ももクロの公式公開動画から、イントロを聴いて曲名を当てよう！<br>収録曲は最初から設定されています。</p><div class="hero-foot">LISTEN & GUESS ✧</div></section>
+  app.innerHTML=`<section class="hero portal-intro"><div class="hero-sparkle">♫　✦　♫</div><div class="eyebrow">MOMO CLOVER Z MUSIC GAME</div><h1>イントロ<span>ドン！</span></h1><p>用意された音源からイントロを聴いて曲名を当てよう！<br>収録曲は最初から設定されています。</p><div class="hero-foot">LISTEN & GUESS ✧</div></section>
   <section class="card"><a class="back" href="#" onclick="showPortal();return false">← ポータルに戻る</a>
   <h2 style="margin:8px 0;color:#285b79">🎵 収録曲：${introSongs.length}曲</h2>
-  <p class="muted">公式アーティストチャンネル／公式レーベルチャンネルが公開している動画を使用しています。曲を登録する必要はありません。</p>
-  <div class="intro-song-count">全${introSongs.length}曲からランダムで10問出題！</div>
-  <p class="muted">※YouTube公式プレイヤーで再生します。動画側の埋め込み制限、地域・公開設定などにより再生できない場合があります。動画によっては映像も表示されます。</p>
+  <p class="muted">アップロードされた音源ファイルを使って再生します。YouTube動画や広告は流れません。</p>
+  <div class="intro-song-count">全${introSongs.length}曲からランダムで出題！</div>
+  <p class="muted">各曲の冒頭7秒を再生します。曲を登録する必要はありません。</p>
   <button class="primary" type="button" onclick="beginIntroDon()" id="intro-start">イントロドンを始める</button>
   <button class="schedule-back" type="button" onclick="showPortal()">← ポータルに戻る</button></section>`;
 }
@@ -581,7 +593,7 @@ function renderIntroQuestion(){
   const choices=[song,...introSongs.filter(x=>x!==song).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5);
   app.innerHTML=`<section class="card"><a class="back" href="#" onclick="showIntroDon();return false">← イントロドンに戻る</a>
   <div class="section-heading"><span class="section-icon">🎧</span><div><div class="section-title">第${introIndex+1}問 / ${introQuestions.length}問</div><div class="section-sub">現在の正解数：${introScore}</div></div></div>
-  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">再生ボタンを押してYouTubeでイントロを聴こう！</p><div id="intro-youtube-player"></div><button class="primary" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button></div>
+  <div class="intro-playbox"><div class="intro-play-icon">♫</div><div style="font-size:20px;font-weight:900;color:#285b79">この曲は何でしょう？</div><p class="muted">音声だけでイントロを聴いて答えてね！</p><div class="intro-audio-mark" aria-hidden="true">🎵　？　🎵</div><button class="primary" id="intro-play-button" type="button" onclick="playIntroClip()">▶ イントロを再生（7秒）</button><p class="muted" id="intro-audio-status" aria-live="polite">再生ボタンを押すとイントロが7秒流れます</p></div>
   <div class="intro-options">${choices.map((c,i)=>`<button class="intro-option" type="button" data-title="${introEscape(c.title)}" onclick="answerIntro(this,${c===song})">${['A','B','C','D'][i]}　${introEscape(c.title)}</button>`).join('')}</div>
   <div id="intro-feedback" aria-live="polite"></div><button id="intro-next" class="primary" type="button" style="display:none" onclick="nextIntroQuestion()">${introIndex+1===introQuestions.length?'結果を見る':'次の問題へ'}</button>
   </section>`;
@@ -590,12 +602,33 @@ function renderIntroQuestion(){
 }
 function playIntroClip(){
   stopIntroAudio();
-  const song=introQuestions[introIndex],holder=document.getElementById('intro-youtube-player');if(!song||!holder)return;
-  // YouTube公式埋め込みプレイヤー。7秒地点で終了する設定。
-  holder.innerHTML=`<iframe id="intro-youtube-frame" width="100%" height="220" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.videoId)}?autoplay=1&start=0&end=7&playsinline=1&rel=0" title="イントロ再生" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen style="border:0;border-radius:14px;max-width:100%"></iframe>`;
+  const song=introQuestions[introIndex],button=document.getElementById('intro-play-button'),status=document.getElementById('intro-audio-status');
+  if(!song||!song.audio)return;
+  introAudioPlayer=new Audio(song.audio);
+  introAudioPlayer.preload='auto';
+  if(button){button.disabled=true;button.textContent='♪ 再生中…';}
+  if(status)status.textContent='イントロ再生中…';
+  const player=introAudioPlayer;
+  player.addEventListener('ended',()=>{
+    if(introAudioPlayer!==player)return;
+    stopIntroAudio();
+    if(status)status.textContent='再生が終わりました。もう一度聴けます。';
+  },{once:true});
+  player.play().then(()=>{
+    introAudioStopTimer=setTimeout(()=>{
+      if(introAudioPlayer===player){
+        stopIntroAudio();
+        if(status)status.textContent='7秒間の再生が終わりました。もう一度聴けます。';
+      }
+    },7000);
+  }).catch(()=>{
+    stopIntroAudio();
+    if(status)status.textContent='音源を再生できません。音声ファイルが同じフォルダ構成でアップロードされているか確認してください。';
+  });
 }
 function answerIntro(button,isCorrect){
-  if(introAnswered)return;introAnswered=true;stopIntroAudio();
+  if(introAnswered)return;introAnswered=true;
+  stopIntroAudio();
   if(isCorrect)introScore++;
   document.querySelectorAll('.intro-option').forEach(el=>{
     el.disabled=true;
