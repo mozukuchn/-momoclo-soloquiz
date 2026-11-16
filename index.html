@@ -589,6 +589,8 @@ const introSongs=[
   {title:'ピンキージョーンズ',audio:'audio/intro_08.mp3'},
   {title:'ワニとシャンプー',audio:'audio/intro_09.mp3'},
   {title:'ももクロのニッポン万歳！',audio:'audio/intro_10.mp3'},
+  {title:'ミライボウル',audio:'audio/intro_11.mp3'},
+  {title:'スターダストセレナーデ',audio:'audio/intro_12.mp3'},
 ];
 let introQuestions=[],introIndex=0,introScore=0,introAnswered=false,introAnswers=[],introHistorySaved=false;
 let introAudioPlayer=null,introAudioStopTimer=null;
@@ -714,6 +716,8 @@ function introAnswerAliases(title){
     'ピンキージョーンズ':['ぴんきーじょーんず','ピンキー'],
     'ワニとシャンプー':['わにとしゃんぷー','ワニシャン','わにしゃん'],
     'ももクロのニッポン万歳！':['ももくろのにっぽんばんざい','ニッポン万歳','にっぽんばんざい'],
+    'ミライボウル':['みらいぼうる','ミライボール'],
+    'スターダストセレナーデ':['すたーだすとせれなーで','スターダスト・セレナーデ'],
   };
   return aliases[title]||[];
 }
